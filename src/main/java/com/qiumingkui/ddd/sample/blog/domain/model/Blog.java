@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
-
 public class Blog implements Serializable {
 
 	/**
@@ -14,7 +13,7 @@ public class Blog implements Serializable {
 
 	private Blog() {
 		super();
-		this.setCommentIds(new HashSet<CommentId>() );
+		this.setCommentIds(new HashSet<CommentId>());
 	}
 
 	public Blog(BlogId blogId, Title title, Content content) {

@@ -5,12 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +30,7 @@ public class JdbcBlogRepository implements BlogRepository {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	@Override
 	@Transactional(readOnly = true)
 	public Blog get(BlogId blogId) {
 
@@ -42,14 +40,17 @@ public class JdbcBlogRepository implements BlogRepository {
 		return blogList.size() > 0 ? blogList.get(0) : null;
 	}
 
+	@Override
 	public BlogId genId() {
 		return new BlogId(UUID.randomUUID().toString().toUpperCase());
 	}
 
+	@Override
 	public void save(Blog blog) {
 
 	}
 
+	@Override
 	public void del(Blog blog) {
 
 	}

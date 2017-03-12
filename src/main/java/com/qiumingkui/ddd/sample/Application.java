@@ -9,22 +9,29 @@ import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
 import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.JdbcBlogRepository;
 
 
-@SpringBootApplication
-public class Application implements CommandLineRunner{
+//@SpringBootApplication
+//public class Application implements CommandLineRunner{
+//
+//	@Autowired
+//	JdbcBlogRepository blogRepository;
+//
+//	public static void main(String[] args) {
+//		SpringApplication.run(Application.class, args);
+////		application.blogRepository.get(new BlogId("1"));
+//	}
+//
+//	@Override
+//	public void run(String... arg0) throws Exception {
+//		
+//		System.out.print("run...");		
+//	}
+//
+//}
 
-	@Autowired
-	JdbcBlogRepository blogRepository;
+@SpringBootApplication
+public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-//		application.blogRepository.get(new BlogId("1"));
 	}
-
-	@Override
-	public void run(String... arg0) throws Exception {
-		
-		System.out.println("genId:"+blogRepository.genId().id());
-		System.out.println("get:"+blogRepository.get(new BlogId("1")).title().titleText());		
-	}
-
 }
