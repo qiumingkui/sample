@@ -11,6 +11,6 @@ public interface BlogRepository {
 
 	public void save(Blog blog);
 	
-	public void del(Blog blog);
+	public void del(BlogId blogId);
 
 }

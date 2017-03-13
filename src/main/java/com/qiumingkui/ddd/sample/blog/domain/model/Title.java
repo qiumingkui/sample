@@ -1,23 +1,23 @@
 package com.qiumingkui.ddd.sample.blog.domain.model;
 
 public class Title {
-	private String titleText;
+	private String titleTxt;
 
 	public Title() {
 		super();
 	}
 
-	public Title(String titleText) {
+	public Title(String titleTxt) {
 		super();
-		setTitleText(titleText);
+		setTitleTxt(titleTxt);
 	}
 
-	public String titleText() {
-		return titleText;
+	public String titleTxt() {
+		return titleTxt;
 	}
 
-	private void setTitleText(String titleText) {
-		this.titleText = titleText;
+	private void setTitleTxt(String titleTxt) {
+		this.titleTxt = titleTxt;
 	}
 	
 	

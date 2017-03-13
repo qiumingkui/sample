@@ -1,23 +1,23 @@
 package com.qiumingkui.ddd.sample.blog.domain.model;
 
 public class Content {
-	private String contentText;
+	private String contentTxt;
 
 	public Content() {
 		super();
 	}
 
-	public Content(String contentText) {
+	public Content(String contentTxt) {
 		super();
-		setContentText(contentText);
+		setContentTxt(contentTxt);
 	}
 
-	public String contentText() {
-		return this.contentText;
+	public String contentTxt() {
+		return this.contentTxt;
 	}
 
-	private void setContentText(String contentText) {
-		this.contentText = contentText;
+	private void setContentTxt(String contentTxt) {
+		this.contentTxt = contentTxt;
 	}
 	
 	

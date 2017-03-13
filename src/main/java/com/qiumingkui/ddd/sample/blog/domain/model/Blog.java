@@ -31,6 +31,10 @@ public class Blog implements Serializable {
 
 	private Collection<CommentId> commentIds;
 
+	public void changeTitle(Title title){
+		setTitle(title);
+	}
+	
 	public BlogId blogId() {
 		return blogId;
 	}
@@ -46,7 +50,7 @@ public class Blog implements Serializable {
 	public Collection<CommentId> commentIds() {
 		return commentIds;
 	}
-
+	
 	private void setBlogId(BlogId blogId) {
 		this.blogId = blogId;
 	}
