@@ -13,17 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
+import com.qiumingkui.ddd.sample.blog.domain.model.BlogTestHelper;
 import com.qiumingkui.ddd.sample.blog.domain.model.Title;
-
-import com.qiumingkui.ddd.sample.blog.domain.model.Content;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BlogDaoTest {
 
 	private static final Logger log = LoggerFactory.getLogger(BlogDaoTest.class);
-	
-	private static final String TEST_ID = "vId_1";
 
 	@Autowired
 	protected BlogDao blogDao;
@@ -32,7 +29,7 @@ public class BlogDaoTest {
 	@Test
 	@Transactional
 	public void testCreate() {
-		Blog blog = makeBlog(TEST_ID, "blog" + " : " + new Date(), "content" + " : " + new Date());
+		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 		
 		log.info("testCreate() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
@@ -41,10 +38,10 @@ public class BlogDaoTest {
 	@Test
 	@Transactional
 	public void testUpdate() {
-		Blog blog = makeBlog(TEST_ID, "blog" + " : " + new Date(), "content" + " : " + new Date());
+		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 	
-		BlogId blogId = new BlogId(TEST_ID);
+		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
 		blog = blogDao.retrieve(blogId);
 		Title oldTitle= blog.title();
 		
@@ -58,10 +55,10 @@ public class BlogDaoTest {
 	@Test
 	@Transactional
 	public void testRetrieve() {
-		Blog blog = makeBlog(TEST_ID, "blog" + " : " + new Date(), "content" + " : " + new Date());
+		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 
-		BlogId blogId = new BlogId(TEST_ID);
+		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
 		blog = blogDao.retrieve(blogId);
 		
 		log.info("testRetrieve() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
@@ -70,21 +67,14 @@ public class BlogDaoTest {
 	@Test
 	@Transactional
 	public void testDelete() {
-		Blog blog = makeBlog(TEST_ID, "blog" + " : " + new Date(), "content" + " : " + new Date());
+		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 		
-		BlogId blogId = new BlogId(TEST_ID);
+		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
 		blogDao.delete(blogId);
 		
 		log.info("testDelete() blogId:" + blogId.id());
 	}
 
-	private Blog makeBlog(String id, String titleTxt, String contentTxt) {
-		BlogId blogId = new BlogId(id);
-		Title title = new Title(titleTxt);
-		Content content = new Content(contentTxt);
-		Blog blog = new Blog(blogId, title, content);
-		return blog;
-	}
 
 }
