@@ -41,7 +41,7 @@ public class BlogDaoTest {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 	
-		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
+		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
 		Title oldTitle= blog.title();
 		
@@ -58,7 +58,7 @@ public class BlogDaoTest {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 
-		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
+		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
 		
 		log.info("testRetrieve() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
@@ -70,7 +70,7 @@ public class BlogDaoTest {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogDao.create(blog);
 		
-		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
+		BlogId blogId = blog.blogId();
 		blogDao.delete(blogId);
 		
 		log.info("testDelete() blogId:" + blogId.id());

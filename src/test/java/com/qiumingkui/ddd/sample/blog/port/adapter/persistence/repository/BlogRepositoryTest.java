@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,24 +43,25 @@ public class BlogRepositoryTest {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogRepository.save(blog);
 
-		blog = blogRepository.get(new BlogId(BlogTestHelper.TEST_ID));
+		blog = blogRepository.get(blog.blogId());
 		log.info("testGet() blog title:" + blog.title().titleTxt());
 	}
 
 	@Test
 	@Transactional
+	// @Commit
 	public void testSave() {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogRepository.save(blog);
 
-		blog = blogRepository.get(new BlogId(BlogTestHelper.TEST_ID));
+		blog = blogRepository.get(blog.blogId());
 		Title oldTitle = blog.title();
 
 		Title newTitle = new Title("blog" + " : this is new :" + new Date());
 		blog.changeTitle(newTitle);
 		blogRepository.save(blog);
 
-		log.info("testSave() blog " + " old title:" + oldTitle.titleTxt() + "new title:" + blog.title().titleTxt());
+		log.info("testSave() blog id:"+blog.blogId().id() + " old title:" + oldTitle.titleTxt() + "new title:" + blog.title().titleTxt());
 	}
 
 	@Test
@@ -68,7 +70,7 @@ public class BlogRepositoryTest {
 		Blog blog = BlogTestHelper.buildBlogExample();
 		blogRepository.save(blog);
 		
-		BlogId blogId = new BlogId(BlogTestHelper.TEST_ID);
+		BlogId blogId = blog.blogId();
 		blogRepository.del(blogId);
 		
 		log.info("testDelete() blogId:" + blogId.id());

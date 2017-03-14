@@ -1,8 +1,6 @@
 package com.qiumingkui.ddd.sample.blog.domain.model;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
 
 public class Blog implements Serializable {
 
@@ -13,7 +11,7 @@ public class Blog implements Serializable {
 
 	private Blog() {
 		super();
-		this.setCommentIds(new HashSet<CommentId>());
+		// this.setCommentIds(new HashSet<CommentId>());
 	}
 
 	public Blog(BlogId blogId, Title title, Content content) {
@@ -29,12 +27,12 @@ public class Blog implements Serializable {
 
 	private Content content;
 
-	private Collection<CommentId> commentIds;
+	// private Collection<CommentId> commentIds;
 
-	public void changeTitle(Title title){
+	public void changeTitle(Title title) {
 		setTitle(title);
 	}
-	
+
 	public BlogId blogId() {
 		return blogId;
 	}
@@ -47,10 +45,6 @@ public class Blog implements Serializable {
 		return content;
 	}
 
-	public Collection<CommentId> commentIds() {
-		return commentIds;
-	}
-	
 	private void setBlogId(BlogId blogId) {
 		this.blogId = blogId;
 	}
@@ -61,10 +55,6 @@ public class Blog implements Serializable {
 
 	private void setContent(Content content) {
 		this.content = content;
-	}
-
-	private void setCommentIds(Collection<CommentId> commentIds) {
-		this.commentIds = commentIds;
 	}
 
 }
