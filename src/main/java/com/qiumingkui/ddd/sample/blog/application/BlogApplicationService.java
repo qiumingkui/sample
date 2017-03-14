@@ -2,6 +2,7 @@ package com.qiumingkui.ddd.sample.blog.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogBuilder;
@@ -17,12 +18,14 @@ public class BlogApplicationService {
 	@Autowired
 	private BlogRepository blogRepository;
 
+	@Transactional
 	public String publishBlog(String aTitle, String aContent) {
 		Blog blog = BlogBuilder.build( aTitle, aContent);
 		blogRepository.save(blog);
 		return blog.blogId().id();
 	}
 
+	@Transactional
 	public void modifyBlog(String aBlogId, String aTitle, String aContent) {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
@@ -35,7 +38,7 @@ public class BlogApplicationService {
 		}
 	}
 
-
+	@Transactional
 	public BlogData findBlog(String aBlogId){
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
