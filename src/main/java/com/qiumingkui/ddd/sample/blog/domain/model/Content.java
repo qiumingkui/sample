@@ -3,21 +3,21 @@ package com.qiumingkui.ddd.sample.blog.domain.model;
 public class Content {
 	private String contentTxt;
 
-	public Content() {
+	private Content() {
 		super();
 	}
 
-	public Content(String contentTxt) {
-		super();
-		setContentTxt(contentTxt);
+	public Content(String aContentTxt) {
+		this();
+		setContentTxt(aContentTxt);
 	}
 
 	public String contentTxt() {
 		return this.contentTxt;
 	}
 
-	private void setContentTxt(String contentTxt) {
-		this.contentTxt = contentTxt;
+	private void setContentTxt(String aContentTxt) {
+		this.contentTxt = aContentTxt;
 	}
 	
 	

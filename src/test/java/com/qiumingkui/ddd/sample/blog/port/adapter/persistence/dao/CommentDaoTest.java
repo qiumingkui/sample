@@ -13,8 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Comment;
 import com.qiumingkui.ddd.sample.blog.domain.model.CommentId;
-import com.qiumingkui.ddd.sample.blog.domain.model.CommentTestHelper;
+import com.qiumingkui.ddd.sample.blog.domain.model.CommentBuilder;
 import com.qiumingkui.ddd.sample.blog.domain.model.Content;
+import com.qiumingkui.ddd.sample.common.util.UUIDUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,7 +30,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void testCreate() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentDao.create(comment);
 		
 		log.info("testCreate() commentId:" + comment.commentId().id() + ",content:" + comment.content().contentTxt());
@@ -38,7 +39,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void testUpdate() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentDao.create(comment);
 	
 		CommentId commentId = comment.commentId();
@@ -55,7 +56,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void testRetrieve() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentDao.create(comment);
 
 		CommentId commentId = comment.commentId();
@@ -67,7 +68,7 @@ public class CommentDaoTest {
 	@Test
 	@Transactional
 	public void testDelete() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentDao.create(comment);
 		
 		CommentId commentId = comment.commentId();
@@ -76,5 +77,8 @@ public class CommentDaoTest {
 		log.info("testDelete() commentId:" + commentId.id());
 	}
 
+	private Comment buildCommentExample() {
+		return CommentBuilder.build("content" + " : " + new Date());
+	}
 
 }

@@ -22,47 +22,39 @@ public class CommentDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	public void create(Comment comment) {
+	public void create(Comment aComment) {
 		final String SQL = "INSERT INTO comment(id,blogid,content) VALUES(?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, comment.commentId().id());
-				ps.setString(2, comment.blogId().id());
-				ps.setString(3, comment.content().contentTxt());
+				ps.setString(1, aComment.commentId().id());
+				ps.setString(2, aComment.blogId().id());
+				ps.setString(3, aComment.content().contentTxt());
 			}
 		});
 	}
 
-	public void update(Comment comment) {
+	public void update(Comment aComment) {
 		final String SQL = "UPDATE comment SET blogid=?,content=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, comment.blogId().id());
-				ps.setString(2, comment.content().contentTxt());
-				ps.setString(3, comment.commentId().id());
+				ps.setString(1, aComment.blogId().id());
+				ps.setString(2, aComment.content().contentTxt());
+				ps.setString(3, aComment.commentId().id());
 			}
 		});
 	}
 
-	public void delete(CommentId commentId) {
+	public void delete(CommentId aCommentId) {
 		final String SQL = "DELETE FROM comment WHERE id=?";
-		jdbcTemplate.update(SQL, commentId.id());
+		jdbcTemplate.update(SQL, aCommentId.id());
 	}
 
-	public Comment retrieve(CommentId commentId) {
+	public Comment retrieve(CommentId aCommentId) {
 		final String SQL = "SELECT * FROM comment WHERE id=?";
-		List<Comment> commentList = jdbcTemplate.query(SQL, new Object[] { commentId.id() }, new CommentRowMapper());
+		List<Comment> commentList = jdbcTemplate.query(SQL, new Object[] { aCommentId.id() }, new CommentRowMapper());
 		return commentList.size() > 0 ? commentList.get(0) : null;
 	}
 

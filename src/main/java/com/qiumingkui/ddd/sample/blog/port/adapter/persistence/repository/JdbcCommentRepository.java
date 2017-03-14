@@ -1,7 +1,5 @@
 package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,29 +14,24 @@ public class JdbcCommentRepository implements CommentRepository {
 	private CommentDao commentDao;
 
 	@Override
-	public Comment get(CommentId commentId) {
-		return commentDao.retrieve(commentId);
+	public Comment get(CommentId aCommentId) {
+		return commentDao.retrieve(aCommentId);
 	}
 
 	@Override
-	public CommentId genId() {
-		return new CommentId(UUID.randomUUID().toString().toUpperCase());
-	}
-
-	@Override
-	public void save(Comment comment) {
-		Comment retrieveComment = commentDao.retrieve(comment.commentId());
+	public void save(Comment aComment) {
+		Comment retrieveComment = commentDao.retrieve(aComment.commentId());
 		if (retrieveComment != null) {
-			commentDao.update(comment);
+			commentDao.update(aComment);
 		} else {
-			commentDao.create(comment);
+			commentDao.create(aComment);
 		}
 
 	}
 
 	@Override
-	public void del(CommentId commentId) {
-		commentDao.delete(commentId);
+	public void del(CommentId aCommentId) {
+		commentDao.delete(aCommentId);
 	}
 
 }

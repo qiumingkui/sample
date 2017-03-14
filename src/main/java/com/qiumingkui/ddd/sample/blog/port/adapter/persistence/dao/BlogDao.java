@@ -22,47 +22,39 @@ public class BlogDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	public void create(Blog blog) {
+	public void create(Blog aBlog) {
 		final String SQL = "INSERT INTO blog(id,title,content) VALUES(?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, blog.blogId().id());
-				ps.setString(2, blog.title().titleTxt());
-				ps.setString(3, blog.content().contentTxt());
+				ps.setString(1, aBlog.blogId().id());
+				ps.setString(2, aBlog.title().titleTxt());
+				ps.setString(3, aBlog.content().contentTxt());
 			}
 		});
 	}
 
-	public void update(Blog blog) {
+	public void update(Blog aBlog) {
 		final String SQL = "UPDATE blog SET title=?,content=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, blog.title().titleTxt());
-				ps.setString(2, blog.content().contentTxt());
-				ps.setString(3, blog.blogId().id());
+				ps.setString(1, aBlog.title().titleTxt());
+				ps.setString(2, aBlog.content().contentTxt());
+				ps.setString(3, aBlog.blogId().id());
 			}
 		});
 	}
 
-	public void delete(BlogId blogId) {
+	public void delete(BlogId aBlogId) {
 		final String SQL = "DELETE FROM blog WHERE id=?";
-		jdbcTemplate.update(SQL, blogId.id());
+		jdbcTemplate.update(SQL, aBlogId.id());
 	}
 
-	public Blog retrieve(BlogId blogId) {
+	public Blog retrieve(BlogId aBlogId) {
 		final String SQL = "SELECT * FROM blog WHERE id=?";
-		List<Blog> blogList = jdbcTemplate.query(SQL, new Object[] { blogId.id() }, new BlogRowMapper());
+		List<Blog> blogList = jdbcTemplate.query(SQL, new Object[] { aBlogId.id() }, new BlogRowMapper());
 		return blogList.size() > 0 ? blogList.get(0) : null;
 	}
 

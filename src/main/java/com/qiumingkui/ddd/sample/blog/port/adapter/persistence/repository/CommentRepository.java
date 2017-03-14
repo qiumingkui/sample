@@ -5,12 +5,10 @@ import com.qiumingkui.ddd.sample.blog.domain.model.CommentId;
 
 public interface CommentRepository {
 
-	public Comment get(CommentId commentId);
+	public Comment get(CommentId aCommentId);
 
-	public CommentId genId();
-
-	public void save(Comment comment);
+	public void save(Comment aComment);
 	
-	public void del(CommentId commentId);
+	public void del(CommentId aCommentId);
 
 }

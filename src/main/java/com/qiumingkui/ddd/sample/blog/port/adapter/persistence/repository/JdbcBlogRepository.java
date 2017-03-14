@@ -18,28 +18,23 @@ public class JdbcBlogRepository implements BlogRepository {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Blog get(BlogId blogId) {
-		return blogDao.retrieve(blogId);
+	public Blog get(BlogId aBlogId) {
+		return blogDao.retrieve(aBlogId);
 	}
 
 	@Override
-	public BlogId genId() {
-		return new BlogId(UUID.randomUUID().toString().toUpperCase());
-	}
-
-	@Override
-	public void save(Blog blog) {
-		Blog retrieveBlog = blogDao.retrieve(blog.blogId());
+	public void save(Blog aBlog) {
+		Blog retrieveBlog = blogDao.retrieve(aBlog.blogId());
 		if (retrieveBlog != null) {
-			blogDao.update(blog);
+			blogDao.update(aBlog);
 		} else {
-			blogDao.create(blog);
+			blogDao.create(aBlog);
 		}
 	}
 
 	@Override
-	public void del(BlogId blogId) {
-		blogDao.delete(blogId);
+	public void del(BlogId aBlogId) {
+		blogDao.delete(aBlogId);
 	}
 
 }

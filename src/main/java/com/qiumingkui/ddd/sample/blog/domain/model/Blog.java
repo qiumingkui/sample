@@ -29,10 +29,14 @@ public class Blog implements Serializable {
 
 	// private Collection<CommentId> commentIds;
 
-	public void changeTitle(Title title) {
-		setTitle(title);
+	public void changeTitle(Title aTitle) {
+		setTitle(aTitle);
 	}
 
+	public void changeContent(Content aContent){
+		setContent(aContent);
+	}
+	
 	public BlogId blogId() {
 		return blogId;
 	}
@@ -45,16 +49,16 @@ public class Blog implements Serializable {
 		return content;
 	}
 
-	private void setBlogId(BlogId blogId) {
-		this.blogId = blogId;
+	private void setBlogId(BlogId aBlogId) {
+		this.blogId = aBlogId;
 	}
 
-	private void setTitle(Title title) {
-		this.title = title;
+	private void setTitle(Title aTitle) {
+		this.title = aTitle;
 	}
 
-	private void setContent(Content content) {
-		this.content = content;
+	private void setContent(Content aContent) {
+		this.content = aContent;
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.dao;
 
 import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
+import com.qiumingkui.ddd.sample.blog.domain.model.BlogBuilder;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
-import com.qiumingkui.ddd.sample.blog.domain.model.BlogTestHelper;
 import com.qiumingkui.ddd.sample.blog.domain.model.Title;
 
 @RunWith(SpringRunner.class)
@@ -25,56 +24,58 @@ public class BlogDaoTest {
 	@Autowired
 	protected BlogDao blogDao;
 
-
 	@Test
 	@Transactional
 	public void testCreate() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogDao.create(blog);
-		
+
 		log.info("testCreate() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
 	}
 
 	@Test
 	@Transactional
 	public void testUpdate() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogDao.create(blog);
-	
+
 		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
-		Title oldTitle= blog.title();
-		
+		Title oldTitle = blog.title();
+
 		Title newTitle = new Title("blog" + " : this is new :" + new Date());
 		blog.changeTitle(newTitle);
 		blogDao.update(blog);
-		
-		log.info("testUpdate() blogId:" + blog.blogId().id() + ",old Title:"+oldTitle.titleTxt()+",new title:" + blog.title().titleTxt());
+
+		log.info("testUpdate() blogId:" + blog.blogId().id() + ",old Title:" + oldTitle.titleTxt() + ",new title:"
+				+ blog.title().titleTxt());
 	}
 
 	@Test
 	@Transactional
 	public void testRetrieve() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogDao.create(blog);
 
 		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
-		
+
 		log.info("testRetrieve() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
 	}
 
 	@Test
 	@Transactional
 	public void testDelete() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogDao.create(blog);
-		
+
 		BlogId blogId = blog.blogId();
 		blogDao.delete(blogId);
-		
+
 		log.info("testDelete() blogId:" + blogId.id());
 	}
 
-
+	private Blog buildBlogExample() {
+		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date());
+	}
 }

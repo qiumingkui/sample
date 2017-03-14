@@ -8,13 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Comment;
+import com.qiumingkui.ddd.sample.blog.domain.model.CommentBuilder;
 import com.qiumingkui.ddd.sample.blog.domain.model.CommentId;
-import com.qiumingkui.ddd.sample.blog.domain.model.CommentTestHelper;
 import com.qiumingkui.ddd.sample.blog.domain.model.Content;
 
 @RunWith(SpringRunner.class)
@@ -27,14 +26,9 @@ public class CommentRepositoryTest {
 	private CommentRepository commentRepository;
 
 	@Test
-	public void testGenId() {
-		log.info("testGenId() genId:" + commentRepository.genId().id());
-	}
-
-	@Test
 	@Transactional
 	public void testGet() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentRepository.save(comment);
 
 		comment = commentRepository.get(comment.commentId());
@@ -45,7 +39,7 @@ public class CommentRepositoryTest {
 	@Transactional
 	// @Commit
 	public void testSave() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentRepository.save(comment);
 
 		comment = commentRepository.get(comment.commentId());
@@ -62,13 +56,17 @@ public class CommentRepositoryTest {
 	@Test
 	@Transactional
 	public void testDel() {
-		Comment comment = CommentTestHelper.buildCommentExample();
+		Comment comment = buildCommentExample();
 		commentRepository.save(comment);
 
 		CommentId commentId = comment.commentId();
 		commentRepository.del(commentId);
 
 		log.info("testDelete() blogId:" + commentId.id());
+	}
+
+	private Comment buildCommentExample() {
+		return CommentBuilder.build("content" + " : " + new Date());
 	}
 
 }

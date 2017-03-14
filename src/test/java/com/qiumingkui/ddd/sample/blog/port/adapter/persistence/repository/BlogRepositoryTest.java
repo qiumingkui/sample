@@ -8,13 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
-import com.qiumingkui.ddd.sample.blog.domain.model.BlogTestHelper;
+import com.qiumingkui.ddd.sample.blog.domain.model.BlogBuilder;
 import com.qiumingkui.ddd.sample.blog.domain.model.Title;
 
 @RunWith(SpringRunner.class)
@@ -33,14 +32,9 @@ public class BlogRepositoryTest {
 	}
 
 	@Test
-	public void testGenId() {
-		log.info("testGenId() genId:" + blogRepository.genId().id());
-	}
-
-	@Test
 	@Transactional
 	public void testGet() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogRepository.save(blog);
 
 		blog = blogRepository.get(blog.blogId());
@@ -51,7 +45,7 @@ public class BlogRepositoryTest {
 	@Transactional
 	// @Commit
 	public void testSave() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogRepository.save(blog);
 
 		blog = blogRepository.get(blog.blogId());
@@ -67,7 +61,7 @@ public class BlogRepositoryTest {
 	@Test
 	@Transactional
 	public void testDel() {
-		Blog blog = BlogTestHelper.buildBlogExample();
+		Blog blog = buildBlogExample();
 		blogRepository.save(blog);
 		
 		BlogId blogId = blog.blogId();
@@ -76,4 +70,7 @@ public class BlogRepositoryTest {
 		log.info("testDelete() blogId:" + blogId.id());
 	}
 	
+	private Blog buildBlogExample() {
+		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date());
+	}
 }

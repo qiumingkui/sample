@@ -5,12 +5,10 @@ import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
 
 public interface BlogRepository {
 
-	public Blog get(BlogId blogId);
+	public Blog get(BlogId aBlogId);
 
-	public BlogId genId();
-
-	public void save(Blog blog);
+	public void save(Blog aBlog);
 	
-	public void del(BlogId blogId);
+	public void del(BlogId aBlogId);
 
 }
