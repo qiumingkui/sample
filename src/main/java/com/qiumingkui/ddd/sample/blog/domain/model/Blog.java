@@ -19,6 +19,7 @@ public class Blog implements Serializable {
 		this.setBlogId(blogId);
 		this.setTitle(title);
 		this.setContent(content);
+		this.setStatus(new BlogStatus(BlogStatus.ISSUE));
 	}
 
 	private BlogId blogId;
@@ -27,16 +28,40 @@ public class Blog implements Serializable {
 
 	private Content content;
 
+	private BlogStatus status;
+	
+	private int commentTimes;
+	
+	private int readTimes;
+
 	// private Collection<CommentId> commentIds;
 
 	public void changeTitle(Title aTitle) {
 		setTitle(aTitle);
 	}
 
-	public void changeContent(Content aContent){
+	public void changeContent(Content aContent) {
 		setContent(aContent);
 	}
-	
+
+	public boolean isEditable() {
+		if (this.status().statusVal() == BlogStatus.CLOSE || this.status().statusVal() == BlogStatus.LOCK)
+			return false;
+		return true;
+	}
+
+	public void reopen() {
+		setStatus(new BlogStatus(BlogStatus.REOPEN));
+	}
+
+	public void lock() {
+		setStatus(new BlogStatus(BlogStatus.LOCK));
+	}
+
+	public void close() {
+		setStatus(new BlogStatus(BlogStatus.CLOSE));
+	}
+
 	public BlogId blogId() {
 		return blogId;
 	}
@@ -49,6 +74,22 @@ public class Blog implements Serializable {
 		return content;
 	}
 
+	// private Collection<CommentId> commentIds;
+
+	public BlogStatus status() {
+		return status;
+	}
+
+	// private Collection<CommentId> commentIds;
+	
+	public int commentTimes() {
+		return commentTimes;
+	}
+
+	public int readTimes() {
+		return readTimes;
+	}
+
 	private void setBlogId(BlogId aBlogId) {
 		this.blogId = aBlogId;
 	}
@@ -59,6 +100,18 @@ public class Blog implements Serializable {
 
 	private void setContent(Content aContent) {
 		this.content = aContent;
+	}
+
+	private void setStatus(BlogStatus aStatus) {
+		this.status = aStatus;
+	}
+
+	private void setCommentTimes(int commentTimes) {
+		this.commentTimes = commentTimes;
+	}
+
+	private void setReadTimes(int readTimes) {
+		this.readTimes = readTimes;
 	}
 
 }
