@@ -1,5 +1,8 @@
 package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.dao;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.sql.Timestamp;
 import java.util.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +32,7 @@ public class BlogDaoTest {
 	public void testCreate() {
 		Blog blog = buildBlogExample();
 		blogDao.create(blog);
-
-		log.info("testCreate() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
+		assertThat(blog.blogId().id().isEmpty()).isFalse();
 	}
 
 	@Test
@@ -41,14 +43,14 @@ public class BlogDaoTest {
 
 		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
-		Title oldTitle = blog.title();
+		Timestamp odlModifyTime=blog.modifyTime();
 
 		Title newTitle = new Title("blog" + " : this is new :" + new Date());
 		blog.changeTitle(newTitle);
 		blogDao.update(blog);
 
-		log.info("testUpdate() blogId:" + blog.blogId().id() + ",old Title:" + oldTitle.titleTxt() + ",new title:"
-				+ blog.title().titleTxt());
+		// blog = blogDao.retrieve(blogId);
+		assertThat(blog.modifyTime().after(odlModifyTime)).isTrue();
 	}
 
 	@Test
