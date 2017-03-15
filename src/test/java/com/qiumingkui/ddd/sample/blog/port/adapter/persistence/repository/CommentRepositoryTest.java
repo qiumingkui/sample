@@ -66,7 +66,7 @@ public class CommentRepositoryTest {
 	}
 
 	private Comment buildCommentExample() {
-		return CommentBuilder.build("content" + " : " + new Date());
+		return CommentBuilder.build("1","content" + " : " + new Date());
 	}
 
 }

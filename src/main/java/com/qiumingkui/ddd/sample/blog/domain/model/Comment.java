@@ -1,6 +1,9 @@
 package com.qiumingkui.ddd.sample.blog.domain.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+
+import com.qiumingkui.ddd.sample.common.util.UtilDateTime;
 
 public class Comment implements Serializable {
 
@@ -16,15 +19,19 @@ public class Comment implements Serializable {
 	
 	private Content content;
 
+	private Timestamp createTime;
+	
 	private Comment() {
 		super();
 	}
 
-	public Comment(CommentId commentId, BlogId blogId, Content content) {
+	public Comment(CommentId aCommentId, BlogId aBlogId, Content aContent) {
 		this();
-		this.commentId = commentId;
-		this.blogId = blogId;
-		this.content = content;
+		
+		this.setCommentId(aCommentId);
+		this.setBlogId(aBlogId);
+		this.setContent(aContent);
+		this.setCreateTime(UtilDateTime.nowTimestamp());
 	}
 
 	public void changeContent(Content content) {
@@ -44,18 +51,24 @@ public class Comment implements Serializable {
 		return this.content;
 	}
 	
-	public void setCommentId(CommentId commentId) {
+	public Timestamp createTime() {
+		return createTime;
+	}
+
+	private void setCommentId(CommentId commentId) {
 		this.commentId = commentId;
 	}
 
-	public void setBlogId(BlogId blogId) {
+	private void setBlogId(BlogId blogId) {
 		this.blogId = blogId;
 	}
 
-	public void setContent(Content content) {
+	private void setContent(Content content) {
 		this.content = content;
 	}
-	
-	
+
+	private void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 	
 }

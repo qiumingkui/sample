@@ -78,7 +78,7 @@ public class CommentDaoTest {
 	}
 
 	private Comment buildCommentExample() {
-		return CommentBuilder.build("content" + " : " + new Date());
+		return CommentBuilder.build("1","content" + " : " + new Date());
 	}
 
 }

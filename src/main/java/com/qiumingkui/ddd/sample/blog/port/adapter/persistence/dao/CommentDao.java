@@ -23,7 +23,7 @@ public class CommentDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public void create(Comment aComment) {
-		final String SQL = "INSERT INTO comment(id,blogid,content) VALUES(?,?,?)";
+		final String SQL = "INSERT INTO comment(id,blogid,content,createtime) VALUES(?,?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
@@ -31,18 +31,20 @@ public class CommentDao {
 				ps.setString(1, aComment.commentId().id());
 				ps.setString(2, aComment.blogId().id());
 				ps.setString(3, aComment.content().contentTxt());
+				ps.setTimestamp(4, aComment.createTime());
 			}
 		});
 	}
 
 	public void update(Comment aComment) {
-		final String SQL = "UPDATE comment SET blogid=?,content=? WHERE id=?";
+		final String SQL = "UPDATE comment SET blogid=?,content=?,createtime=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, aComment.blogId().id());
 				ps.setString(2, aComment.content().contentTxt());
-				ps.setString(3, aComment.commentId().id());
+				ps.setTimestamp(3, aComment.createTime());
+				ps.setString(4, aComment.commentId().id());		
 			}
 		});
 	}

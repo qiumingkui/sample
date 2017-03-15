@@ -12,11 +12,9 @@ public class CommentBuilder {
 		return comment;
 	}
 
-	public static Comment build(String aContent) {
+	public static Comment build(String aBlogId, String aContent) {
 		final String COMMENT_ID = UUIDUtils.gen();
-		final String BLOG_ID = UUIDUtils.gen();
-
-		return build(COMMENT_ID, BLOG_ID, aContent);
+		return build(COMMENT_ID, aBlogId, aContent);
 	}
 
 }
