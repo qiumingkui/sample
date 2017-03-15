@@ -3,6 +3,7 @@ package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class BlogDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public void create(Blog aBlog) {
-		final String SQL = "INSERT INTO blog(id,title,content,status) VALUES(?,?,?,?)";
+		final String SQL = "INSERT INTO blog(id,title,content,status,commentnumber,createtime,modifytime) VALUES(?,?,?,?,?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
@@ -33,19 +34,24 @@ public class BlogDao {
 				ps.setString(2, aBlog.title().titleTxt());
 				ps.setString(3, aBlog.content().contentTxt());
 				ps.setInt(4, aBlog.status().statusVal());
+				ps.setInt(5, aBlog.commentNumber());
+				ps.setTimestamp(6, aBlog.createTime());
+				ps.setTimestamp(7, aBlog.modifyTime());
 			}
 		});
 	}
 
 	public void update(Blog aBlog) {
-		final String SQL = "UPDATE blog SET title=?,content=?,status=? WHERE id=?";
+		final String SQL = "UPDATE blog SET title=?,content=?,status=?,commentnumber=?,modifytime=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, aBlog.title().titleTxt());
 				ps.setString(2, aBlog.content().contentTxt());
 				ps.setInt(3, aBlog.status().statusVal());
-				ps.setString(4, aBlog.blogId().id());
+				ps.setInt(4, aBlog.commentNumber());
+				ps.setTimestamp(5, aBlog.modifyTime());
+				ps.setString(6, aBlog.blogId().id());
 			}
 		});
 	}
@@ -68,7 +74,10 @@ public class BlogDao {
 			Title title = new Title(rs.getString("title"));
 			Content content = new Content(rs.getString("content"));
 			BlogStatus status = new BlogStatus(rs.getInt("status"));
-			Blog blog = new Blog(blogId, title, content, status);
+			int commentNumber = rs.getInt("commentnumber");
+			Timestamp createTime = rs.getTimestamp("createtime");
+			Timestamp modifyTime = rs.getTimestamp("modifytime");
+			Blog blog = new Blog(blogId, title, content, status, commentNumber, createTime, modifyTime);
 			return blog;
 		}
 	}

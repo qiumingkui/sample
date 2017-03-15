@@ -1,6 +1,9 @@
 package com.qiumingkui.ddd.sample.blog.domain.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+
+import com.qiumingkui.ddd.sample.common.util.UtilDateTime;
 
 public class Blog implements Serializable {
 
@@ -19,12 +22,25 @@ public class Blog implements Serializable {
 		this.setTitle(aTitle);
 		this.setContent(aContent);
 		this.setStatus(new BlogStatus(BlogStatus.ISSUE));
+		this.setCreateTime(UtilDateTime.nowTimestamp());
+		this.setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public Blog(BlogId aBlogId, Title aTitle, Content aContent, BlogStatus aStatus) {
+	public Blog(BlogId aBlogId, Title aTitle, Content aContent, BlogStatus aStatus, int aCommentNumber, Timestamp aCreateTime,
+			Timestamp aModifyTime) {
+		
 		this(aBlogId,aTitle,aContent);
+		
 		this.setStatus(aStatus);
+		this.setCommentNumber(aCommentNumber);
+		this.setCreateTime(aCreateTime);
+		this.setModifyTime(aModifyTime);
 	}
+
+	
+	
+	
+
 
 	private BlogId blogId;
 
@@ -34,24 +50,32 @@ public class Blog implements Serializable {
 
 	private BlogStatus status;
 
-	private int commentCount;
+	private int commentNumber;
+	
+	private Timestamp createTime;
+	
+	private Timestamp modifyTime;
 
-	private int readCount;
+	public Timestamp createTime() {
+		return createTime;
+	}
+
+	public Timestamp modifyTime() {
+		return modifyTime;
+	}
 
 	public void changeTitle(Title aTitle) {
 		setTitle(aTitle);
+		setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
 	public void changeContent(Content aContent) {
 		setContent(aContent);
+		setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public void changeCommentCount(int aCommentCount) {
-		setCommentCount(aCommentCount);
-	}
-
-	public void changeReadCount(int aReadCount) {
-		setReadCount(aReadCount);
+	public void changeCommentNumber(int aCommentNumber) {
+		setCommentNumber(aCommentNumber);
 	}
 
 	public void reopen() {
@@ -82,12 +106,8 @@ public class Blog implements Serializable {
 		return status;
 	}
 
-	public int commentCount() {
-		return commentCount;
-	}
-
-	public int readCount() {
-		return readCount;
+	public int commentNumber() {
+		return commentNumber;
 	}
 
 	private void setBlogId(BlogId aBlogId) {
@@ -106,12 +126,16 @@ public class Blog implements Serializable {
 		this.status = aStatus;
 	}
 
-	private void setCommentCount(int aCommentCount) {
-		this.commentCount = aCommentCount;
+	private void setCommentNumber(int aCommentNumber) {
+		this.commentNumber = aCommentNumber;
 	}
 
-	private void setReadCount(int aReadTimes) {
-		this.readCount = aReadTimes;
+	private void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	private void setModifyTime(Timestamp modifyTime) {
+		this.modifyTime = modifyTime;
 	}
 
 }
