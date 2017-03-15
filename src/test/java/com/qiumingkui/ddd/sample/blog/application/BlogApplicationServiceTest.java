@@ -56,4 +56,23 @@ public class BlogApplicationServiceTest {
 		assertThat(blogData.getStatus() == BlogStatus.LOCK).isTrue();
 	}
 
+	@Test
+	public void closeBlog() {
+		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		blogApplicationService.closeBlog(blogId);
+		BlogData blogData = blogApplicationService.readBlog(blogId);
+		assertThat(blogData.getStatus() == BlogStatus.CLOSE).isTrue();
+		assertThat(blogData.getStatus() == BlogStatus.LOCK).isFalse();
+	}
+
+	@Test
+	public void reopenBlog() {
+		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		blogApplicationService.reopenBlog(blogId);
+		BlogData blogData = blogApplicationService.readBlog(blogId);
+		assertThat(blogData.getStatus() == BlogStatus.REOPEN).isTrue();
+		assertThat(blogData.getStatus() == BlogStatus.ISSUE).isFalse();
+	}
+
+	
 }
