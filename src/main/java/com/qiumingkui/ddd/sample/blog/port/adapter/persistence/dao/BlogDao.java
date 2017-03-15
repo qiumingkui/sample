@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
+import com.qiumingkui.ddd.sample.blog.domain.model.BlogStatus;
 import com.qiumingkui.ddd.sample.blog.domain.model.Content;
 import com.qiumingkui.ddd.sample.blog.domain.model.Title;
 
@@ -23,7 +24,7 @@ public class BlogDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public void create(Blog aBlog) {
-		final String SQL = "INSERT INTO blog(id,title,content) VALUES(?,?,?)";
+		final String SQL = "INSERT INTO blog(id,title,content,status) VALUES(?,?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
@@ -31,18 +32,20 @@ public class BlogDao {
 				ps.setString(1, aBlog.blogId().id());
 				ps.setString(2, aBlog.title().titleTxt());
 				ps.setString(3, aBlog.content().contentTxt());
+				ps.setInt(4, aBlog.status().statusVal());
 			}
 		});
 	}
 
 	public void update(Blog aBlog) {
-		final String SQL = "UPDATE blog SET title=?,content=? WHERE id=?";
+		final String SQL = "UPDATE blog SET title=?,content=?,status=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, aBlog.title().titleTxt());
 				ps.setString(2, aBlog.content().contentTxt());
-				ps.setString(3, aBlog.blogId().id());
+				ps.setInt(3, aBlog.status().statusVal());
+				ps.setString(4, aBlog.blogId().id());
 			}
 		});
 	}
@@ -64,7 +67,8 @@ public class BlogDao {
 			BlogId blogId = new BlogId(rs.getString("id"));
 			Title title = new Title(rs.getString("title"));
 			Content content = new Content(rs.getString("content"));
-			Blog blog = new Blog(blogId, title, content);
+			BlogStatus status = new BlogStatus(rs.getInt("status"));
+			Blog blog = new Blog(blogId, title, content, status);
 			return blog;
 		}
 	}

@@ -7,14 +7,17 @@ public class BlogData {
 	private String title;
 
 	private String content;
+	
+	private int status;
 
 	
 	
-	public BlogData(String blogId, String title, String content) {
+	public BlogData(String blogId, String title, String content, int status) {
 		super();
 		this.blogId = blogId;
 		this.title = title;
 		this.content = content;
+		this.status = status;
 	}
 
 	public String getBlogId() {
@@ -39,6 +42,14 @@ public class BlogData {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

@@ -11,15 +11,19 @@ public class Blog implements Serializable {
 
 	private Blog() {
 		super();
-		// this.setCommentIds(new HashSet<CommentId>());
 	}
 
-	public Blog(BlogId blogId, Title title, Content content) {
+	public Blog(BlogId aBlogId, Title aTitle, Content aContent) {
 		this();
-		this.setBlogId(blogId);
-		this.setTitle(title);
-		this.setContent(content);
+		this.setBlogId(aBlogId);
+		this.setTitle(aTitle);
+		this.setContent(aContent);
 		this.setStatus(new BlogStatus(BlogStatus.ISSUE));
+	}
+
+	public Blog(BlogId aBlogId, Title aTitle, Content aContent, BlogStatus aStatus) {
+		this(aBlogId,aTitle,aContent);
+		this.setStatus(aStatus);
 	}
 
 	private BlogId blogId;
@@ -29,12 +33,10 @@ public class Blog implements Serializable {
 	private Content content;
 
 	private BlogStatus status;
-	
-	private int commentTimes;
-	
-	private int readTimes;
 
-	// private Collection<CommentId> commentIds;
+	private int commentCount;
+
+	private int readCount;
 
 	public void changeTitle(Title aTitle) {
 		setTitle(aTitle);
@@ -44,10 +46,12 @@ public class Blog implements Serializable {
 		setContent(aContent);
 	}
 
-	public boolean isEditable() {
-		if (this.status().statusVal() == BlogStatus.CLOSE || this.status().statusVal() == BlogStatus.LOCK)
-			return false;
-		return true;
+	public void changeCommentCount(int aCommentCount) {
+		setCommentCount(aCommentCount);
+	}
+
+	public void changeReadCount(int aReadCount) {
+		setReadCount(aReadCount);
 	}
 
 	public void reopen() {
@@ -74,20 +78,16 @@ public class Blog implements Serializable {
 		return content;
 	}
 
-	// private Collection<CommentId> commentIds;
-
 	public BlogStatus status() {
 		return status;
 	}
 
-	// private Collection<CommentId> commentIds;
-	
-	public int commentTimes() {
-		return commentTimes;
+	public int commentCount() {
+		return commentCount;
 	}
 
-	public int readTimes() {
-		return readTimes;
+	public int readCount() {
+		return readCount;
 	}
 
 	private void setBlogId(BlogId aBlogId) {
@@ -106,12 +106,12 @@ public class Blog implements Serializable {
 		this.status = aStatus;
 	}
 
-	private void setCommentTimes(int commentTimes) {
-		this.commentTimes = commentTimes;
+	private void setCommentCount(int aCommentCount) {
+		this.commentCount = aCommentCount;
 	}
 
-	private void setReadTimes(int readTimes) {
-		this.readTimes = readTimes;
+	private void setReadCount(int aReadTimes) {
+		this.readCount = aReadTimes;
 	}
 
 }
