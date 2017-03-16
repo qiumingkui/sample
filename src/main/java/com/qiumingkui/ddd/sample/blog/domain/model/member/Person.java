@@ -24,6 +24,12 @@ public class Person {
 		this.isCommonUser = aIsCommonUser;
 	}
 
+	
+	
+	public String id() {
+		return id;
+	}
+
 	public String account() {
 		return account;
 	}

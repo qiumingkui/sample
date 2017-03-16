@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
-import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.JdbcBlogRepository;
+import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.jdbc.JdbcBlogRepository;
 
 
 //@SpringBootApplication

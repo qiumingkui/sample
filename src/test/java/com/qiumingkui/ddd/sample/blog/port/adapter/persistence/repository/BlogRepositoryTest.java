@@ -15,6 +15,7 @@ import com.qiumingkui.ddd.sample.blog.domain.model.Blog;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogId;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogBuilder;
 import com.qiumingkui.ddd.sample.blog.domain.model.Title;
+import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.jdbc.JdbcBlogRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

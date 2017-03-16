@@ -13,6 +13,10 @@ public abstract class Member {
 		this.person = person;
 	}
 
+	public String id() {
+		return person.id();
+	}
+	
 	public String account() {
 		return person.account();
 	}

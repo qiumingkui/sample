@@ -1,4 +1,4 @@
-package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository;
+package com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.qiumingkui.ddd.sample.blog.domain.model.Comment;
 import com.qiumingkui.ddd.sample.blog.domain.model.CommentId;
 import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.dao.CommentDao;
+import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.CommentRepository;
 
 @Service
 public class JdbcCommentRepository implements CommentRepository {
