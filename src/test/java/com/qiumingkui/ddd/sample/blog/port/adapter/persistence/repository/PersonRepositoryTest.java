@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.qiumingkui.ddd.sample.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.ddd.sample.blog.domain.model.member.Person;
-import com.qiumingkui.ddd.sample.blog.domain.model.member.PersonBuilder;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,10 +20,10 @@ public class PersonRepositoryTest {
 
 	@Test
 	public void get() {
-		Person zhang = buildAdminExample();
-		personRepository.save(zhang);
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		personRepository.save(padmin);
 
-		String aPersonId = zhang.id();
+		String aPersonId = padmin.id();
 		Person person = personRepository.get(aPersonId);
 		assertThat(person != null).isTrue();
 		assertThat(person.isAdmin()).isTrue();
@@ -32,40 +32,33 @@ public class PersonRepositoryTest {
 
 	@Test
 	public void save() {
-		Person zhang = buildAdminExample();
-		Person li = buildCommonUserExample();
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		Person pcommon = MemberTestHelper.buildPerson4CommonUserExample();
 
-		personRepository.save(zhang);
-		personRepository.save(li);
+		personRepository.save(padmin);
+		personRepository.save(pcommon);
 
-		Person zhang1 = personRepository.get(zhang.id());
-		Person li1 = personRepository.get(li.id());
+		Person padmin1 = personRepository.get(padmin.id());
+		Person pcommon1 = personRepository.get(pcommon.id());
 
-		assertThat(zhang1.isAdmin()).isTrue();
-		assertThat(zhang1.isCommonUser()).isFalse();
-		assertThat(li1.isAdmin()).isFalse();
-		assertThat(li1.isCommonUser()).isTrue();
+		assertThat(padmin1.isAdmin()).isTrue();
+		assertThat(padmin1.isCommonUser()).isFalse();
+		assertThat(pcommon1.isAdmin()).isFalse();
+		assertThat(pcommon1.isCommonUser()).isTrue();
 	}
 
 	@Test
 	public void del() {
-		Person zhang = buildAdminExample();
-		personRepository.save(zhang);
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		personRepository.save(padmin);
 
-		String aPersonId = zhang.id();
-		Person person = personRepository.get(aPersonId);
-		assertThat(person != null).isTrue();
+		String padminId = padmin.id();
+		Person padmin1 = personRepository.get(padminId);
+		assertThat(padmin1 != null).isTrue();
 
-		personRepository.del(aPersonId);
-		person = personRepository.get(aPersonId);
-		assertThat(person != null).isFalse();
+		personRepository.del(padminId);
+		padmin1 = personRepository.get(padminId);
+		assertThat(padmin1 != null).isFalse();
 	}
 
-	private Person buildAdminExample() {
-		return PersonBuilder.build("Zhangsan", "张三", true, false);
-	}
-
-	private Person buildCommonUserExample() {
-		return PersonBuilder.build("Lisi", "李四", false, true);
-	}
 }

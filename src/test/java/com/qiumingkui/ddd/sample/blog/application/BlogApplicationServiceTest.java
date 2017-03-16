@@ -11,10 +11,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogData;
 import com.qiumingkui.ddd.sample.blog.domain.model.BlogStatus;
+import com.qiumingkui.ddd.sample.blog.domain.model.MemberTestHelper;
+import com.qiumingkui.ddd.sample.blog.domain.model.member.Person;
+import com.qiumingkui.ddd.sample.blog.port.adapter.persistence.repository.PersonRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BlogApplicationServiceTest {
+
+	@Autowired
+	private PersonRepository personRepository;
 
 	@Autowired
 	private BlogApplicationService blogApplicationService;
@@ -38,13 +44,45 @@ public class BlogApplicationServiceTest {
 
 	@Test
 	public void modifyBlog() {
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		Person pcommon = MemberTestHelper.buildPerson4CommonUserExample();
+		Person anonymous = MemberTestHelper.buildPerson4AnonymousExample();
+		personRepository.save(padmin);
+		personRepository.save(pcommon);
+		personRepository.save(anonymous);
+
 		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+
+		String title = "aTitle modify by pcommon:" + new Date();
+		String content = "aContent modify by pcommon:" + new Date();
+		try {
+			blogApplicationService.modifyBlog(blogId, title, content, pcommon.id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		BlogData blogData = blogApplicationService.readBlog(blogId);
-		String title = "aTitle modify:" + new Date();
-		String content = "aContent modify:" + new Date();
-		blogApplicationService.modifyBlog(blogId, title, content);
+		assertThat(blogData.getTitle().equals(title)).isTrue();
+
+		title = "aTitle modify by padmin:" + new Date();
+		content = "aContent modify by padmin:" + new Date();
+		try {
+			blogApplicationService.modifyBlog(blogId, title, content, padmin.id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getTitle().equals(title)).isTrue();
+
+		title = "aTitle modify by anonymous:" + new Date();
+		content = "aContent modify by anonymous:" + new Date();
+		try {
+			blogApplicationService.modifyBlog(blogId, title, content, anonymous.id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		blogData = blogApplicationService.readBlog(blogId);
+		assertThat(blogData.getTitle().equals(title)).isFalse();
+
 	}
 
 	@Test
@@ -74,5 +112,4 @@ public class BlogApplicationServiceTest {
 		assertThat(blogData.getStatus() == BlogStatus.ISSUE).isFalse();
 	}
 
-	
 }

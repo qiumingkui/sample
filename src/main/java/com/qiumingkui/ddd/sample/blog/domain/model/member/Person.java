@@ -17,15 +17,20 @@ public class Person {
 
 	public Person(String aId, String aAccount, String aName, boolean aIsAdmin, boolean aIsCommonUser) {
 		this();
-		this.id=aId;
+		this.id = aId;
 		this.account = aAccount;
 		this.name = aName;
 		this.isAdmin = aIsAdmin;
 		this.isCommonUser = aIsCommonUser;
+
+		if (aId == null || aId.trim().length() <= 0) {
+			this.account = "anonymous";
+			this.name = "匿名用户";
+			this.isAdmin = false;
+			this.isCommonUser = false;
+		}
 	}
 
-	
-	
 	public String id() {
 		return id;
 	}
