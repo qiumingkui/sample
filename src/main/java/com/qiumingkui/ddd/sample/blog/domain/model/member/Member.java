@@ -1,0 +1,25 @@
+package com.qiumingkui.ddd.sample.blog.domain.model.member;
+
+public abstract class Member {
+
+	protected Person person;
+
+	private Member() {
+		super();
+	}
+
+	public Member(Person person) {
+		this();
+		this.person = person;
+	}
+
+	public String account() {
+		return person.account();
+	}
+
+	public String name() {
+		return person.name();
+	}
+
+	public abstract boolean permitted();
+}

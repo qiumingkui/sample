@@ -37,11 +37,6 @@ public class Blog implements Serializable {
 		this.setModifyTime(aModifyTime);
 	}
 
-	
-	
-	
-
-
 	private BlogId blogId;
 
 	private Title title;
@@ -108,6 +103,18 @@ public class Blog implements Serializable {
 
 	public int commentNumber() {
 		return commentNumber;
+	}
+
+	public boolean isEditable(){
+		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
+			return true;
+		return false;
+	}
+
+	public boolean isReadable(){
+		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
+			return true;
+		return false;
 	}
 
 	private void setBlogId(BlogId aBlogId) {
