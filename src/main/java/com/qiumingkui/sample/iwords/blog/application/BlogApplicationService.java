@@ -13,6 +13,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.PersonId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.PersonRepository;
 
@@ -52,7 +53,7 @@ public class BlogApplicationService {
 	public void modifyBlog(String aBlogId, String aTitle, String aContent, String aPersonId) throws Exception {
 		Blog blog = blogRepository.get(new BlogId(aBlogId));
 		
-		Person person = personRepository.get(aPersonId);
+		Person person = personRepository.get(new PersonId(aPersonId));
 		Author author = new Author(person);
 		if (!BlogPermissionManager.hasEditBlogPermission(blog, author))
 			throw new Exception(author.name()+author.account()+":你无权修改帖子！");

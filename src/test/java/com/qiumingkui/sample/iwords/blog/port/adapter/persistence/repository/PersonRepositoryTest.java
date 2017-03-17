@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.PersonId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.PersonRepository;
 
 @RunWith(SpringRunner.class)
@@ -24,7 +25,7 @@ public class PersonRepositoryTest {
 		Person padmin = MemberTestHelper.buildPerson4AdminExample();
 		personRepository.save(padmin);
 
-		String aPersonId = padmin.id();
+		PersonId aPersonId = padmin.personId();
 		Person person = personRepository.get(aPersonId);
 		assertThat(person != null).isTrue();
 		assertThat(person.isAdmin()).isTrue();
@@ -39,8 +40,8 @@ public class PersonRepositoryTest {
 		personRepository.save(padmin);
 		personRepository.save(pcommon);
 
-		Person padmin1 = personRepository.get(padmin.id());
-		Person pcommon1 = personRepository.get(pcommon.id());
+		Person padmin1 = personRepository.get(padmin.personId());
+		Person pcommon1 = personRepository.get(pcommon.personId());
 
 		assertThat(padmin1.isAdmin()).isTrue();
 		assertThat(padmin1.isCommonUser()).isFalse();
@@ -53,7 +54,7 @@ public class PersonRepositoryTest {
 		Person padmin = MemberTestHelper.buildPerson4AdminExample();
 		personRepository.save(padmin);
 
-		String padminId = padmin.id();
+		PersonId padminId = padmin.personId();
 		Person padmin1 = personRepository.get(padminId);
 		assertThat(padmin1 != null).isTrue();
 

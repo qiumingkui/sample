@@ -58,7 +58,7 @@ public class BlogApplicationServiceTest {
 		String title = "aTitle modify by pcommon:" + new Date();
 		String content = "aContent modify by pcommon:" + new Date();
 		try {
-			blogApplicationService.modifyBlog(blogId, title, content, pcommon.id());
+			blogApplicationService.modifyBlog(blogId, title, content, pcommon.personId().id());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,7 +68,7 @@ public class BlogApplicationServiceTest {
 		title = "aTitle modify by padmin:" + new Date();
 		content = "aContent modify by padmin:" + new Date();
 		try {
-			blogApplicationService.modifyBlog(blogId, title, content, padmin.id());
+			blogApplicationService.modifyBlog(blogId, title, content, padmin.personId().id());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,7 +78,7 @@ public class BlogApplicationServiceTest {
 		title = "aTitle modify by anonymous:" + new Date();
 		content = "aContent modify by anonymous:" + new Date();
 		try {
-			blogApplicationService.modifyBlog(blogId, title, content, anonymous.id());
+			blogApplicationService.modifyBlog(blogId, title, content, anonymous.personId().id());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

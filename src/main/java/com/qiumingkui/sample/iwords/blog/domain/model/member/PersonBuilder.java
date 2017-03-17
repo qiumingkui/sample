@@ -5,7 +5,7 @@ import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 public class PersonBuilder {
 
 	public static Person build(String aId, String aAccount, String aName, boolean aIsAdmin, boolean aIsCommonUser) {
-		Person person = new Person(aId, aAccount, aName, aIsAdmin, aIsCommonUser);
+		Person person = new Person(new PersonId(aId), aAccount, aName, aIsAdmin, aIsCommonUser);
 		return person;
 	}
 
