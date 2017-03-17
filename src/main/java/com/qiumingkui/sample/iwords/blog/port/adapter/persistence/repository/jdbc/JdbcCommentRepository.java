@@ -8,7 +8,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.dao.CommentDao;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 
-@Service
+//@Service
 public class JdbcCommentRepository implements CommentRepository {
 
 	@Autowired

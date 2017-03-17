@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +20,20 @@ public class CommentApplicationServiceTest {
 
 	@Autowired
 	private CommentApplicationService commentApplicationService;
-
-	@Test
+	
+	private String aCommentId;
+	private String aBlogId = "1";
+	private String aContent = "aContent:" + new Date();
+	
+	@Before
 	public void publishComment() {
-		String aBlogId = "1";
-		String aContent = "aContent:" + new Date();
-		String commentId = commentApplicationService.publishComment(aBlogId, aContent);
-		assertThat(commentId.isEmpty()).isFalse();
+		aCommentId = commentApplicationService.publishComment(aBlogId, aContent);
+		assertThat(aCommentId.isEmpty()).isFalse();
 	}
 	
 	@Test
 	public void readComment(){
-		String blogId = "1";
-		String content = "aContent:" + new Date();
-		String commentId = commentApplicationService.publishComment(blogId, content);
-		CommentData commentData = commentApplicationService.readComment(commentId);
-		assertThat(commentData.getContent().equals(content)).isTrue();
+		CommentData commentData = commentApplicationService.readComment(aCommentId);
+		assertThat(commentData.getContent().equals(aContent)).isTrue();
 	}
 }

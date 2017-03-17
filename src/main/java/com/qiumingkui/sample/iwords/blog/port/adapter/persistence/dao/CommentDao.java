@@ -29,7 +29,7 @@ public class CommentDao {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, aComment.commentId().id());
-				ps.setString(2, aComment.blogId().id());
+				ps.setString(2, aComment.commentId().id());
 				ps.setString(3, aComment.content().contentTxt());
 				ps.setTimestamp(4, aComment.createTime());
 			}
@@ -41,7 +41,7 @@ public class CommentDao {
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, aComment.blogId().id());
+				ps.setString(1, aComment.commentId().id());
 				ps.setString(2, aComment.content().contentTxt());
 				ps.setTimestamp(3, aComment.createTime());
 				ps.setString(4, aComment.commentId().id());		

@@ -33,7 +33,7 @@ public class CommentApplicationService {
 	public CommentData readComment(String aCommentId) {
 		CommentId commentId = new CommentId(aCommentId);
 		Comment comment = commentRepository.get(commentId);
-		CommentData commentData = new CommentData(comment.commentId().id(), comment.blogId().id(),
+		CommentData commentData = new CommentData(comment.commentId().id(), comment.commentId().id(),
 				comment.content().contentTxt(), comment.createTime());
 		return commentData;
 	}

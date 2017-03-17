@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
-import com.qiumingkui.sample.iwords.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
+import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.dao.BlogDao;
 
 @RunWith(SpringRunner.class)

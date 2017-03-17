@@ -1,73 +1,70 @@
 package com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
+import com.qiumingkui.sample.iwords.blog.helper.CommentTestHelper;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommentRepositoryTest {
 
-	private static final Logger log = LoggerFactory.getLogger(CommentRepositoryTest.class);
-
 	@Autowired
 	private CommentRepository commentRepository;
 
-	@Test
-	@Transactional
-	public void testGet() {
-		Comment comment = buildCommentExample();
-		commentRepository.save(comment);
+	private Comment aComment;
+	private CommentId aCommentId;
 
-		comment = commentRepository.get(comment.commentId());
-		log.info("testGet() content:" + comment.content().contentTxt());
+	@Before
+	@Transactional
+	public void sava4Create() {
+		aComment = CommentTestHelper.buildCommentExample();
+		aCommentId = aComment.commentId();
+		commentRepository.save(aComment);
+		
+		Comment comment = commentRepository.get(aCommentId);
+		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
 	}
 
 	@Test
 	@Transactional
-	// @Commit
-	public void testSave() {
-		Comment comment = buildCommentExample();
-		commentRepository.save(comment);
+	public void get() {
+		Comment comment = commentRepository.get(aCommentId);
+		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
+	}
 
-		comment = commentRepository.get(comment.commentId());
+	@Test
+	@Transactional
+	public void save4Update() {
+		Comment comment = commentRepository.get(aComment.commentId());
 		Content content = comment.content();
 
 		Content newContent = new Content("comment" + " : this is new :" + new Date());
 		comment.changeContent(newContent);
 		commentRepository.save(comment);
 
-		log.info("testSave() " + " old content:" + content.contentTxt() + "new content:"
-				+ comment.content().contentTxt());
+		assertThat(comment.content().contentTxt().equals(content.contentTxt())).isFalse();
 	}
 
 	@Test
 	@Transactional
-	public void testDel() {
-		Comment comment = buildCommentExample();
-		commentRepository.save(comment);
-
-		CommentId commentId = comment.commentId();
-		commentRepository.del(commentId);
-
-		log.info("testDelete() blogId:" + commentId.id());
-	}
-
-	private Comment buildCommentExample() {
-		return CommentBuilder.build("1","content" + " : " + new Date());
+	public void del() {
+		commentRepository.del(aCommentId);
+		Comment component = commentRepository.get(aCommentId);
+		assertThat(component == null).isTrue();
 	}
 
 }

@@ -1,84 +1,68 @@
 package com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
-import com.qiumingkui.sample.iwords.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
-import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
-import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
-import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
+import com.qiumingkui.sample.iwords.blog.helper.BlogTestHelper;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
-import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.jdbc.JdbcBlogRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BlogRepositoryTest {
-	private static final Logger log = LoggerFactory.getLogger(BlogRepositoryTest.class);
-	protected BlogRepository blogRepository;
-
-	public BlogRepository getBlogRepository() {
-		return blogRepository;
-	}
-
 	@Autowired
-	public void setBlogRepository(JdbcBlogRepository blogRepository) {
-		this.blogRepository = blogRepository;
-	}
+	private BlogRepository blogRepository;
 
-	@Test
+	private Blog aBlog;
+	private BlogId aBlogId;
+
+	@Before
 	@Transactional
-	public void testGet() {
-		Blog blog = buildBlogExample();
-		blogRepository.save(blog);
-
-		blog = blogRepository.get(blog.blogId());
-		log.info("testGet() blog title:" + blog.title().titleTxt());
-	}
-
-	@Test
-	@Transactional
-	// @Commit
-	public void testSave() {
-		Blog blog = buildBlogExample();
-		blogRepository.save(blog);
-
-		blog = blogRepository.get(blog.blogId());
-		Title oldTitle = blog.title();
-
-		Title newTitle = new Title("blog" + " : this is new :" + new Date());
-		blog.changeTitle(newTitle);
-		blogRepository.save(blog);
-
-		log.info("testSave() blog id:"+blog.blogId().id() + " old title:" + oldTitle.titleTxt() + "new title:" + blog.title().titleTxt());
-	}
-
-	@Test
-	@Transactional
-	public void testDel() {
-		Blog blog = buildBlogExample();
-		blogRepository.save(blog);
+	public void save4Create() {
+		aBlog = BlogTestHelper.buildBlogExample();
+		aBlogId = aBlog.blogId();
+		blogRepository.save(aBlog);
 		
-		BlogId blogId = blog.blogId();
-		blogRepository.del(blogId);
-		
-		log.info("testDelete() blogId:" + blogId.id());
+		Blog blog = blogRepository.get(aBlogId);
+		assertThat(blog != null && blog.blogId().id().equals(aBlogId.id()));
 	}
-	
-	private Blog buildBlogExample() {
-		Person person = MemberTestHelper.buildPerson4CommonUserExample();
-		Author author = MemberBuilder.buildAuthor(person);
-		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date(), author);
+
+	@Test
+	@Transactional
+	public void get() {
+		Blog blog = blogRepository.get(aBlogId);
+		assertThat(blog != null && blog.blogId().id().equals(aBlogId.id()));
 	}
+
+	@Test
+	@Transactional
+	public void save4Update() {
+		Title aBlogTitle = aBlog.title();
+		Title title = new Title("blog" + " : this is new :" + new Date());
+		Blog blog = blogRepository.get(aBlogId);
+		blog.changeTitle(title);
+		blogRepository.save(blog);
+		blog = blogRepository.get(aBlogId);
+        assertThat(blog!=null && blog.title().titleTxt().equals(aBlogTitle.titleTxt())).isFalse();
+	}
+
+	@Test
+	@Transactional
+	public void del() {
+		blogRepository.del(aBlogId);
+		Blog blog = blogRepository.get(aBlogId);
+		assertThat(blog!=null).isFalse();
+	}
+
 }

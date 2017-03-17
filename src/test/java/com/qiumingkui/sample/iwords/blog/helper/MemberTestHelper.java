@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.helper;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.PersonBuilder;

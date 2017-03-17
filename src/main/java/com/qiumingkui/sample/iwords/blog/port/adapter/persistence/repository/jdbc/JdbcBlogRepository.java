@@ -11,7 +11,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.dao.BlogDao;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
 
-@Service
+//@Service
 public class JdbcBlogRepository implements BlogRepository {
 
 	@Autowired
