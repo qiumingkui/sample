@@ -62,12 +62,15 @@ public class BlogDaoTest {
 	@Transactional
 	public void testRetrieve() {
 		Blog blog = buildBlogExample();
+		String account = blog.author().account();
 		blogDao.create(blog);
 
 		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
 
-		log.info("testRetrieve() blogId:" + blog.blogId().id() + ",title:" + blog.title().titleTxt());
+		// log.info("testRetrieve() blogId:" + blog.blogId().id() + ",title:" +
+		// blog.title().titleTxt());
+		assertThat(blog.author().account().equals(account)).isTrue();
 	}
 
 	@Test

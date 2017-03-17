@@ -18,6 +18,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.BlogStatus;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
 
 @Service
 public class BlogDao {
@@ -26,7 +27,7 @@ public class BlogDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public void create(Blog aBlog) {
-		final String SQL = "INSERT INTO blog(id,title,content,status,commentnumber,createtime,modifytime) VALUES(?,?,?,?,?,?,?)";
+		final String SQL = "INSERT INTO blog(id,title,content,status,commentnumber,authorid,authoraccount,authorname,createtime,modifytime) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
@@ -36,14 +37,17 @@ public class BlogDao {
 				ps.setString(3, aBlog.content().contentTxt());
 				ps.setInt(4, aBlog.status().statusVal());
 				ps.setInt(5, aBlog.commentNumber());
-				ps.setTimestamp(6, aBlog.createTime());
-				ps.setTimestamp(7, aBlog.modifyTime());
+				ps.setString(6, aBlog.author().id());
+				ps.setString(7, aBlog.author().account());
+				ps.setString(8, aBlog.author().name());
+				ps.setTimestamp(9, aBlog.createTime());
+				ps.setTimestamp(10, aBlog.modifyTime());
 			}
 		});
 	}
 
 	public void update(Blog aBlog) {
-		final String SQL = "UPDATE blog SET title=?,content=?,status=?,commentnumber=?,modifytime=? WHERE id=?";
+		final String SQL = "UPDATE blog SET title=?,content=?,status=?,commentnumber=?,authorid=?,authoraccount=?,authorname=?,modifytime=? WHERE id=?";
 		jdbcTemplate.update(SQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
@@ -51,8 +55,11 @@ public class BlogDao {
 				ps.setString(2, aBlog.content().contentTxt());
 				ps.setInt(3, aBlog.status().statusVal());
 				ps.setInt(4, aBlog.commentNumber());
-				ps.setTimestamp(5, aBlog.modifyTime());
-				ps.setString(6, aBlog.blogId().id());
+				ps.setString(5, aBlog.author().id());
+				ps.setString(6, aBlog.author().account());
+				ps.setString(7, aBlog.author().name());
+				ps.setTimestamp(8, aBlog.modifyTime());
+				ps.setString(9, aBlog.blogId().id());
 			}
 		});
 	}
@@ -76,9 +83,10 @@ public class BlogDao {
 			Content content = new Content(rs.getString("content"));
 			BlogStatus status = new BlogStatus(rs.getInt("status"));
 			int commentNumber = rs.getInt("commentnumber");
+			Author author = MemberBuilder.buildAuthor(rs.getString("authorid"),rs.getString("authoraccount"),rs.getString("authorname"));
 			Timestamp createTime = rs.getTimestamp("createtime");
 			Timestamp modifyTime = rs.getTimestamp("modifytime");
-			Author author = new Author("","","",false);
+
 			Blog blog = new Blog(blogId, title, content, author, status, commentNumber,createTime, modifyTime);
 			return blog;
 		}

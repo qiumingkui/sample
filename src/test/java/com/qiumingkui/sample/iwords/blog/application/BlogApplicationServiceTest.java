@@ -97,7 +97,7 @@ public class BlogApplicationServiceTest {
 			e.printStackTrace();
 		}
 		blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getTitle().equals(title)).isTrue();
+		assertThat(blogData.getTitle().equals(title)).isFalse();
 
 		title = "aTitle modify by anonymous:" + new Date();
 		content = "aContent modify by anonymous:" + new Date();
