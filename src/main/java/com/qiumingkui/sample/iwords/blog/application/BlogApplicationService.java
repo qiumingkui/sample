@@ -8,10 +8,11 @@ import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogData;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogPermissionManager;
+import com.qiumingkui.sample.iwords.blog.domain.model.BlogPermissionPolicy;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.PersonId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
@@ -32,10 +33,18 @@ public class BlogApplicationService {
 	 * @param aTitle
 	 * @param aContent
 	 * @return
+	 * @throws Exception 
 	 */
 	@Transactional
-	public String publishBlog(String aTitle, String aContent) {
-		Blog blog = BlogBuilder.build(aTitle, aContent);
+	public String publishBlog(String aTitle, String aContent, String aAuthorId) throws Exception {
+		Person person = personRepository.get(new PersonId(aAuthorId));
+		Author author = MemberBuilder.buildAuthor(person);
+		
+		Blog blog = BlogBuilder.build(aTitle, aContent, author);
+		
+		if (!BlogPermissionPolicy.hasPublishBlogPermission(blog, author))
+			throw new Exception(author.name() + author.account() + ":你无权发布博客！");
+		
 		blogRepository.save(blog);
 		return blog.blogId().id();
 	}
@@ -51,27 +60,14 @@ public class BlogApplicationService {
 	 */
 	@Transactional
 	public void modifyBlog(String aBlogId, String aTitle, String aContent, String aPersonId) throws Exception {
+		Person person = personRepository.get(new PersonId(aPersonId));
+		Author author = MemberBuilder.buildAuthor(person);
+
 		Blog blog = blogRepository.get(new BlogId(aBlogId));
 		
-		Person person = personRepository.get(new PersonId(aPersonId));
-		Author author = new Author(person);
-		if (!BlogPermissionManager.hasEditBlogPermission(blog, author))
-			throw new Exception(author.name()+author.account()+":你无权修改帖子！");
-		
-		modifyBlog(aBlogId, aTitle, aContent);
-	}
+		if (!BlogPermissionPolicy.hasModifyBlogPermission(blog, author))
+			throw new Exception(author.name() + author.account() + ":你无权修改博客！");
 
-	/**
-	 * 修改博客
-	 * 
-	 * @param aBlogId
-	 * @param aTitle
-	 * @param aContent
-	 */
-	@Transactional
-	private void modifyBlog(String aBlogId, String aTitle, String aContent) {
-		BlogId blogId = new BlogId(aBlogId);
-		Blog blog = blogRepository.get(blogId);
 		if (blog != null) {
 			Title title = new Title(aTitle);
 			Content content = new Content(aContent);
@@ -80,6 +76,26 @@ public class BlogApplicationService {
 			blogRepository.save(blog);
 		}
 	}
+
+//	/**
+//	 * 修改博客
+//	 * 
+//	 * @param aBlogId
+//	 * @param aTitle
+//	 * @param aContent
+//	 */
+//	@Transactional
+//	private void modifyBlog(String aBlogId, String aTitle, String aContent) {
+//		BlogId blogId = new BlogId(aBlogId);
+//		Blog blog = blogRepository.get(blogId);
+//		if (blog != null) {
+//			Title title = new Title(aTitle);
+//			Content content = new Content(aContent);
+//			blog.changeTitle(title);
+//			blog.changeContent(content);
+//			blogRepository.save(blog);
+//		}
+//	}
 
 	/**
 	 * 阅读博客

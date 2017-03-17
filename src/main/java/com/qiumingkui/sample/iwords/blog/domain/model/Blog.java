@@ -3,6 +3,7 @@ package com.qiumingkui.sample.iwords.blog.domain.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Blog implements Serializable {
@@ -16,21 +17,22 @@ public class Blog implements Serializable {
 		super();
 	}
 
-	public Blog(BlogId aBlogId, Title aTitle, Content aContent) {
+	public Blog(BlogId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
 		this();
 		this.setBlogId(aBlogId);
 		this.setTitle(aTitle);
 		this.setContent(aContent);
 		this.setStatus(new BlogStatus(BlogStatus.ISSUE));
+		this.setAuthor(aAuthor);
 		this.setCreateTime(UtilDateTime.nowTimestamp());
 		this.setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public Blog(BlogId aBlogId, Title aTitle, Content aContent, BlogStatus aStatus, int aCommentNumber, Timestamp aCreateTime,
-			Timestamp aModifyTime) {
-		
-		this(aBlogId,aTitle,aContent);
-		
+	public Blog(BlogId aBlogId, Title aTitle, Content aContent, Author aAuthor, BlogStatus aStatus, int aCommentNumber,
+			Timestamp aCreateTime, Timestamp aModifyTime) {
+
+		this(aBlogId, aTitle, aContent, aAuthor);
+
 		this.setStatus(aStatus);
 		this.setCommentNumber(aCommentNumber);
 		this.setCreateTime(aCreateTime);
@@ -45,10 +47,12 @@ public class Blog implements Serializable {
 
 	private BlogStatus status;
 
+	private Author author;
+
 	private int commentNumber;
-	
+
 	private Timestamp createTime;
-	
+
 	private Timestamp modifyTime;
 
 	public Timestamp createTime() {
@@ -105,13 +109,17 @@ public class Blog implements Serializable {
 		return commentNumber;
 	}
 
-	public boolean isEditable(){
+	public Author author() {
+		return author;
+	}
+
+	public boolean isEditable() {
 		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
 			return true;
 		return false;
 	}
 
-	public boolean isReadable(){
+	public boolean isReadable() {
 		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
 			return true;
 		return false;
@@ -135,6 +143,10 @@ public class Blog implements Serializable {
 
 	private void setCommentNumber(int aCommentNumber) {
 		this.commentNumber = aCommentNumber;
+	}
+
+	private void setAuthor(Author author) {
+		this.author = author;
 	}
 
 	private void setCreateTime(Timestamp createTime) {

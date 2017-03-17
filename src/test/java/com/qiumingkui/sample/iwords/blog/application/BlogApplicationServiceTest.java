@@ -29,17 +29,34 @@ public class BlogApplicationServiceTest {
 
 	@Test
 	public void publishBlog() {
+		Person pcommon = MemberTestHelper.buildPerson4CommonUserExample();
+		personRepository.save(pcommon);
+
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
-		String blogId = blogApplicationService.publishBlog(title, content);
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog(title, content, pcommon.personId().id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		assertThat(blogId.isEmpty()).isFalse();
 	}
 
 	@Test
 	public void readBlog() {
+		Person pcommon = MemberTestHelper.buildPerson4CommonUserExample();
+		personRepository.save(pcommon);
+
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
-		String blogId = blogApplicationService.publishBlog(title, content);
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog(title, content, pcommon.personId().id());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		BlogData blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getTitle().equals(title)).isTrue();
 	}
@@ -53,7 +70,14 @@ public class BlogApplicationServiceTest {
 		personRepository.save(pcommon);
 		personRepository.save(anonymous);
 
-		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+					pcommon.personId().id());
+		} catch (Exception e1) {
+
+			e1.printStackTrace();
+		}
 
 		String title = "aTitle modify by pcommon:" + new Date();
 		String content = "aContent modify by pcommon:" + new Date();
@@ -89,7 +113,17 @@ public class BlogApplicationServiceTest {
 
 	@Test
 	public void lockBlog() {
-		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		personRepository.save(padmin);
+
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+					padmin.personId().id());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		blogApplicationService.lockBlog(blogId);
 		BlogData blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getStatus() == BlogStatus.CLOSE).isFalse();
@@ -98,7 +132,17 @@ public class BlogApplicationServiceTest {
 
 	@Test
 	public void closeBlog() {
-		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		personRepository.save(padmin);
+
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+					padmin.personId().id());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		blogApplicationService.closeBlog(blogId);
 		BlogData blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getStatus() == BlogStatus.CLOSE).isTrue();
@@ -107,7 +151,17 @@ public class BlogApplicationServiceTest {
 
 	@Test
 	public void reopenBlog() {
-		String blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date());
+		Person padmin = MemberTestHelper.buildPerson4AdminExample();
+		personRepository.save(padmin);
+
+		String blogId = null;
+		try {
+			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+					padmin.personId().id());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		blogApplicationService.reopenBlog(blogId);
 		BlogData blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getStatus() == BlogStatus.REOPEN).isTrue();

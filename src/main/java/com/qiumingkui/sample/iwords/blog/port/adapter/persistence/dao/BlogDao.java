@@ -17,6 +17,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogStatus;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 
 @Service
 public class BlogDao {
@@ -77,7 +78,8 @@ public class BlogDao {
 			int commentNumber = rs.getInt("commentnumber");
 			Timestamp createTime = rs.getTimestamp("createtime");
 			Timestamp modifyTime = rs.getTimestamp("modifytime");
-			Blog blog = new Blog(blogId, title, content, status, commentNumber, createTime, modifyTime);
+			Author author = new Author("","","",false);
+			Blog blog = new Blog(blogId, title, content, author, status, commentNumber,createTime, modifyTime);
 			return blog;
 		}
 	}

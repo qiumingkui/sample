@@ -16,7 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
+import com.qiumingkui.sample.iwords.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.dao.BlogDao;
 
 @RunWith(SpringRunner.class)
@@ -44,7 +48,7 @@ public class BlogDaoTest {
 
 		BlogId blogId = blog.blogId();
 		blog = blogDao.retrieve(blogId);
-		Timestamp odlModifyTime=blog.modifyTime();
+		Timestamp odlModifyTime = blog.modifyTime();
 
 		Title newTitle = new Title("blog" + " : this is new :" + new Date());
 		blog.changeTitle(newTitle);
@@ -79,6 +83,8 @@ public class BlogDaoTest {
 	}
 
 	private Blog buildBlogExample() {
-		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date());
+		Person person = MemberTestHelper.buildPerson4CommonUserExample();
+		Author author = MemberBuilder.buildAuthor(person);
+		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date(), author);
 	}
 }

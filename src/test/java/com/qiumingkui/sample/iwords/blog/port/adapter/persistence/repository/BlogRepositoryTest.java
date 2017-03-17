@@ -14,7 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
+import com.qiumingkui.sample.iwords.blog.domain.model.MemberTestHelper;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.jdbc.JdbcBlogRepository;
 
@@ -73,6 +77,8 @@ public class BlogRepositoryTest {
 	}
 	
 	private Blog buildBlogExample() {
-		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date());
+		Person person = MemberTestHelper.buildPerson4CommonUserExample();
+		Author author = MemberBuilder.buildAuthor(person);
+		return BlogBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date(), author);
 	}
 }
