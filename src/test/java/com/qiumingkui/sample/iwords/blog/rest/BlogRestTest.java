@@ -1,9 +1,13 @@
 package com.qiumingkui.sample.iwords.blog.rest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Date;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.qiumingkui.sample.iwords.blog.application.BlogApplicationService;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Person;
+import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
+import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.PersonRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,6 +29,32 @@ public class BlogRestTest {
 	@Autowired
 	private MockMvc mockMvc;
 
+	@Autowired
+	private PersonRepository personRepository;
+
+	@Autowired
+	private BlogApplicationService blogApplicationService;
+
+	private Person aPerson4CommonUser;
+
+	private String aBlogId;
+	
+	@Before
+	public void init() {
+		aPerson4CommonUser = MemberTestHelper.buildPerson4CommonUserExample();
+		personRepository.save(aPerson4CommonUser);
+		
+		String title = "aTitle:" + new Date();
+		String content = "aContent:" + new Date();
+		try {
+			aBlogId = blogApplicationService.publishBlog(title, content, aPerson4CommonUser.personId().id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(aBlogId.isEmpty()).isFalse();
+	}
+
+	
 	@Test
 	public void testGetBlogById() throws Exception {
 		// String title = "aTitle:" + new Date();
@@ -29,6 +64,6 @@ public class BlogRestTest {
 		// this.mockMvc.perform(get("/blog").param("id",
 		// blogId)).andDo(print()).andExpect(status().isOk())
 		// .andExpect(jsonPath("$.title").value(title));
-		this.mockMvc.perform(get("/blog").param("id", "1")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(get("/blog").param("id", aBlogId)).andDo(print()).andExpect(status().isOk());
 	}
 }
