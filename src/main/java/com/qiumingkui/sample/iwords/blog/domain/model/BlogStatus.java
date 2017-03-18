@@ -1,6 +1,8 @@
 package com.qiumingkui.sample.iwords.blog.domain.model;
 
 public class BlogStatus {
+	
+	public static final int DRAFT =-1;
 
 	public static final int ISSUE = 0;
 

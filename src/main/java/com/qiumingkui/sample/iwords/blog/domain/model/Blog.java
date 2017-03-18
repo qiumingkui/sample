@@ -18,25 +18,38 @@ public class Blog implements Serializable {
 	}
 
 	public Blog(BlogId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
-		this();
-		this.setBlogId(aBlogId);
-		this.setTitle(aTitle);
-		this.setContent(aContent);
-		this.setStatus(new BlogStatus(BlogStatus.ISSUE));
-		this.setAuthor(aAuthor);
-		this.setCreateTime(UtilDateTime.nowTimestamp());
-		this.setModifyTime(UtilDateTime.nowTimestamp());
+		this(aBlogId, aTitle, aContent, aAuthor, new BlogStatus(BlogStatus.DRAFT), 0, UtilDateTime.nowTimestamp(),
+				UtilDateTime.nowTimestamp());
+		// this();
+		// this.setBlogId(aBlogId);
+		// this.setTitle(aTitle);
+		// this.setContent(aContent);
+		// this.setStatus(new BlogStatus(BlogStatus.DRAFT));
+		// this.setAuthor(aAuthor);
+		// this.setCreateTime(UtilDateTime.nowTimestamp());
+		// this.setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
 	public Blog(BlogId aBlogId, Title aTitle, Content aContent, Author aAuthor, BlogStatus aStatus, int aCommentNumber,
 			Timestamp aCreateTime, Timestamp aModifyTime) {
 
-		this(aBlogId, aTitle, aContent, aAuthor);
+		// this(aBlogId, aTitle, aContent, aAuthor);
+		//
+		// this.setStatus(aStatus);
+		// this.setCommentNumber(aCommentNumber);
+		// this.setCreateTime(aCreateTime);
+		// this.setModifyTime(aModifyTime);
 
+		this();
+		this.setBlogId(aBlogId);
+		this.setTitle(aTitle);
+		this.setContent(aContent);
+		this.setAuthor(aAuthor);
 		this.setStatus(aStatus);
 		this.setCommentNumber(aCommentNumber);
 		this.setCreateTime(aCreateTime);
 		this.setModifyTime(aModifyTime);
+
 	}
 
 	private BlogId blogId;
@@ -75,6 +88,10 @@ public class Blog implements Serializable {
 
 	public void changeCommentNumber(int aCommentNumber) {
 		setCommentNumber(aCommentNumber);
+	}
+	
+	public void issue(){
+		setStatus(new BlogStatus(BlogStatus.ISSUE));
 	}
 
 	public void reopen() {
