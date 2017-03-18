@@ -7,27 +7,26 @@ import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Comment implements Serializable {
 
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private CommentId commentId;
-	
+
 	private BlogId blogId;
-	
+
 	private Content content;
 
 	private Timestamp createTime;
-	
+
 	private Comment() {
 		super();
 	}
 
 	public Comment(CommentId aCommentId, BlogId aBlogId, Content aContent) {
 		this();
-		
+
 		this.setCommentId(aCommentId);
 		this.setBlogId(aBlogId);
 		this.setContent(aContent);
@@ -36,21 +35,21 @@ public class Comment implements Serializable {
 
 	public void changeContent(Content content) {
 		this.setContent(content);
-		
+
 	}
 
-	public CommentId commentId(){
+	public CommentId commentId() {
 		return this.commentId;
 	}
-	
-	public BlogId blogId(){
+
+	public BlogId blogId() {
 		return this.blogId;
 	}
-	
-	public Content content(){
+
+	public Content content() {
 		return this.content;
 	}
-	
+
 	public Timestamp createTime() {
 		return createTime;
 	}
@@ -70,5 +69,5 @@ public class Comment implements Serializable {
 	private void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
-	
+
 }

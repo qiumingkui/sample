@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
 import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
@@ -29,25 +29,25 @@ public class CommentRepositoryTest {
 	private CommentId aCommentId;
 
 	@Before
-	@Transactional
+	// @Transactional
 	public void sava4Create() {
 		aComment = CommentTestHelper.buildCommentExample();
 		aCommentId = aComment.commentId();
 		commentRepository.save(aComment);
-		
+
 		Comment comment = commentRepository.get(aCommentId);
 		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void get() {
 		Comment comment = commentRepository.get(aCommentId);
 		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void save4Update() {
 		Comment comment = commentRepository.get(aComment.commentId());
 		Content content = comment.content();
@@ -60,7 +60,7 @@ public class CommentRepositoryTest {
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void del() {
 		commentRepository.del(aCommentId);
 		Comment component = commentRepository.get(aCommentId);

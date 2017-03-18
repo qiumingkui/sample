@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class UUIDUtils {
 
-	public static String gen(){
+	public static String gen() {
 		return UUID.randomUUID().toString().toUpperCase();
 	}
 }

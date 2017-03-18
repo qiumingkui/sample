@@ -14,5 +14,5 @@ public class PersonBuilder {
 		Person person = build(BLOG_ID, aAccount, aName, aIsAdmin, aIsCommonUser);
 		return person;
 	}
-	
+
 }

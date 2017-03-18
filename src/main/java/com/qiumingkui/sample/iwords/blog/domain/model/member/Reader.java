@@ -6,13 +6,13 @@ public class Reader extends Member {
 		super(aId, aAccount, aName, aIsPermitted);
 	}
 
-//	public Reader(Person person) {
-//		super(person);
-//	}
-//
-//	@Override
-//	protected void initPermitted(Person aPerson) {
-//		setPermitted(true);
-//		
-//	}
+	// public Reader(Person person) {
+	// super(person);
+	// }
+	//
+	// @Override
+	// protected void initPermitted(Person aPerson) {
+	// setPermitted(true);
+	//
+	// }
 }

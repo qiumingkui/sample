@@ -7,11 +7,9 @@ public class BlogData {
 	private String title;
 
 	private String content;
-	
+
 	private int status;
 
-	
-	
 	public BlogData(String blogId, String title, String content, int status) {
 		super();
 		this.blogId = blogId;
@@ -51,6 +49,5 @@ public class BlogData {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	
+
 }

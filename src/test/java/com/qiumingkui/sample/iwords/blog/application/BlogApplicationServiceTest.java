@@ -29,8 +29,8 @@ public class BlogApplicationServiceTest {
 	private BlogApplicationService blogApplicationService;
 
 	private Person aPerson4Admin;
-	private	Person aPerson4CommonUser;
-	private	Person aAnonymous;
+	private Person aPerson4CommonUser;
+	private Person aAnonymous;
 
 	@Before
 	public void init() {

@@ -9,7 +9,6 @@ import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
 import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 
-
 @Service
 public class MemoryCommentRepository implements CommentRepository {
 

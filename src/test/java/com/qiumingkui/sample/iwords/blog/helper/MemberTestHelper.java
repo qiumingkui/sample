@@ -16,5 +16,5 @@ public class MemberTestHelper {
 	public static Person buildPerson4AnonymousExample() {
 		return PersonBuilder.build("", "", "", false, false);
 	}
-	
+
 }

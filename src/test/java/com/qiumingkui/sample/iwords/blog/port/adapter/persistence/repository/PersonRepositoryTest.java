@@ -33,7 +33,7 @@ public class PersonRepositoryTest {
 		personRepository.save(aPerson4Admin);
 
 		aPerson4CommonUser = MemberTestHelper.buildPerson4CommonUserExample();
-		aPerson4CommonUserId=aPerson4CommonUser.personId();
+		aPerson4CommonUserId = aPerson4CommonUser.personId();
 		personRepository.save(aPerson4CommonUser);
 	}
 
@@ -52,8 +52,7 @@ public class PersonRepositoryTest {
 		person4Admin1 = personRepository.get(aPerson4AdminId);
 		assertThat(person4Admin1.isAdmin()).isTrue();
 		assertThat(person4Admin1.isCommonUser()).isFalse();
-		
-		
+
 		Person person4CommonUser1 = personRepository.get(aPerson4CommonUserId);
 		personRepository.save(person4CommonUser1);
 		person4CommonUser1 = personRepository.get(aPerson4CommonUserId);

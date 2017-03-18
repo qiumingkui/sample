@@ -19,18 +19,18 @@ public class MemberBuilder {
 		Reader reader = new Reader(aPerson.personId().id(), aPerson.account(), aPerson.name(), isPermitted);
 		return reader;
 	}
-	
-	public static Admin buildAdmin(String aId, String aAccount,String aName) {
+
+	public static Admin buildAdmin(String aId, String aAccount, String aName) {
 		Admin admin = new Admin(aId, aAccount, aName, false);
 		return admin;
 	}
 
-	public static Author buildAuthor(String aId, String aAccount,String aName) {
+	public static Author buildAuthor(String aId, String aAccount, String aName) {
 		Author author = new Author(aId, aAccount, aName, false);
 		return author;
 	}
 
-	public static Reader buildReader(String aId, String aAccount,String aName) {
+	public static Reader buildReader(String aId, String aAccount, String aName) {
 		Reader reader = new Reader(aId, aAccount, aName, false);
 		return reader;
 	}

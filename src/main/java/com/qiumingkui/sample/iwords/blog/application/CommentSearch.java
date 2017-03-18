@@ -4,7 +4,6 @@ import java.util.List;
 
 public interface CommentSearch {
 
-
 	/**
 	 * 分页查询博客，按发布时间排序
 	 * 

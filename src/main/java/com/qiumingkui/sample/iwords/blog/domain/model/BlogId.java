@@ -9,13 +9,12 @@ public class BlogId extends EntityId {
 	 */
 	private static final long serialVersionUID = 1L;
 
-//	public BlogId() {
-//		super();
-//	}
+	// public BlogId() {
+	// super();
+	// }
 
 	public BlogId(String id) {
 		super(id);
 	}
-
 
 }

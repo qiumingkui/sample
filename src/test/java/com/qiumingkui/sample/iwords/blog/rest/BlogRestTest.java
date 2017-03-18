@@ -38,12 +38,12 @@ public class BlogRestTest {
 	private Person aPerson4CommonUser;
 
 	private String aBlogId;
-	
+
 	@Before
 	public void init() {
 		aPerson4CommonUser = MemberTestHelper.buildPerson4CommonUserExample();
 		personRepository.save(aPerson4CommonUser);
-		
+
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
 		try {
@@ -54,7 +54,6 @@ public class BlogRestTest {
 		assertThat(aBlogId.isEmpty()).isFalse();
 	}
 
-	
 	@Test
 	public void testGetBlogById() throws Exception {
 		// String title = "aTitle:" + new Date();

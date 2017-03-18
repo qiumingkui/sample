@@ -19,6 +19,5 @@ public class Content {
 	private void setContentTxt(String aContentTxt) {
 		this.contentTxt = aContentTxt;
 	}
-	
-	
+
 }

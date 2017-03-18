@@ -4,7 +4,6 @@ import com.qiumingkui.sample.iwords.common.domain.model.EntityId;
 
 public class CommentId extends EntityId {
 
-
 	/**
 	 * 
 	 */
@@ -13,5 +12,5 @@ public class CommentId extends EntityId {
 	public CommentId(String id) {
 		super(id);
 	}
-	
+
 }

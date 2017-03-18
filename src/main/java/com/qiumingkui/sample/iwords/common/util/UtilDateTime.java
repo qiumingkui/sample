@@ -65,7 +65,8 @@ public class UtilDateTime {
 		Calendar tempCal = Calendar.getInstance();
 
 		tempCal.setTime(new java.util.Date(stamp.getTime()));
-		tempCal.set(tempCal.get(Calendar.YEAR), tempCal.get(Calendar.MONTH), tempCal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+		tempCal.set(tempCal.get(Calendar.YEAR), tempCal.get(Calendar.MONTH), tempCal.get(Calendar.DAY_OF_MONTH), 0, 0,
+				0);
 		tempCal.add(Calendar.DAY_OF_MONTH, daysLater);
 		return new java.sql.Timestamp(tempCal.getTime().getTime());
 	}
@@ -82,7 +83,8 @@ public class UtilDateTime {
 		Calendar tempCal = Calendar.getInstance();
 
 		tempCal.setTime(new java.util.Date(stamp.getTime()));
-		tempCal.set(tempCal.get(Calendar.YEAR), tempCal.get(Calendar.MONTH), tempCal.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
+		tempCal.set(tempCal.get(Calendar.YEAR), tempCal.get(Calendar.MONTH), tempCal.get(Calendar.DAY_OF_MONTH), 23, 59,
+				59);
 		tempCal.add(Calendar.DAY_OF_MONTH, daysLater);
 		return new java.sql.Timestamp(tempCal.getTime().getTime());
 	}
@@ -255,7 +257,8 @@ public class UtilDateTime {
 	 * @return A Timestamp made from separate Strings for month, day, year,
 	 *         hour, minute, and second.
 	 */
-	public static java.sql.Timestamp toTimestamp(String monthStr, String dayStr, String yearStr, String hourStr, String minuteStr, String secondStr) {
+	public static java.sql.Timestamp toTimestamp(String monthStr, String dayStr, String yearStr, String hourStr,
+			String minuteStr, String secondStr) {
 		java.util.Date newDate = toDate(monthStr, dayStr, yearStr, hourStr, minuteStr, secondStr);
 
 		if (newDate != null)
@@ -372,7 +375,8 @@ public class UtilDateTime {
 	 * @return A Date made from separate Strings for month, day, year, hour,
 	 *         minute, and second.
 	 */
-	public static java.util.Date toDate(String monthStr, String dayStr, String yearStr, String hourStr, String minuteStr, String secondStr) {
+	public static java.util.Date toDate(String monthStr, String dayStr, String yearStr, String hourStr,
+			String minuteStr, String secondStr) {
 		int month, day, year, hour, minute, second;
 
 		try {
@@ -466,7 +470,8 @@ public class UtilDateTime {
 		Calendar calendar = Calendar.getInstance();
 
 		calendar.setTime(date);
-		return (toTimeString(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND)));
+		return (toTimeString(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),
+				calendar.get(Calendar.SECOND)));
 	}
 
 	/**

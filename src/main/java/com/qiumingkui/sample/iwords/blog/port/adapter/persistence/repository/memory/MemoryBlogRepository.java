@@ -9,7 +9,6 @@ import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
 
-
 @Service
 public class MemoryBlogRepository implements BlogRepository {
 

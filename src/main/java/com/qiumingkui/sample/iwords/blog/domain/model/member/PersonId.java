@@ -2,7 +2,7 @@ package com.qiumingkui.sample.iwords.blog.domain.model.member;
 
 import com.qiumingkui.sample.iwords.common.domain.model.EntityId;
 
-public class PersonId extends EntityId{
+public class PersonId extends EntityId {
 
 	/**
 	 * 
@@ -12,5 +12,5 @@ public class PersonId extends EntityId{
 	public PersonId(String id) {
 		super(id);
 	}
-	
+
 }

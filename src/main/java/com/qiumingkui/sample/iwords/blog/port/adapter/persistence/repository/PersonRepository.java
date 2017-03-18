@@ -8,7 +8,7 @@ public interface PersonRepository {
 	public Person get(PersonId aPersonId);
 
 	public void save(Person aPerson);
-	
+
 	public void del(PersonId aPersonId);
 
 }

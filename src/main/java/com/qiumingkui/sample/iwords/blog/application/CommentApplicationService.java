@@ -2,7 +2,7 @@ package com.qiumingkui.sample.iwords.blog.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
 import com.qiumingkui.sample.iwords.blog.domain.model.CommentBuilder;
@@ -23,7 +23,7 @@ public class CommentApplicationService {
 	 * @param aContent
 	 * @return
 	 */
-	@Transactional
+	// @Transactional
 	public String publishComment(String aBlogId, String aContent) {
 		Comment comment = CommentBuilder.build(aBlogId, aContent);
 		commentRepository.save(comment);

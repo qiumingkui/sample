@@ -8,7 +8,7 @@ public interface BlogRepository {
 	public Blog get(BlogId aBlogId);
 
 	public void save(Blog aBlog);
-	
+
 	public void del(BlogId aBlogId);
 
 }

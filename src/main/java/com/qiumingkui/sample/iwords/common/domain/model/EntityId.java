@@ -4,18 +4,17 @@ import java.io.Serializable;
 
 public class EntityId implements Serializable {
 
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	protected String id;
 
-	public EntityId(){
+	public EntityId() {
 		super();
 	}
-	
+
 	public EntityId(String id) {
 		super();
 		setId(id);

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
 import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
@@ -28,25 +28,25 @@ public class BlogRepositoryTest {
 	private BlogId aBlogId;
 
 	@Before
-	@Transactional
+	// @Transactional
 	public void save4Create() {
 		aBlog = BlogTestHelper.buildBlogExample();
 		aBlogId = aBlog.blogId();
 		blogRepository.save(aBlog);
-		
+
 		Blog blog = blogRepository.get(aBlogId);
 		assertThat(blog != null && blog.blogId().id().equals(aBlogId.id()));
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void get() {
 		Blog blog = blogRepository.get(aBlogId);
 		assertThat(blog != null && blog.blogId().id().equals(aBlogId.id()));
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void save4Update() {
 		Title aBlogTitle = aBlog.title();
 		Title title = new Title("blog" + " : this is new :" + new Date());
@@ -54,15 +54,15 @@ public class BlogRepositoryTest {
 		blog.changeTitle(title);
 		blogRepository.save(blog);
 		blog = blogRepository.get(aBlogId);
-        assertThat(blog!=null && blog.title().titleTxt().equals(aBlogTitle.titleTxt())).isFalse();
+		assertThat(blog != null && blog.title().titleTxt().equals(aBlogTitle.titleTxt())).isFalse();
 	}
 
 	@Test
-	@Transactional
+	// @Transactional
 	public void del() {
 		blogRepository.del(aBlogId);
 		Blog blog = blogRepository.get(aBlogId);
-		assertThat(blog!=null).isFalse();
+		assertThat(blog != null).isFalse();
 	}
 
 }

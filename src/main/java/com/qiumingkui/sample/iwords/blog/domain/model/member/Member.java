@@ -24,14 +24,14 @@ public abstract class Member {
 		this.setPermitted(aIsPermitted);
 	}
 
-//	public Member(Person aPerson) {
-//		this(aPerson.personId().id(),aPerson.account(),aPerson.name(),false);
-//		initPermitted(aPerson);
-//	}
-//
-//	protected abstract void initPermitted(Person aPerson);
-	
-	public boolean isPermitted(){
+	// public Member(Person aPerson) {
+	// this(aPerson.personId().id(),aPerson.account(),aPerson.name(),false);
+	// initPermitted(aPerson);
+	// }
+	//
+	// protected abstract void initPermitted(Person aPerson);
+
+	public boolean isPermitted() {
 		return isPermitted;
 	}
 
@@ -62,6 +62,5 @@ public abstract class Member {
 	private void setPermitted(boolean isPermitted) {
 		this.isPermitted = isPermitted;
 	}
-	
-	
+
 }

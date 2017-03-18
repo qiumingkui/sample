@@ -19,6 +19,5 @@ public class Title {
 	private void setTitleTxt(String aTitleTxt) {
 		this.titleTxt = aTitleTxt;
 	}
-	
-	
+
 }
