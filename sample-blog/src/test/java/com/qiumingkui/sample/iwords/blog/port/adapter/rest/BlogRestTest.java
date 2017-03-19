@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.iwords.blog.rest;
+package com.qiumingkui.sample.iwords.blog.port.adapter.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
