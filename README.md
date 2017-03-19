@@ -19,3 +19,5 @@
 -   博文排名
 -   博文置顶
 -   博文列表
+
+项目包括sample-common , sample-blog , sample-user 3个module。
