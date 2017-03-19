@@ -9,7 +9,7 @@
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>com.qiumingkui.ddd</groupId>
-	<artifactId>sapmle-user</artifactId>
+	<artifactId>sample-user</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<name>user</name>
 	<url>http://maven.apache.org</url>
