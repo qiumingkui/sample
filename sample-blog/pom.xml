@@ -16,10 +16,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    <dependency>
+   <dependency>
 			<groupId>com.qiumingkui.ddd</groupId>
 			<artifactId>sample-common</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
+		</dependency> 
   </dependencies>
 </project>
