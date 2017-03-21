@@ -24,24 +24,25 @@ import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 @SpringBootTest
 public class BlogApplicationServiceTest {
 
-//	@Autowired
-//	private PersonRepository personRepository;
+	// @Autowired
+	// private PersonRepository personRepository;
 
 	@Autowired
 	private BlogApplicationService blogApplicationService;
 
-//	private Person aPerson4Admin;
-//	private Person aPerson4CommonUser;
-//	private Person aAnonymous;
+	// private Person aPerson4Admin;
+	// private Person aPerson4CommonUser;
+	// private Person aAnonymous;
 
 	@Before
 	public void init() {
-//		aPerson4Admin = MemberTestHelper.buildPerson4AdminExample();
-//		aPerson4CommonUser = MemberTestHelper.buildPerson4CommonUserExample();
-//		aAnonymous = MemberTestHelper.buildPerson4AnonymousExample();
-//		personRepository.save(aPerson4Admin);
-//		personRepository.save(aPerson4CommonUser);
-//		personRepository.save(aAnonymous);
+		// aPerson4Admin = MemberTestHelper.buildPerson4AdminExample();
+		// aPerson4CommonUser =
+		// MemberTestHelper.buildPerson4CommonUserExample();
+		// aAnonymous = MemberTestHelper.buildPerson4AnonymousExample();
+		// personRepository.save(aPerson4Admin);
+		// personRepository.save(aPerson4CommonUser);
+		// personRepository.save(aAnonymous);
 
 	}
 
@@ -76,10 +77,9 @@ public class BlogApplicationServiceTest {
 	@Test
 	public void modifyBlog() {
 		String blogId = null;
-		Author author= MemberTestHelper.buildAuthorExample(true);
+		Author author = MemberTestHelper.buildAuthorExample(true);
 		try {
-			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
-					author);
+			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(), author);
 		} catch (Exception e1) {
 
 			e1.printStackTrace();
@@ -170,10 +170,10 @@ public class BlogApplicationServiceTest {
 
 			e.printStackTrace();
 		}
-		
+
 		BlogData blogData = blogApplicationService.readBlog(blogId);
 		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
-		
+
 		try {
 			blogApplicationService.reopenBlog(blogId);
 		} catch (BlogStatusException e) {

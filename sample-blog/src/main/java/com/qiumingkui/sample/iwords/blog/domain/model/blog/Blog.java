@@ -144,17 +144,19 @@ public class Blog implements Serializable {
 		return author;
 	}
 
-	public boolean isEditable() {
-		if (this.status().code() != BlogStatus.CLOSED && this.status().code() != BlogStatus.LOCKED)
-			return true;
-		return false;
-	}
-
-	public boolean isReadable() {
-		if (this.status().code() != BlogStatus.CLOSED && this.status().code() != BlogStatus.LOCKED)
-			return true;
-		return false;
-	}
+	// public boolean isEditable() {
+	// if (this.status().code() != BlogStatus.CLOSED && this.status().code() !=
+	// BlogStatus.LOCKED)
+	// return true;
+	// return false;
+	// }
+	//
+	// public boolean isReadable() {
+	// if (this.status().code() != BlogStatus.CLOSED && this.status().code() !=
+	// BlogStatus.LOCKED)
+	// return true;
+	// return false;
+	// }
 
 	private void setBlogId(BlogId aBlogId) {
 		this.blogId = aBlogId;
