@@ -9,9 +9,9 @@ public class User {
 
 	private String name;
 
-	private boolean isAdmin;
+	private boolean isAdmin = false;
 
-	private boolean isCommonUser;
+	private boolean isCommonUser = false;
 
 	private User() {
 		super();
@@ -26,14 +26,13 @@ public class User {
 		// this.name = aName;
 		// this.isAdmin = aIsAdmin;
 		// this.isCommonUser = aIsCommonUser;
-		
+
 		this.setUserId(aUserId);
 		this.setAccount(aAccount);
 		this.setPassword(aPassword);
 		this.setName(aName);
 		this.setAdmin(aIsAdmin);
 		this.setCommonUser(aIsCommonUser);
-		
 
 		if (aUserId == null || aUserId.id().trim().length() <= 0) {
 			// this.account = "anonymous";
@@ -72,34 +71,13 @@ public class User {
 		return isCommonUser;
 	}
 
-	public void changeName(String name){
+	public void changeName(String name) {
 		this.setName(name);
 	}
-	
-	public void changePassword(String aPasswordOriginalText){
-		String passwordCipherText = encryptPassword(aPasswordOriginalText);
-		this.setPassword(passwordCipherText);
-	}
-	
-	public AuthenticateResult authenticate(String aAccount, String aPasswordOriginalText) {
-		String passwordCipherText = encryptPassword(aPasswordOriginalText);
-		if (this.account.equals(aAccount) && this.password.equals(passwordCipherText)) {
-			return new AuthenticateResult(true);
-		}
-		return new AuthenticateResult(false);
-	}
 
-	/**
-	 * 口令加密
-	 * 
-	 * @param originalText
-	 *            口令原文
-	 * @return 口令密文
-	 */
-	private String encryptPassword(String originalText) {
-		// 加密过程...
-		String cipherText = originalText;
-		return cipherText;
+	public void changePassword(String aPasswordOriginalText) {
+		String passwordCipherText = PasswordServcie.encryptPassword(aPasswordOriginalText);
+		this.setPassword(passwordCipherText);
 	}
 
 	private void setUserId(UserId userId) {
@@ -125,5 +103,5 @@ public class User {
 	private void setCommonUser(boolean isCommonUser) {
 		this.isCommonUser = isCommonUser;
 	}
-	
+
 }
