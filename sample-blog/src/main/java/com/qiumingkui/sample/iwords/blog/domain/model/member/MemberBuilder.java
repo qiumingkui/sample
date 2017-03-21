@@ -44,18 +44,18 @@ public class MemberBuilder {
 	// return reader;
 	// }
 
-	public static Admin buildAdmin(String aId, String aAccount, String aName, boolean isPermitted) {
-		Admin admin = new Admin(aId, aAccount, aName, isPermitted);
+	public static Admin buildAdmin(String aId, String aAccount, String aName, boolean aValidated) {
+		Admin admin = new Admin(aId, aAccount, aName, aValidated);
 		return admin;
 	}
 
-	public static Author buildAuthor(String aId, String aAccount, String aName, boolean isPermitted) {
-		Author author = new Author(aId, aAccount, aName, isPermitted);
+	public static Author buildAuthor(String aId, String aAccount, String aName, boolean aValidated) {
+		Author author = new Author(aId, aAccount, aName, aValidated);
 		return author;
 	}
 
-	public static Reader buildReader(String aId, String aAccount, String aName, boolean isPermitted) {
-		Reader reader = new Reader(aId, aAccount, aName, isPermitted);
+	public static Reader buildReader(String aId, String aAccount, String aName, boolean aValidated) {
+		Reader reader = new Reader(aId, aAccount, aName, aValidated);
 		return reader;
 	}
 

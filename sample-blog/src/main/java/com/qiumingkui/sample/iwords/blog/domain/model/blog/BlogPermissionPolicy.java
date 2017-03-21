@@ -10,7 +10,7 @@ import com.qiumingkui.sample.iwords.common.domain.PolicyDecisionResult;
 public class BlogPermissionPolicy {
 
 	public static PolicyDecisionResult hasReadBlogPermission(Blog aBlog, Reader aReader) {
-		if (aReader == null || !aReader.isPermitted()) {
+		if (aReader == null || !aReader.isValidated()) {
 			PolicyDecisionResult result = new PolicyDecisionResult(false);
 			return result;
 		}
@@ -42,7 +42,7 @@ public class BlogPermissionPolicy {
 	}
 
 	public static PolicyDecisionResult hasModifyBlogPermission(Blog aBlog, Author author) {
-		if (author == null || !author.isPermitted()) {
+		if (author == null || !author.isValidated()) {
 			// return false;
 			PolicyDecisionResult result = new PolicyDecisionResult(false);
 			return result;
@@ -63,7 +63,7 @@ public class BlogPermissionPolicy {
 	}
 
 	public static PolicyDecisionResult hasPublishBlogPermission(Blog aBlog, Author author) {
-		if (author == null || !author.isPermitted()){
+		if (author == null || !author.isValidated()){
 			// return false;
 			PolicyDecisionResult result = new PolicyDecisionResult(false);
 			return result;

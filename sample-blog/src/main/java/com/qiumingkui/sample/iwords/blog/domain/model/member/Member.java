@@ -10,18 +10,18 @@ public abstract class Member {
 
 	private String name;
 
-	private boolean isPermitted;
+	private boolean validated;
 
 	private Member() {
 		super();
 	}
 
-	public Member(String aId, String aAccount, String aName, boolean aIsPermitted) {
+	public Member(String aId, String aAccount, String aName, boolean aValidated) {
 		this();
 		this.setId(aId);
 		this.setAccount(aAccount);
 		this.setName(aName);
-		this.setPermitted(aIsPermitted);
+		this.setValidated(aValidated);
 	}
 
 	// public Member(Person aPerson) {
@@ -31,8 +31,8 @@ public abstract class Member {
 	//
 	// protected abstract void initPermitted(Person aPerson);
 
-	public boolean isPermitted() {
-		return isPermitted;
+	public boolean isValidated() {
+		return validated;
 	}
 
 	public String id() {
@@ -59,8 +59,8 @@ public abstract class Member {
 		this.name = name;
 	}
 
-	private void setPermitted(boolean isPermitted) {
-		this.isPermitted = isPermitted;
+	private void setValidated(boolean aValidated) {
+		this.validated = aValidated;
 	}
 
 }

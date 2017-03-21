@@ -2,8 +2,8 @@ package com.qiumingkui.sample.iwords.blog.domain.model.member;
 
 public class Author extends Member {
 
-	public Author(String aId, String aAccount, String aName, boolean aIsPermitted) {
-		super(aId, aAccount, aName, aIsPermitted);
+	public Author(String aId, String aAccount, String aName, boolean aValidated) {
+		super(aId, aAccount, aName, aValidated);
 	}
 
 	// public Author(Person person) {
