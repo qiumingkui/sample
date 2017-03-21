@@ -1,5 +1,7 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.domain.model.comment;
 
+import com.qiumingkui.sample.iwords.blog.domain.model.Content;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogId;
 import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 
 public class CommentBuilder {

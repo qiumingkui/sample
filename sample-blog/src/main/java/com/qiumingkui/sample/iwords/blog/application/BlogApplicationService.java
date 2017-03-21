@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogData;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogId;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogPermissionPolicy;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.Blog;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogBuilder;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogData;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogId;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogPermissionPolicy;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.MemberBuilder;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
@@ -49,7 +50,7 @@ public class BlogApplicationService {
 		// return blog.blogId().id();
 
 		Blog blog = BlogBuilder.build(aTitle, aContent, aAuthor);
-
+		blog.issue();
 		if (!BlogPermissionPolicy.hasPublishBlogPermission(blog, aAuthor))
 			throw new Exception(aAuthor.name() + aAuthor.account() + ":你无权发布博客！");
 
@@ -68,21 +69,21 @@ public class BlogApplicationService {
 	 */
 	// @Transactional
 	public void modifyBlog(String aBlogId, String aTitle, String aContent, Author aAuthor) throws Exception {
-//		Person person = personRepository.get(new PersonId(aPersonId));
-//		Author author = MemberBuilder.buildAuthor(person);
-//
-//		Blog blog = blogRepository.get(new BlogId(aBlogId));
-//
-//		if (!BlogPermissionPolicy.hasModifyBlogPermission(blog, author))
-//			throw new Exception(author.name() + author.account() + ":你无权修改博客！");
-//
-//		if (blog != null) {
-//			Title title = new Title(aTitle);
-//			Content content = new Content(aContent);
-//			blog.changeTitle(title);
-//			blog.changeContent(content);
-//			blogRepository.save(blog);
-//		}
+		// Person person = personRepository.get(new PersonId(aPersonId));
+		// Author author = MemberBuilder.buildAuthor(person);
+		//
+		// Blog blog = blogRepository.get(new BlogId(aBlogId));
+		//
+		// if (!BlogPermissionPolicy.hasModifyBlogPermission(blog, author))
+		// throw new Exception(author.name() + author.account() + ":你无权修改博客！");
+		//
+		// if (blog != null) {
+		// Title title = new Title(aTitle);
+		// Content content = new Content(aContent);
+		// blog.changeTitle(title);
+		// blog.changeContent(content);
+		// blogRepository.save(blog);
+		// }
 		Blog blog = blogRepository.get(new BlogId(aBlogId));
 
 		if (!BlogPermissionPolicy.hasModifyBlogPermission(blog, aAuthor))
@@ -128,7 +129,7 @@ public class BlogApplicationService {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
 		BlogData blogData = new BlogData(blog.blogId().id(), blog.title().titleTxt(), blog.content().contentTxt(),
-				blog.status().statusVal());
+				blog.status().code());
 		return blogData;
 	}
 
@@ -136,9 +137,10 @@ public class BlogApplicationService {
 	 * 锁定博客
 	 * 
 	 * @param aBlogId
+	 * @throws BlogStatusException
 	 */
 	// @Transactional
-	public void lockBlog(String aBlogId) {
+	public void lockBlog(String aBlogId) throws BlogStatusException {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
 		if (blog != null) {
@@ -151,9 +153,10 @@ public class BlogApplicationService {
 	 * 关闭博客
 	 * 
 	 * @param aBlogId
+	 * @throws BlogStatusException
 	 */
 	// @Transactional
-	public void closeBlog(String aBlogId) {
+	public void closeBlog(String aBlogId) throws BlogStatusException {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
 		if (blog != null) {
@@ -166,9 +169,10 @@ public class BlogApplicationService {
 	 * 重开博客
 	 * 
 	 * @param aBlogId
+	 * @throws BlogStatusException
 	 */
 	// @Transactional
-	public void reopenBlog(String aBlogId) {
+	public void reopenBlog(String aBlogId) throws BlogStatusException {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
 		if (blog != null) {

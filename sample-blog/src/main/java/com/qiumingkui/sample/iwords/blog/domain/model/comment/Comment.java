@@ -1,8 +1,10 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.domain.model.comment;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.iwords.blog.domain.model.Content;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogId;
 import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Comment implements Serializable {

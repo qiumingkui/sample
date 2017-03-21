@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qiumingkui.sample.iwords.blog.application.BlogApplicationService;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogData;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogData;
 
 @RestController
 public class BlogRest {

@@ -2,8 +2,8 @@ package com.qiumingkui.sample.iwords.blog.helper;
 
 import java.util.Date;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Blog;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogBuilder;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.Blog;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogBuilder;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 
 public class BlogTestHelper {

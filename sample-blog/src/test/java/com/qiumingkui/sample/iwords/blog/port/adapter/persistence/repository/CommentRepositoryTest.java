@@ -12,9 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 //import org.springframework.transaction.annotation.Transactional;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.Comment;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.iwords.blog.helper.CommentTestHelper;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 

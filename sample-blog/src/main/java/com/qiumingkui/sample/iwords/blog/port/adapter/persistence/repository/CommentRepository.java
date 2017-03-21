@@ -1,7 +1,7 @@
 package com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.Comment;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentId;
 
 public interface CommentRepository {
 

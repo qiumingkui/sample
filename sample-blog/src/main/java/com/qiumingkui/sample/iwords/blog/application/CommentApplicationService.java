@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentBuilder;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentData;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.Comment;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentBuilder;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentData;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.domain.model.blog;
 
 public class BlogData {
 

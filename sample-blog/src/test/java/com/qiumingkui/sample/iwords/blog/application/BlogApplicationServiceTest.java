@@ -12,8 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.iwords.blog.application.BlogApplicationService;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogData;
-import com.qiumingkui.sample.iwords.blog.domain.model.BlogStatus;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogData;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatus;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 //import com.qiumingkui.sample.iwords.user.domain.model.Person;
@@ -128,10 +129,14 @@ public class BlogApplicationServiceTest {
 
 			e.printStackTrace();
 		}
-		blogApplicationService.lockBlog(blogId);
+		try {
+			blogApplicationService.lockBlog(blogId);
+		} catch (BlogStatusException e) {
+			e.printStackTrace();
+		}
 		BlogData blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getStatus() == BlogStatus.CLOSE).isFalse();
-		assertThat(blogData.getStatus() == BlogStatus.LOCK).isTrue();
+		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isFalse();
+		assertThat(blogData.getStatus() == BlogStatus.LOCKED).isTrue();
 	}
 
 	@Test
@@ -144,10 +149,14 @@ public class BlogApplicationServiceTest {
 
 			e.printStackTrace();
 		}
-		blogApplicationService.closeBlog(blogId);
+		try {
+			blogApplicationService.closeBlog(blogId);
+		} catch (BlogStatusException e) {
+			e.printStackTrace();
+		}
 		BlogData blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getStatus() == BlogStatus.CLOSE).isTrue();
-		assertThat(blogData.getStatus() == BlogStatus.LOCK).isFalse();
+		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
+		assertThat(blogData.getStatus() == BlogStatus.LOCKED).isFalse();
 	}
 
 	@Test
@@ -156,14 +165,22 @@ public class BlogApplicationServiceTest {
 		try {
 			blogId = blogApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
 					MemberTestHelper.buildAuthorExample(true));
+			blogApplicationService.closeBlog(blogId);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-		blogApplicationService.reopenBlog(blogId);
+		
 		BlogData blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getStatus() == BlogStatus.REOPEN).isTrue();
-		assertThat(blogData.getStatus() == BlogStatus.ISSUE).isFalse();
+		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
+		
+		try {
+			blogApplicationService.reopenBlog(blogId);
+		} catch (BlogStatusException e) {
+			e.printStackTrace();
+		}
+		blogData = blogApplicationService.readBlog(blogId);
+		assertThat(blogData.getStatus() == BlogStatus.ISSUED).isTrue();
 	}
 
 }

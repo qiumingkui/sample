@@ -1,8 +1,13 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.domain.model.blog;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.iwords.blog.domain.model.Content;
+import com.qiumingkui.sample.iwords.blog.domain.model.Title;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogDraft;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatus;
+import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
@@ -18,7 +23,7 @@ public class Blog implements Serializable {
 	}
 
 	public Blog(BlogId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
-		this(aBlogId, aTitle, aContent, aAuthor, new BlogStatus(BlogStatus.DRAFT), 0, UtilDateTime.nowTimestamp(),
+		this(aBlogId, aTitle, aContent, aAuthor, new BlogDraft(), 0, UtilDateTime.nowTimestamp(),
 				UtilDateTime.nowTimestamp());
 		// this();
 		// this.setBlogId(aBlogId);
@@ -90,20 +95,29 @@ public class Blog implements Serializable {
 		setCommentNumber(aCommentNumber);
 	}
 	
-	public void issue(){
-		setStatus(new BlogStatus(BlogStatus.ISSUE));
+	
+	public void changeStatus(BlogStatus aStatus){
+		this.setStatus(aStatus);
+	}
+	
+	public void issue() throws BlogStatusException{
+//		setStatus(new BlogStatus(BlogStatus.ISSUED));
+		this.status.issue(this);
 	}
 
-	public void reopen() {
-		setStatus(new BlogStatus(BlogStatus.REOPEN));
+	public void reopen() throws BlogStatusException {
+//		setStatus(new BlogStatus(BlogStatus.REOPEN));
+		this.status.reopen(this);
 	}
 
-	public void lock() {
-		setStatus(new BlogStatus(BlogStatus.LOCK));
+	public void lock() throws BlogStatusException {
+//		setStatus(new BlogStatus(BlogStatus.LOCKED));
+		this.status.lock(this);
 	}
 
-	public void close() {
-		setStatus(new BlogStatus(BlogStatus.CLOSE));
+	public void close() throws BlogStatusException {
+//		setStatus(new BlogStatus(BlogStatus.CLOSED));
+		this.status.close(this);
 	}
 
 	public BlogId blogId() {
@@ -131,13 +145,13 @@ public class Blog implements Serializable {
 	}
 
 	public boolean isEditable() {
-		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
+		if (this.status().code() != BlogStatus.CLOSED && this.status().code() != BlogStatus.LOCKED)
 			return true;
 		return false;
 	}
 
 	public boolean isReadable() {
-		if (this.status().statusVal() != BlogStatus.CLOSE && this.status().statusVal() != BlogStatus.LOCK)
+		if (this.status().code() != BlogStatus.CLOSED && this.status().code() != BlogStatus.LOCKED)
 			return true;
 		return false;
 	}

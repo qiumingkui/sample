@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.iwords.blog.application.CommentApplicationService;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentData;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentData;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.iwords.blog.domain.model;
+package com.qiumingkui.sample.iwords.blog.domain.model.blog;
 
 import com.qiumingkui.sample.iwords.common.domain.model.EntityId;
 

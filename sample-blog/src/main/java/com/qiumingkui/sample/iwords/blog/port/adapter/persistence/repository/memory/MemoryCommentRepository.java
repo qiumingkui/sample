@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.qiumingkui.sample.iwords.blog.domain.model.Comment;
-import com.qiumingkui.sample.iwords.blog.domain.model.CommentId;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.Comment;
+import com.qiumingkui.sample.iwords.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.CommentRepository;
 
 @Service
