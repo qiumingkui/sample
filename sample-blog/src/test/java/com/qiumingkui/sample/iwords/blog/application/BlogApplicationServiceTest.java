@@ -16,6 +16,7 @@ import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogData;
 import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatus;
 import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Reader;
 import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 //import com.qiumingkui.sample.iwords.user.domain.model.Person;
 //import com.qiumingkui.sample.iwords.user.port.adapter.persistence.repository.PersonRepository;
@@ -64,13 +65,21 @@ public class BlogApplicationServiceTest {
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
 		String blogId = null;
+		Author author = MemberTestHelper.buildAuthorExample(true);
 		try {
-			blogId = blogApplicationService.publishBlog(title, content, MemberTestHelper.buildAuthorExample(true));
+			blogId = blogApplicationService.publishBlog(title, content, author);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-		BlogData blogData = blogApplicationService.readBlog(blogId);
+		Reader reader = MemberTestHelper.buildReader(true);
+		BlogData blogData = null;
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isTrue();
 		assertThat(blogData.getTitle().equals(title)).isTrue();
 	}
 
@@ -92,30 +101,15 @@ public class BlogApplicationServiceTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		BlogData blogData = blogApplicationService.readBlog(blogId);
+		Reader reader = MemberTestHelper.buildReader(true);
+		BlogData blogData = null;
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isTrue();
 		assertThat(blogData.getTitle().equals(title)).isTrue();
-
-		// title = "aTitle modify by aPerson4Admin:" + new Date();
-		// content = "aContent modify by aPerson4Admin:" + new Date();
-		// try {
-		// blogApplicationService.modifyBlog(blogId, title, content,
-		// aPerson4Admin.personId().id());
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		// blogData = blogApplicationService.readBlog(blogId);
-		// assertThat(blogData.getTitle().equals(title)).isFalse();
-		//
-		// title = "aTitle modify by anonymous:" + new Date();
-		// content = "aContent modify by anonymous:" + new Date();
-		// try {
-		// blogApplicationService.modifyBlog(blogId, title, content,
-		// aAnonymous.personId().id());
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		// blogData = blogApplicationService.readBlog(blogId);
-		// assertThat(blogData.getTitle().equals(title)).isFalse();
 
 	}
 
@@ -134,7 +128,14 @@ public class BlogApplicationServiceTest {
 		} catch (BlogStatusException e) {
 			e.printStackTrace();
 		}
-		BlogData blogData = blogApplicationService.readBlog(blogId);
+		Reader reader = MemberTestHelper.buildReader(true);
+		BlogData blogData = null;
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isTrue();
 		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isFalse();
 		assertThat(blogData.getStatus() == BlogStatus.LOCKED).isTrue();
 	}
@@ -154,9 +155,16 @@ public class BlogApplicationServiceTest {
 		} catch (BlogStatusException e) {
 			e.printStackTrace();
 		}
-		BlogData blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
-		assertThat(blogData.getStatus() == BlogStatus.LOCKED).isFalse();
+		Reader reader = MemberTestHelper.buildReader(true);
+		BlogData blogData = null;
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isFalse();
+		// assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
+		// assertThat(blogData.getStatus() == BlogStatus.LOCKED).isFalse();
 	}
 
 	@Test
@@ -171,15 +179,29 @@ public class BlogApplicationServiceTest {
 			e.printStackTrace();
 		}
 
-		BlogData blogData = blogApplicationService.readBlog(blogId);
-		assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
+		Reader reader = MemberTestHelper.buildReader(true);
+		BlogData blogData = null;
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isFalse();
+		// assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
 
 		try {
 			blogApplicationService.reopenBlog(blogId);
 		} catch (BlogStatusException e) {
 			e.printStackTrace();
 		}
-		blogData = blogApplicationService.readBlog(blogId);
+
+		reader = MemberTestHelper.buildReader(true);
+		try {
+			blogData = blogApplicationService.readBlog(blogId, reader);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertThat(blogData != null).isTrue();
 		assertThat(blogData.getStatus() == BlogStatus.ISSUED).isTrue();
 	}
 

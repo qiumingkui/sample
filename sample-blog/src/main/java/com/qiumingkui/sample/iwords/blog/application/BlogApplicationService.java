@@ -13,7 +13,9 @@ import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogId;
 import com.qiumingkui.sample.iwords.blog.domain.model.blog.BlogPermissionPolicy;
 import com.qiumingkui.sample.iwords.blog.domain.model.blog.status.BlogStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.member.Reader;
 import com.qiumingkui.sample.iwords.blog.port.adapter.persistence.repository.BlogRepository;
+
 @Service
 public class BlogApplicationService {
 
@@ -67,16 +69,38 @@ public class BlogApplicationService {
 	 * 阅读博客
 	 * 
 	 * @param aBlogId
+	 * @param aReader
 	 * @return
+	 * @throws Exception
 	 */
 	// @Transactional
-	public BlogData readBlog(String aBlogId) {
+	public BlogData readBlog(String aBlogId, Reader aReader) throws Exception {
 		BlogId blogId = new BlogId(aBlogId);
 		Blog blog = blogRepository.get(blogId);
+
+		if (!BlogPermissionPolicy.hasReadBlogPermission(blog, aReader).isPermit())
+			throw new Exception(aReader.name() + aReader.account() + ":你无权读取博客！");
+
 		BlogData blogData = new BlogData(blog.blogId().id(), blog.title().titleTxt(), blog.content().contentTxt(),
 				blog.status().code());
 		return blogData;
 	}
+
+	// /**
+	// * 阅读博客
+	// *
+	// * @param aBlogId
+	// * @return
+	// */
+	// // @Transactional
+	// public BlogData readBlog(String aBlogId) {
+	// BlogId blogId = new BlogId(aBlogId);
+	// Blog blog = blogRepository.get(blogId);
+	// BlogData blogData = new BlogData(blog.blogId().id(),
+	// blog.title().titleTxt(), blog.content().contentTxt(),
+	// blog.status().code());
+	// return blogData;
+	// }
 
 	/**
 	 * 锁定博客

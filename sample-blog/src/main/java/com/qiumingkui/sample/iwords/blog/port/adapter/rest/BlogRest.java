@@ -16,7 +16,8 @@ public class BlogRest {
 
 	@RequestMapping("/blog")
 	public BlogData getBlogById(@RequestParam(value = "id") String id) {
-		BlogData blogData = blogApplicationService.readBlog(id);
+		BlogData blogData = null;
+		// blogData = blogApplicationService.readBlog(id);
 		return blogData;
 	}
 

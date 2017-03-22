@@ -21,15 +21,15 @@ public class MemberTestHelper {
 	// return PersonBuilder.build("", "", "", false, false);
 	// }
 
-	public static Admin buildAdminExample(boolean isPermitted) {
-		return MemberBuilder.buildAdmin("1", "Zhangsan", "张三", isPermitted);
+	public static Admin buildAdminExample(boolean aValidated) {
+		return MemberBuilder.buildAdmin("1", "Zhangsan", "张三", aValidated);
 	}
 
-	public static Author buildAuthorExample(boolean isPermitted) {
-		return MemberBuilder.buildAuthor("2", "Lisi", "李四", isPermitted);
+	public static Author buildAuthorExample(boolean aValidated) {
+		return MemberBuilder.buildAuthor("2", "Lisi", "李四", aValidated);
 	}
 
-	public static Reader buildReader(boolean isPermitted) {
-		return MemberBuilder.buildReader("3", "wangwu", "王五", isPermitted);
+	public static Reader buildReader(boolean aValidated) {
+		return MemberBuilder.buildReader("3", "wangwu", "王五", aValidated);
 	}
 }

@@ -13,4 +13,10 @@ public class UserId extends EntityId {
 		super(id);
 	}
 
+	// public boolean equals(UserId userId) {
+	// if(userId!=null &&userId.id.equals(this.id())){
+	// return true;
+	// }
+	// return false;
+	// }
 }

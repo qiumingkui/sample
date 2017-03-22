@@ -27,4 +27,5 @@ public class EntityId implements Serializable {
 	private void setId(String id) {
 		this.id = id;
 	}
+	
 }
