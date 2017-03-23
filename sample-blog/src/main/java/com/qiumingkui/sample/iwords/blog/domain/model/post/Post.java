@@ -1,29 +1,29 @@
-package com.qiumingkui.sample.iwords.blog.domain.model.blogentry;
+package com.qiumingkui.sample.iwords.blog.domain.model.post;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.status.BlogEntryDraft;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.status.BlogEntryStatus;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.status.BlogEntryStatusException;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.status.PostDraft;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.status.PostStatus;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.status.PostStatusException;
 import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
-public class BlogEntry implements Serializable {
+public class Post implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected BlogEntry() {
+	protected Post() {
 		super();
 	}
 
-	public BlogEntry(BlogEntryId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
-		this(aBlogId, aTitle, aContent, aAuthor, new BlogEntryDraft(), 0, UtilDateTime.nowTimestamp(),
+	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
+		this(aBlogId, aTitle, aContent, aAuthor, new PostDraft(), 0, UtilDateTime.nowTimestamp(),
 				UtilDateTime.nowTimestamp());
 		// this();
 		// this.setBlogId(aBlogId);
@@ -35,7 +35,7 @@ public class BlogEntry implements Serializable {
 		// this.setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public BlogEntry(BlogEntryId aBlogId, Title aTitle, Content aContent, Author aAuthor, BlogEntryStatus aStatus, int aCommentNumber,
+	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor, PostStatus aStatus, int aCommentNumber,
 			Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		// this(aBlogId, aTitle, aContent, aAuthor);
@@ -57,13 +57,13 @@ public class BlogEntry implements Serializable {
 
 	}
 
-	private BlogEntryId blogEntryId;
+	private PostId postId;
 
 	private Title title;
 
 	private Content content;
 
-	private BlogEntryStatus status;
+	private PostStatus status;
 
 	private Author author;
 
@@ -96,32 +96,32 @@ public class BlogEntry implements Serializable {
 	}
 	
 	
-	public void changeStatus(BlogEntryStatus aStatus){
+	public void changeStatus(PostStatus aStatus){
 		this.setStatus(aStatus);
 	}
 	
-	public void issue() throws BlogEntryStatusException{
+	public void issue() throws PostStatusException{
 //		setStatus(new BlogStatus(BlogStatus.ISSUED));
 		this.status.issue(this);
 	}
 
-	public void reopen() throws BlogEntryStatusException {
+	public void reopen() throws PostStatusException {
 //		setStatus(new BlogStatus(BlogStatus.REOPEN));
 		this.status.reopen(this);
 	}
 
-	public void lock() throws BlogEntryStatusException {
+	public void lock() throws PostStatusException {
 //		setStatus(new BlogStatus(BlogStatus.LOCKED));
 		this.status.lock(this);
 	}
 
-	public void close() throws BlogEntryStatusException {
+	public void close() throws PostStatusException {
 //		setStatus(new BlogStatus(BlogStatus.CLOSED));
 		this.status.close(this);
 	}
 
-	public BlogEntryId blogEntryId() {
-		return blogEntryId;
+	public PostId postId() {
+		return postId;
 	}
 
 	public Title title() {
@@ -132,7 +132,7 @@ public class BlogEntry implements Serializable {
 		return content;
 	}
 
-	public BlogEntryStatus status() {
+	public PostStatus status() {
 		return status;
 	}
 
@@ -158,8 +158,8 @@ public class BlogEntry implements Serializable {
 	// return false;
 	// }
 
-	private void setBlogId(BlogEntryId aBlogId) {
-		this.blogEntryId = aBlogId;
+	private void setBlogId(PostId aBlogId) {
+		this.postId = aBlogId;
 	}
 
 	private void setTitle(Title aTitle) {
@@ -170,7 +170,7 @@ public class BlogEntry implements Serializable {
 		this.content = aContent;
 	}
 
-	private void setStatus(BlogEntryStatus aStatus) {
+	private void setStatus(PostStatus aStatus) {
 		this.status = aStatus;
 	}
 

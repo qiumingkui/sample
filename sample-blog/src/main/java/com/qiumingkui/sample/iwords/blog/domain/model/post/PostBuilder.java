@@ -1,21 +1,21 @@
-package com.qiumingkui.sample.iwords.blog.domain.model.blogentry;
+package com.qiumingkui.sample.iwords.blog.domain.model.post;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
 import com.qiumingkui.sample.iwords.blog.domain.model.Title;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 
-public class BlogEntryBuilder {
+public class PostBuilder {
 
-	public static BlogEntry build(String aId, String aTitle, String aContent, Author aAuthor) {
-		BlogEntryId blogEntryId = new BlogEntryId(aId);
+	public static Post build(String aId, String aTitle, String aContent, Author aAuthor) {
+		PostId postId = new PostId(aId);
 		Title title = new Title(aTitle);
 		Content content = new Content(aContent);
-		BlogEntry blogEntry = new BlogEntry(blogEntryId, title, content, aAuthor);
-		return blogEntry;
+		Post post = new Post(postId, title, content, aAuthor);
+		return post;
 	}
 
-	public static BlogEntry build(String aTitle, String aContent, Author aAuthor) {
+	public static Post build(String aTitle, String aContent, Author aAuthor) {
 		final String BLOG_ID = UUIDUtils.gen();
 		return build(BLOG_ID, aTitle, aContent, aAuthor);
 	}

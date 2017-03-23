@@ -1,8 +1,8 @@
-package com.qiumingkui.sample.iwords.blog.domain.model.blogentry;
+package com.qiumingkui.sample.iwords.blog.domain.model.post;
 
 import com.qiumingkui.sample.iwords.common.domain.model.EntityId;
 
-public class BlogEntryId extends EntityId {
+public class PostId extends EntityId {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class BlogEntryId extends EntityId {
 	// super();
 	// }
 
-	public BlogEntryId(String id) {
+	public PostId(String id) {
 		super(id);
 	}
 

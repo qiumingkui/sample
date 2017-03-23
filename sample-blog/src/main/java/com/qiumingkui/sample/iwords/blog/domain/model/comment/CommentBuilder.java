@@ -1,16 +1,16 @@
 package com.qiumingkui.sample.iwords.blog.domain.model.comment;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.BlogEntryId;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.PostId;
 import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 
 public class CommentBuilder {
 
 	public static Comment build(String aId, String aBlogId, String aContent) {
 		CommentId commentId = new CommentId(aId);
-		BlogEntryId blogEntryId = new BlogEntryId(aBlogId);
+		PostId postId = new PostId(aBlogId);
 		Content content = new Content(aContent);
-		Comment comment = new Comment(commentId, blogEntryId, content);
+		Comment comment = new Comment(commentId, postId, content);
 		return comment;
 	}
 

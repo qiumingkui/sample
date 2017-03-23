@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.qiumingkui.sample.iwords.blog.application.BlogEntryApplicationService;
+import com.qiumingkui.sample.iwords.blog.application.PostApplicationService;
 import com.qiumingkui.sample.iwords.blog.domain.model.member.Author;
 import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 //import com.qiumingkui.sample.iwords.user.domain.model.Person;
@@ -25,7 +25,7 @@ import com.qiumingkui.sample.iwords.blog.helper.MemberTestHelper;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BlogEntryRestTest {
+public class PostRestTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -34,7 +34,7 @@ public class BlogEntryRestTest {
 //	private PersonRepository personRepository;
 
 	@Autowired
-	private BlogEntryApplicationService blogEntryApplicationService;
+	private PostApplicationService postApplicationService;
 
 private Author author;
 
@@ -47,7 +47,7 @@ private Author author;
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
 		try {
-			aBlogId = blogEntryApplicationService.publishBlog(title, content,author);
+			aBlogId = postApplicationService.publishBlog(title, content,author);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

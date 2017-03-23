@@ -5,20 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qiumingkui.sample.iwords.blog.application.BlogEntryApplicationService;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.BlogEntryData;
+import com.qiumingkui.sample.iwords.blog.application.PostApplicationService;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.PostData;
 
 @RestController
-public class BlogEntryRest {
+public class PostRest {
 
 	@Autowired
-	private BlogEntryApplicationService blogEntryApplicationService;
+	private PostApplicationService postApplicationService;
 
 	@RequestMapping("/blog")
-	public BlogEntryData getBlogById(@RequestParam(value = "id") String id) {
-		BlogEntryData blogEntryData = null;
+	public PostData getBlogById(@RequestParam(value = "id") String id) {
+		PostData postData = null;
 		// blogData = blogApplicationService.readBlog(id);
-		return blogEntryData;
+		return postData;
 	}
 
 }

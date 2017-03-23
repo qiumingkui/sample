@@ -2,7 +2,7 @@ package com.qiumingkui.sample.iwords.blog.application;
 
 import java.util.List;
 
-public interface BlogEntrySearch {
+public interface PostSearch {
 
 	/**
 	 * 列出置顶博客ID

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.iwords.blog.domain.model.Content;
-import com.qiumingkui.sample.iwords.blog.domain.model.blogentry.BlogEntryId;
+import com.qiumingkui.sample.iwords.blog.domain.model.post.PostId;
 import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Comment implements Serializable {
@@ -16,7 +16,7 @@ public class Comment implements Serializable {
 
 	private CommentId commentId;
 
-	private BlogEntryId blogEntryId;
+	private PostId postId;
 
 	private Content content;
 
@@ -26,7 +26,7 @@ public class Comment implements Serializable {
 		super();
 	}
 
-	public Comment(CommentId aCommentId, BlogEntryId aBlogId, Content aContent) {
+	public Comment(CommentId aCommentId, PostId aBlogId, Content aContent) {
 		this();
 
 		this.setCommentId(aCommentId);
@@ -44,8 +44,8 @@ public class Comment implements Serializable {
 		return this.commentId;
 	}
 
-	public BlogEntryId blogEntryId() {
-		return this.blogEntryId;
+	public PostId postId() {
+		return this.postId;
 	}
 
 	public Content content() {
@@ -60,8 +60,8 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	private void setBlogId(BlogEntryId blogEntryId) {
-		this.blogEntryId = blogEntryId;
+	private void setBlogId(PostId postId) {
+		this.postId = postId;
 	}
 
 	private void setContent(Content content) {
