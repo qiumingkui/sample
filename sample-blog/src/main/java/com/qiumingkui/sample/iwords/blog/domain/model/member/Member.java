@@ -2,8 +2,6 @@ package com.qiumingkui.sample.iwords.blog.domain.model.member;
 
 public abstract class Member {
 
-	// protected Person person;
-
 	private String id;
 
 	private String account;
@@ -23,13 +21,6 @@ public abstract class Member {
 		this.setName(aName);
 		this.setValidated(aValidated);
 	}
-
-	// public Member(Person aPerson) {
-	// this(aPerson.personId().id(),aPerson.account(),aPerson.name(),false);
-	// initPermitted(aPerson);
-	// }
-	//
-	// protected abstract void initPermitted(Person aPerson);
 
 	public boolean isValidated() {
 		return validated;

@@ -2,7 +2,7 @@ package com.qiumingkui.sample.iwords.behavior.domain.model;
 
 import java.sql.Timestamp;
 
-public class BlogReadLog {
+public class PostReadLog {
 
 	private String id;
 	
@@ -13,11 +13,11 @@ public class BlogReadLog {
 	private Timestamp readTime;
 	 
 
-	private BlogReadLog() {
+	private PostReadLog() {
 		super();
 	}
 
-	public BlogReadLog(String id, String account, String blogId, Timestamp readTime) {
+	public PostReadLog(String id, String account, String blogId, Timestamp readTime) {
 		this();
 		this.id = id;
 		this.account = account;

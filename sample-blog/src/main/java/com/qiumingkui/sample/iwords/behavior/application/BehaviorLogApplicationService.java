@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.iwords.behavior.domain.model.application;
+package com.qiumingkui.sample.iwords.behavior.application;
 
 public interface BehaviorLogApplicationService {
 
