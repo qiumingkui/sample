@@ -1,6 +1,6 @@
-package com.qiumingkui.sample.iwords.blog.domain.model.blog;
+package com.qiumingkui.sample.iwords.blog.domain.model.blogentry;
 
-public class BlogData {
+public class BlogEntryData {
 
 	private String blogId;
 
@@ -10,7 +10,7 @@ public class BlogData {
 
 	private int status;
 
-	public BlogData(String blogId, String title, String content, int status) {
+	public BlogEntryData(String blogId, String title, String content, int status) {
 		super();
 		this.blogId = blogId;
 		this.title = title;
