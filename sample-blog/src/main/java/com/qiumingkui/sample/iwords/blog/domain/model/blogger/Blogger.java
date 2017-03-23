@@ -3,6 +3,8 @@ package com.qiumingkui.sample.iwords.blog.domain.model.blogger;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.iwords.blog.domain.model.blogger.rank.Junior;
+import com.qiumingkui.sample.iwords.blog.domain.model.blogger.rank.BloggerRank;
 import com.qiumingkui.sample.iwords.blog.domain.model.blogger.status.BloggerOnline;
 import com.qiumingkui.sample.iwords.blog.domain.model.blogger.status.BloggerStatus;
 import com.qiumingkui.sample.iwords.blog.domain.model.blogger.status.BloggerStatusException;
@@ -20,7 +22,21 @@ public class Blogger implements Serializable {
 
 	private Owner owner;
 
-	private int postNumber;
+	private BloggerPostInfo postInfo;
+
+	private BloggerRank rank;
+	
+	public void changeRank(BloggerRank rank) {
+		this.setRank(rank);
+	}
+	
+	public BloggerRank rank() {
+		return rank;
+	}
+
+	private void setRank(BloggerRank rank) {
+		this.rank = rank;
+	}
 
 	private BloggerStatus status;
 
@@ -32,16 +48,18 @@ public class Blogger implements Serializable {
 		super();
 	}
 
-	public Blogger(BloggerId aBloggerId, Owner aOwner, int aPostNumber) {
-		this(aBloggerId, aOwner, aPostNumber, new BloggerOnline(), UtilDateTime.nowTimestamp(), UtilDateTime.nowTimestamp());
+	public Blogger(BloggerId aBloggerId, Owner aOwner, BloggerPostInfo aPostInfo) {
+		this(aBloggerId, aOwner, aPostInfo, new Junior(), new BloggerOnline(), UtilDateTime.nowTimestamp(),
+				UtilDateTime.nowTimestamp());
 	}
 
-	public Blogger(BloggerId aBloggerId, Owner aOwner, int aPostNumber, BloggerStatus aBloggerStatus,
+	public Blogger(BloggerId aBloggerId, Owner aOwner, BloggerPostInfo aPostInfo, BloggerRank rank,BloggerStatus aBloggerStatus,
 			Timestamp aCreateTime, Timestamp aModifyTime) {
 		this();
-		this.setBloggerId(bloggerId);
-		this.setOwner(owner);
-		this.setPostNumber(postNumber);
+		this.setBloggerId(aBloggerId);
+		this.setOwner(aOwner);
+		this.setPostInfo(aPostInfo);
+		this.setRank(rank);
 		this.setStatus(aBloggerStatus);
 		this.setCreateTime(aCreateTime);
 		this.setModifyTime(aModifyTime);
@@ -55,10 +73,10 @@ public class Blogger implements Serializable {
 		return owner;
 	}
 
-	public int postNumber() {
-		return postNumber;
+	public BloggerPostInfo postInfo(){
+		return postInfo;
 	}
-
+	
 	public BloggerStatus status() {
 		return status;
 	}
@@ -71,6 +89,10 @@ public class Blogger implements Serializable {
 		return modifyTime;
 	}
 
+	public void changePostInfo(BloggerPostInfo aPostInfo){
+		this.setPostInfo(aPostInfo);
+	}
+	
 	public void changeStatus(BloggerStatus aStatus) {
 		this.setStatus(aStatus);
 	}
@@ -87,24 +109,24 @@ public class Blogger implements Serializable {
 		this.status.close(this);
 	}
 
-	private void setBloggerId(BloggerId bloggerId) {
-		this.bloggerId = bloggerId;
+	private void setBloggerId(BloggerId aBloggerId) {
+		this.bloggerId = aBloggerId;
 	}
 
-	private void setOwner(Owner owner) {
-		this.owner = owner;
+	private void setOwner(Owner aOwner) {
+		this.owner = aOwner;
 	}
 
-	private void setPostNumber(int postNumber) {
-		this.postNumber = postNumber;
+	private void setPostInfo(BloggerPostInfo aPostInfo) {
+		this.postInfo = aPostInfo;
 	}
 
-	private void setStatus(BloggerStatus bloggerStatus) {
-		this.status = bloggerStatus;
+	private void setStatus(BloggerStatus aBloggerStatus) {
+		this.status = aBloggerStatus;
 	}
 
-	private void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
+	private void setCreateTime(Timestamp aCreateTime) {
+		this.createTime = aCreateTime;
 	}
 
 	private void setModifyTime(Timestamp modifyTime) {
