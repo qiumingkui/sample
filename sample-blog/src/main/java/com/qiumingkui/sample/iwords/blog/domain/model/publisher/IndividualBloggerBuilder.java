@@ -8,12 +8,12 @@ import com.qiumingkui.sample.iwords.blog.domain.model.publisher.status.Publisher
 
 public class IndividualBloggerBuilder {
 
-	public static IndividualBlogger build(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PostInfo aPostInfo) {
+	public static IndividualBlogger build(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PublisherPost aPostInfo) {
 
 		return new IndividualBlogger(aIndividualBloggerId, aOwner, aPostInfo);
 	}
 
-	public static IndividualBlogger build(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PostInfo aPostInfo,
+	public static IndividualBlogger build(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PublisherPost aPostInfo,
 			PublisherRank rank, PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		return new IndividualBlogger(aIndividualBloggerId, aOwner, aPostInfo, rank, aBloggerStatus, aCreateTime, aModifyTime);

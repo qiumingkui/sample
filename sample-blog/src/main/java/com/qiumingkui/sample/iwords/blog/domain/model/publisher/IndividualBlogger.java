@@ -15,14 +15,14 @@ public class IndividualBlogger extends Publisher {
 	
 	private IndividualBloggerId individualBloggerId;
 
-	public IndividualBlogger(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PostInfo aPostInfo) {
+	public IndividualBlogger(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PublisherPost aPostInfo) {
 		super(aIndividualBloggerId, aOwner, aPostInfo);
 		
         this.setPersonalBloggerId(aIndividualBloggerId);
 		this.setCode(PERSONAL_BLOGGER);
 	}
 
-	public IndividualBlogger(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PostInfo aPostInfo, PublisherRank rank,
+	public IndividualBlogger(IndividualBloggerId aIndividualBloggerId, Owner aOwner, PublisherPost aPostInfo, PublisherRank rank,
 			PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 		super(aIndividualBloggerId, aOwner, aPostInfo, rank, aBloggerStatus, aCreateTime, aModifyTime);
 		

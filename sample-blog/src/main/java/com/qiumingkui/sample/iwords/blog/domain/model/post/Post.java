@@ -22,41 +22,6 @@ public class Post implements Serializable {
 		super();
 	}
 
-	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
-		this(aBlogId, aTitle, aContent, aAuthor, new PostDraft(), 0, UtilDateTime.nowTimestamp(),
-				UtilDateTime.nowTimestamp());
-		// this();
-		// this.setBlogId(aBlogId);
-		// this.setTitle(aTitle);
-		// this.setContent(aContent);
-		// this.setStatus(new BlogStatus(BlogStatus.DRAFT));
-		// this.setAuthor(aAuthor);
-		// this.setCreateTime(UtilDateTime.nowTimestamp());
-		// this.setModifyTime(UtilDateTime.nowTimestamp());
-	}
-
-	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor, PostStatus aStatus, int aCommentNumber,
-			Timestamp aCreateTime, Timestamp aModifyTime) {
-
-		// this(aBlogId, aTitle, aContent, aAuthor);
-		//
-		// this.setStatus(aStatus);
-		// this.setCommentNumber(aCommentNumber);
-		// this.setCreateTime(aCreateTime);
-		// this.setModifyTime(aModifyTime);
-
-		this();
-		this.setBlogId(aBlogId);
-		this.setTitle(aTitle);
-		this.setContent(aContent);
-		this.setAuthor(aAuthor);
-		this.setStatus(aStatus);
-		this.setCommentNumber(aCommentNumber);
-		this.setCreateTime(aCreateTime);
-		this.setModifyTime(aModifyTime);
-
-	}
-
 	private PostId postId;
 
 	private Title title;
@@ -67,18 +32,28 @@ public class Post implements Serializable {
 
 	private Author author;
 
-	private int commentNumber;
+	private PostComment postComment;
 
 	private Timestamp createTime;
 
 	private Timestamp modifyTime;
 
-	public Timestamp createTime() {
-		return createTime;
+	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
+		this(aBlogId, aTitle, aContent, aAuthor, new PostDraft(), new PostComment(0), UtilDateTime.nowTimestamp(),
+				UtilDateTime.nowTimestamp());
 	}
 
-	public Timestamp modifyTime() {
-		return modifyTime;
+	public Post(PostId aBlogId, Title aTitle, Content aContent, Author aAuthor, PostStatus aStatus,
+			PostComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
+		this();
+		this.setBlogId(aBlogId);
+		this.setTitle(aTitle);
+		this.setContent(aContent);
+		this.setAuthor(aAuthor);
+		this.setStatus(aStatus);
+		this.setPostComment(aPostComment);
+		this.setCreateTime(aCreateTime);
+		this.setModifyTime(aModifyTime);
 	}
 
 	public void changeTitle(Title aTitle) {
@@ -91,32 +66,27 @@ public class Post implements Serializable {
 		setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public void changeCommentNumber(int aCommentNumber) {
-		setCommentNumber(aCommentNumber);
+	public void changeCommentNumber(PostComment aPostComment) {
+		setPostComment(aPostComment);
 	}
-	
-	
-	public void changeStatus(PostStatus aStatus){
+
+	public void changeStatus(PostStatus aStatus) {
 		this.setStatus(aStatus);
 	}
-	
-	public void issue() throws PostStatusException{
-//		setStatus(new BlogStatus(BlogStatus.ISSUED));
+
+	public void issue() throws PostStatusException {
 		this.status.issue(this);
 	}
 
 	public void reopen() throws PostStatusException {
-//		setStatus(new BlogStatus(BlogStatus.REOPEN));
 		this.status.reopen(this);
 	}
 
 	public void lock() throws PostStatusException {
-//		setStatus(new BlogStatus(BlogStatus.LOCKED));
 		this.status.lock(this);
 	}
 
 	public void close() throws PostStatusException {
-//		setStatus(new BlogStatus(BlogStatus.CLOSED));
 		this.status.close(this);
 	}
 
@@ -136,27 +106,21 @@ public class Post implements Serializable {
 		return status;
 	}
 
-	public int commentNumber() {
-		return commentNumber;
+	public PostComment commentNumber() {
+		return postComment;
 	}
 
 	public Author author() {
 		return author;
 	}
 
-	// public boolean isEditable() {
-	// if (this.status().code() != BlogStatus.CLOSED && this.status().code() !=
-	// BlogStatus.LOCKED)
-	// return true;
-	// return false;
-	// }
-	//
-	// public boolean isReadable() {
-	// if (this.status().code() != BlogStatus.CLOSED && this.status().code() !=
-	// BlogStatus.LOCKED)
-	// return true;
-	// return false;
-	// }
+	public Timestamp createTime() {
+		return createTime;
+	}
+
+	public Timestamp modifyTime() {
+		return modifyTime;
+	}
 
 	private void setBlogId(PostId aBlogId) {
 		this.postId = aBlogId;
@@ -174,8 +138,8 @@ public class Post implements Serializable {
 		this.status = aStatus;
 	}
 
-	private void setCommentNumber(int aCommentNumber) {
-		this.commentNumber = aCommentNumber;
+	private void setPostComment(PostComment aPostCommentr) {
+		this.postComment = aPostCommentr;
 	}
 
 	private void setAuthor(Author author) {

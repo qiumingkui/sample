@@ -15,13 +15,13 @@ public class MediaPublisher extends Publisher {
      
 	private MediaPublisherId mediaPublisherId;
 	
-	public MediaPublisher(MediaPublisherId aMediaPublisherId, Owner aOwner, PostInfo aPostInfo) {
+	public MediaPublisher(MediaPublisherId aMediaPublisherId, Owner aOwner, PublisherPost aPostInfo) {
 		super(aMediaPublisherId, aOwner, aPostInfo);
 
 		this.setCode(MEDIA_PUBLISHER);
 	}
 
-	public MediaPublisher(MediaPublisherId aMediaPublisherId, Owner aOwner, PostInfo aPostInfo, PublisherRank rank,
+	public MediaPublisher(MediaPublisherId aMediaPublisherId, Owner aOwner, PublisherPost aPostInfo, PublisherRank rank,
 			PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 		super(aMediaPublisherId, aOwner, aPostInfo, rank, aBloggerStatus, aCreateTime, aModifyTime);
 

@@ -8,12 +8,12 @@ import com.qiumingkui.sample.iwords.blog.domain.model.publisher.status.Publisher
 
 public class MediaPublisherBuilder {
 
-	public static MediaPublisher build(MediaPublisherId aMediaPublisherId, Owner aOwner, PostInfo aPostInfo) {
+	public static MediaPublisher build(MediaPublisherId aMediaPublisherId, Owner aOwner, PublisherPost aPostInfo) {
 
 		return new MediaPublisher(aMediaPublisherId, aOwner, aPostInfo);
 	}
 
-	public static MediaPublisher build(MediaPublisherId aMediaPublisherId, Owner aOwner, PostInfo aPostInfo,
+	public static MediaPublisher build(MediaPublisherId aMediaPublisherId, Owner aOwner, PublisherPost aPostInfo,
 			PublisherRank rank, PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		return new MediaPublisher(aMediaPublisherId, aOwner, aPostInfo, rank, aBloggerStatus, aCreateTime, aModifyTime);

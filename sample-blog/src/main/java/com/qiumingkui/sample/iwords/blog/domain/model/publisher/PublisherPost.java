@@ -1,16 +1,16 @@
 package com.qiumingkui.sample.iwords.blog.domain.model.publisher;
 
-public class PostInfo {
+public class PublisherPost {
 
 	private int postNumber;
 	
 	private int commentNumber;
 	
-	private PostInfo() {
+	private PublisherPost() {
 		super();
 	}
 
-	public PostInfo(int aPostNumber, int aCommentNumber) {
+	public PublisherPost(int aPostNumber, int aCommentNumber) {
 		this();
 		this.setPostNumber(aPostNumber);
 		this.setCommentNumber(aCommentNumber);

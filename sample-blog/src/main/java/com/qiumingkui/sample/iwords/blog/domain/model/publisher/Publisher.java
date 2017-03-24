@@ -28,7 +28,7 @@ public abstract class Publisher implements Serializable {
 
 	private Owner owner;
 
-	private PostInfo postInfo;
+	private PublisherPost publisherPost;
 
 	private PublisherRank rank;
 
@@ -42,17 +42,17 @@ public abstract class Publisher implements Serializable {
 		super();
 	}
 
-	protected Publisher(PublisherId aBloggerId, Owner aOwner, PostInfo aPostInfo) {
-		this(aBloggerId, aOwner, aPostInfo, new Novice(), new PublisherOnline(), UtilDateTime.nowTimestamp(),
+	protected Publisher(PublisherId aBloggerId, Owner aOwner, PublisherPost aPublisherPost) {
+		this(aBloggerId, aOwner, aPublisherPost, new Novice(), new PublisherOnline(), UtilDateTime.nowTimestamp(),
 				UtilDateTime.nowTimestamp());
 	}
 
-	protected Publisher(PublisherId aBloggerId, Owner aOwner, PostInfo aPostInfo, PublisherRank rank,
+	protected Publisher(PublisherId aBloggerId, Owner aOwner, PublisherPost aPublisherPost, PublisherRank rank,
 			PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 		this();
 		this.setBloggerId(aBloggerId);
 		this.setOwner(aOwner);
-		this.setPostInfo(aPostInfo);
+		this.setPublisherPost(aPublisherPost);
 		this.setRank(rank);
 		this.setStatus(aBloggerStatus);
 		this.setCreateTime(aCreateTime);
@@ -67,8 +67,8 @@ public abstract class Publisher implements Serializable {
 		return owner;
 	}
 
-	public PostInfo postInfo() {
-		return postInfo;
+	public PublisherPost publisherPost() {
+		return publisherPost;
 	}
 
 	public PublisherRank rank() {
@@ -91,8 +91,8 @@ public abstract class Publisher implements Serializable {
 		return code;
 	}
 
-	public void changePostInfo(PostInfo aPostInfo) {
-		this.setPostInfo(aPostInfo);
+	public void changePostInfo(PublisherPost aPublisherPost) {
+		this.setPublisherPost(aPublisherPost);
 	}
 
 	public void changeRank(PublisherRank rank) {
@@ -123,8 +123,8 @@ public abstract class Publisher implements Serializable {
 		this.owner = aOwner;
 	}
 
-	private void setPostInfo(PostInfo aPostInfo) {
-		this.postInfo = aPostInfo;
+	private void setPublisherPost(PublisherPost aPostInfo) {
+		this.publisherPost = aPostInfo;
 	}
 
 	private void setStatus(PublisherStatus aBloggerStatus) {
