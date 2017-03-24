@@ -1,16 +1,16 @@
-package com.qiumingkui.sample.iwords.blog.domain.model.blogger;
+package com.qiumingkui.sample.iwords.blog.domain.model.publisher;
 
-public class BloggerPostInfo {
+public class PostInfo {
 
 	private int postNumber;
 	
 	private int commentNumber;
 	
-	private BloggerPostInfo() {
+	private PostInfo() {
 		super();
 	}
 
-	public BloggerPostInfo(int aPostNumber, int aCommentNumber) {
+	public PostInfo(int aPostNumber, int aCommentNumber) {
 		this();
 		this.setPostNumber(aPostNumber);
 		this.setCommentNumber(aCommentNumber);
