@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
 
-import com.qiumingkui.sample.iwords.common.domain.model.EntityId;
+import com.qiumingkui.sample.imedia.common.domain.model.EntityId;
 
 public class PublisherId extends EntityId {
 

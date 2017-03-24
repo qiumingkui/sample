@@ -1,11 +1,11 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.post;
 
+import com.qiumingkui.sample.imedia.common.domain.PolicyDecisionResult;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Reader;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostDraft;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostIssued;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostLocked;
-import com.qiumingkui.sample.iwords.common.domain.PolicyDecisionResult;
 
 public class PostPermissionPolicy {
 

@@ -3,13 +3,13 @@ package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Owner;
 import com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank.Novice;
 import com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank.PublisherRank;
 import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.PublisherOnline;
 import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.PublisherStatus;
 import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.PublisherStatusException;
-import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public abstract class Publisher implements Serializable {
 

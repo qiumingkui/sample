@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 
+import com.qiumingkui.sample.imedia.common.util.UUIDUtils;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
-import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 
 public class CommentBuilder {
 

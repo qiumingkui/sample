@@ -3,9 +3,9 @@ package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
-import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Comment implements Serializable {
 

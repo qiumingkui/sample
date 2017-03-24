@@ -3,13 +3,13 @@ package com.qiumingkui.sample.imedia.mp.domain.model.post;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostDraft;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatus;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatusException;
-import com.qiumingkui.sample.iwords.common.util.UtilDateTime;
 
 public class Post implements Serializable {
 

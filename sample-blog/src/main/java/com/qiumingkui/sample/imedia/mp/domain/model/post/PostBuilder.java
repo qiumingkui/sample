@@ -1,9 +1,9 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.post;
 
+import com.qiumingkui.sample.imedia.common.util.UUIDUtils;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
-import com.qiumingkui.sample.iwords.common.util.UUIDUtils;
 
 public class PostBuilder {
 
