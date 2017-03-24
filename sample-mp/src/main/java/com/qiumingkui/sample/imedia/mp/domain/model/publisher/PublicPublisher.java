@@ -18,7 +18,7 @@ public class PublicPublisher extends Publisher {
 	public PublicPublisher(PublicPublisherId aPublicPublisherId, Owner aOwner, PublisherPost aMediaPublisherPost) {
 		super(aPublicPublisherId, aOwner, aMediaPublisherPost);
 
-		this.setCode(MEDIA_PUBLISHER);
+		this.setCode(PUBLIC_PUBLISHER);
 		this.setPublicPublisherId(aPublicPublisherId);
 		
 	}
@@ -27,7 +27,7 @@ public class PublicPublisher extends Publisher {
 			PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 		super(aPublicPublisherId, aOwner, aMediaPublisherPost, rank, aBloggerStatus, aCreateTime, aModifyTime);
 
-		this.setCode(MEDIA_PUBLISHER);
+		this.setCode(PUBLIC_PUBLISHER);
 		this.setPublicPublisherId(aPublicPublisherId);
 	}
 

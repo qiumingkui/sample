@@ -1,5 +1,7 @@
 package com.qiumingkui.sample.imedia.user.domain.model;
 
+import com.qiumingkui.sample.imedia.user.domain.model.role.Role;
+
 public class User {
 	private UserId userId;
 
@@ -9,41 +11,33 @@ public class User {
 
 	private String name;
 
-	private boolean isAdmin = false;
+	// private boolean isAdmin = false;
+	//
+	// private boolean isCommonUser = false;
 
-	private boolean isCommonUser = false;
+	private Role role;
+
+	// private boolean isIndividualPublisher = false;
+	//
+	// private boolean isPublicPublisher = false;
 
 	private User() {
 		super();
 	}
 
-	public User(UserId aUserId, String aAccount, String aPassword, String aName, boolean aIsAdmin,
-			boolean aIsCommonUser) {
+	public User(UserId aUserId, String aAccount, String aPassword, String aName, Role aRole) {
 		this();
-		// this.userId = aUserId;
-		// this.account = aAccount;
-		// this.password = aPassword;
-		// this.name = aName;
-		// this.isAdmin = aIsAdmin;
-		// this.isCommonUser = aIsCommonUser;
 
 		this.setUserId(aUserId);
 		this.setAccount(aAccount);
 		this.setPassword(aPassword);
 		this.setName(aName);
-		this.setAdmin(aIsAdmin);
-		this.setCommonUser(aIsCommonUser);
+		this.setRole(aRole);
 
 		if (aUserId == null || aUserId.id().trim().length() <= 0) {
-			// this.account = "anonymous";
-			// this.name = "匿名用户";
-			// this.isAdmin = false;
-			// this.isCommonUser = false;
-			//
 			this.setAccount("anonymous");
 			this.setName("匿名用户");
-			this.setAdmin(false);
-			this.setCommonUser(false);
+			this.setRole(null);
 		}
 	}
 
@@ -64,11 +58,24 @@ public class User {
 	}
 
 	public boolean isAdmin() {
-		return isAdmin;
+		if (this.role != null && this.role.isAdmin()) {
+			return true;
+		}
+		return false;
 	}
 
-	public boolean isCommonUser() {
-		return isCommonUser;
+	public boolean isIMP() {
+		if (this.role != null && this.role.isIMP()) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isPMP() {
+		if (this.role != null && this.role.isPMP()) {
+			return true;
+		}
+		return false;
 	}
 
 	public void changeName(String name) {
@@ -96,12 +103,12 @@ public class User {
 		this.name = name;
 	}
 
-	private void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-
-	private void setCommonUser(boolean isCommonUser) {
-		this.isCommonUser = isCommonUser;
+	/**
+	 * @param role
+	 *            the role to set
+	 */
+	private void setRole(Role role) {
+		this.role = role;
 	}
 
 }

@@ -18,9 +18,9 @@ public abstract class Publisher implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int MEDIA_PUBLISHER = 1;
+	public static final int PUBLIC_PUBLISHER = 1;
 
-	public static final int PERSONAL_BLOGGER = 0;
+	public static final int INDIVIDUAL_PUBLISHER = 0;
 
 	private int code;
 

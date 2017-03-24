@@ -1,7 +1,7 @@
 package com.qiumingkui.sample.imedia.user.domain.model;
 
 public class PasswordServcie {
-	
+
 	/**
 	 * 口令加密
 	 * 

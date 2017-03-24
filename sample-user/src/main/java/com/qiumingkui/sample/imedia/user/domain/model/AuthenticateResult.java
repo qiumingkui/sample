@@ -7,7 +7,7 @@ public class AuthenticateResult {
 	private String message;
 
 	public AuthenticateResult(boolean aValidated) {
-		this(aValidated, "The validated is " + aValidated+" !");
+		this(aValidated, "The validated is " + aValidated + " !");
 	}
 
 	public AuthenticateResult(boolean aValidated, String aMessage) {

@@ -32,7 +32,7 @@ public class UserRepositoryTest {
 		aUser4AdminId = aUser4Admin.userId();
 		userRepository.save(aUser4Admin);
 
-		aUser4CommonUser = UserTestHelper.buildUser4CommonUserExample();
+		aUser4CommonUser = UserTestHelper.buildUser4ImpExample();
 		aUser4CommonUserId = aUser4CommonUser.userId();
 		userRepository.save(aUser4CommonUser);
 	}
@@ -42,7 +42,7 @@ public class UserRepositoryTest {
 		User user = userRepository.get(aUser4AdminId);
 		assertThat(user != null).isTrue();
 		assertThat(user.isAdmin()).isTrue();
-		assertThat(user.isCommonUser()).isFalse();
+		assertThat(user.isIMP()).isFalse();
 	}
 
 	@Test
@@ -51,13 +51,13 @@ public class UserRepositoryTest {
 		userRepository.save(user4Admin1);
 		user4Admin1 = userRepository.get(aUser4AdminId);
 		assertThat(user4Admin1.isAdmin()).isTrue();
-		assertThat(user4Admin1.isCommonUser()).isFalse();
+		assertThat(user4Admin1.isIMP()).isFalse();
 
 		User user4CommonUser1 = userRepository.get(aUser4CommonUserId);
 		userRepository.save(user4CommonUser1);
 		user4CommonUser1 = userRepository.get(aUser4CommonUserId);
 		assertThat(user4CommonUser1.isAdmin()).isFalse();
-		assertThat(user4CommonUser1.isCommonUser()).isTrue();
+		assertThat(user4CommonUser1.isIMP()).isTrue();
 	}
 
 	@Test
