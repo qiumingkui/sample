@@ -1,9 +1,9 @@
 package com.qiumingkui.sample.imedia.asset.domain.model;
 
 import com.qiumingkui.sample.imedia.asset.domain.model.account.AssetAccount;
-import com.qiumingkui.sample.imedia.asset.domain.model.operation.accumulate.Accumulate;
-import com.qiumingkui.sample.imedia.asset.domain.model.operation.donate.Donate;
-import com.qiumingkui.sample.imedia.asset.domain.model.operation.trade.Trade;
+import com.qiumingkui.sample.imedia.asset.domain.model.operation.Accumulate;
+import com.qiumingkui.sample.imedia.asset.domain.model.operation.DonatePoint;
+import com.qiumingkui.sample.imedia.asset.domain.model.operation.VendPoint;
 
 public class AssetOperationService {
 
@@ -11,11 +11,11 @@ public class AssetOperationService {
 		
 	}
 	
-	public void donate(Donate donate, AssetAccount donor, AssetAccount donee){
+	public void donatePoint(DonatePoint donatePoint, AssetAccount donor, AssetAccount donee){
 		
 	}
 	
-	public void trade(Trade trade, AssetAccount assetAccount){
+	public void vendPoint(VendPoint vendPoint, AssetAccount vendor, AssetAccount vendee){
 		
 	}
 }

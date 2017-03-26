@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.asset.domain.model.operation.accumulate;
+package com.qiumingkui.sample.imedia.asset.domain.model.operation;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

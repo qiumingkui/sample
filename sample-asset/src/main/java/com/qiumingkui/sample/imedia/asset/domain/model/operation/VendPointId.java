@@ -1,8 +1,8 @@
-package com.qiumingkui.sample.imedia.asset.domain.model.operation.accumulate;
+package com.qiumingkui.sample.imedia.asset.domain.model.operation;
 
 import com.qiumingkui.sample.imedia.common.domain.model.EntityId;
 
-public class AccumulateId extends EntityId{
+public class VendPointId extends EntityId {
 
 	/**
 	 * 
