@@ -56,7 +56,6 @@
 	<modules>
 		<module>sample-mp</module>
 		<module>sample-asset</module>
-		<module>sample-makemoney</module>
 		<module>sample-user</module>
 		<module>sample-common</module>
 
