@@ -3,15 +3,13 @@ package com.qiumingkui.sample.imedia.asset.domain.model.account;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import com.qiumingkui.sample.imedia.asset.domain.model.account.point.Point;
-import com.qiumingkui.sample.imedia.asset.domain.model.account.point.PointAdd;
-import com.qiumingkui.sample.imedia.asset.domain.model.account.point.PointSubtract;
-import com.qiumingkui.sample.imedia.asset.domain.model.account.rmb.Rmb;
-import com.qiumingkui.sample.imedia.asset.domain.model.account.rmb.RmbAdd;
-import com.qiumingkui.sample.imedia.asset.domain.model.account.rmb.RmbSubtract;
+import com.qiumingkui.sample.imedia.asset.domain.model.busy.PointAdd;
+import com.qiumingkui.sample.imedia.asset.domain.model.busy.PointSubtract;
+import com.qiumingkui.sample.imedia.asset.domain.model.busy.RmbAdd;
+import com.qiumingkui.sample.imedia.asset.domain.model.busy.RmbSubtract;
 import com.qiumingkui.sample.imedia.asset.domain.model.member.Owner;
 
-public class AssetAccount implements Serializable {
+public abstract class AssetAccount implements Serializable {
 
 	/**
 	 * 
@@ -20,9 +18,9 @@ public class AssetAccount implements Serializable {
 
 	private AssetAccountId assetAccountId;
 
-	private Point point;
+	private PointBalance pointBalance;
 
-	private Rmb rmb;
+	private RmbBalance rmbBalance;
 
 	private Owner owner;
 
@@ -34,13 +32,13 @@ public class AssetAccount implements Serializable {
 		super();
 	}
 
-	public AssetAccount(AssetAccountId aAssetAccountId, Point aPoint, Rmb aRmb, Owner aOwner, Timestamp aCreateTime,
+	public AssetAccount(AssetAccountId aAssetAccountId, PointBalance aPointBalance, RmbBalance aRmbBalance, Owner aOwner, Timestamp aCreateTime,
 			Timestamp aModifyTime) {
 		this();
 
 		this.setAssetAccountId(aAssetAccountId);
-		this.setPoint(aPoint);
-		this.setRmb(aRmb);
+		this.setPointBalance(aPointBalance);
+		this.setRmbBalance(aRmbBalance);
 		this.setOwner(aOwner);
 		this.setCreateTime(aCreateTime);
 		this.setModifyTime(aModifyTime);
@@ -73,15 +71,15 @@ public class AssetAccount implements Serializable {
 	/**
 	 * @return the point
 	 */
-	public Point point() {
-		return point;
+	public PointBalance pointBalance() {
+		return pointBalance;
 	}
 
 	/**
 	 * @return the rmb
 	 */
-	public Rmb rmb() {
-		return rmb;
+	public RmbBalance rmbBalance() {
+		return rmbBalance;
 	}
 
 	/**
@@ -117,16 +115,16 @@ public class AssetAccount implements Serializable {
 	 * @param point
 	 *            the point to set
 	 */
-	private void setPoint(Point point) {
-		this.point = point;
+	private void setPointBalance(PointBalance aPointBalance) {
+		this.pointBalance = aPointBalance;
 	}
 
 	/**
 	 * @param rmb
 	 *            the rmb to set
 	 */
-	private void setRmb(Rmb rmb) {
-		this.rmb = rmb;
+	private void setRmbBalance(RmbBalance aRmbBalance) {
+		this.rmbBalance = aRmbBalance;
 	}
 
 	/**

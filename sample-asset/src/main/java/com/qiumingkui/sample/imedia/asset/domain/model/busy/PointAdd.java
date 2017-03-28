@@ -1,9 +1,10 @@
-package com.qiumingkui.sample.imedia.asset.domain.model.account.point;
+package com.qiumingkui.sample.imedia.asset.domain.model.busy;
 
 import com.qiumingkui.sample.imedia.asset.domain.model.account.AssetAccountId;
+import com.qiumingkui.sample.imedia.asset.domain.model.currency.Point;
 
 public class PointAdd {
-
+	
 	private AssetAccountId assetAccountId;
 
 	private Point point;
