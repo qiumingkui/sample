@@ -7,7 +7,10 @@ import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostClosed;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostDraft;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostIssued;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostLocked;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatus;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatusException;
 
@@ -66,28 +69,28 @@ public class Post implements Serializable {
 		setModifyTime(UtilDateTime.nowTimestamp());
 	}
 
-	public void changeCommentNumber(PostComment aPostComment) {
+	public void changePostComment(PostComment aPostComment) {
 		setPostComment(aPostComment);
 	}
 
-	public void changeStatus(PostStatus aStatus) {
-		this.setStatus(aStatus);
-	}
-
 	public void issue() throws PostStatusException {
-		this.status.issue(this);
+		this.status.issue();
+		this.setStatus(new PostIssued());
 	}
 
 	public void reopen() throws PostStatusException {
-		this.status.reopen(this);
+		this.status.reopen();
+		this.setStatus(new PostIssued());
 	}
 
 	public void lock() throws PostStatusException {
-		this.status.lock(this);
+		this.status.lock();
+		this.setStatus(new PostLocked());
 	}
 
 	public void close() throws PostStatusException {
-		this.status.close(this);
+		this.status.close();
+		this.setStatus(new PostClosed());
 	}
 
 	public PostId postId() {
@@ -106,7 +109,7 @@ public class Post implements Serializable {
 		return status;
 	}
 
-	public PostComment commentNumber() {
+	public PostComment postComment() {
 		return postComment;
 	}
 

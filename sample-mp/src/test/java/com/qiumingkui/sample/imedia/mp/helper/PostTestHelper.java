@@ -8,7 +8,7 @@ import com.qiumingkui.sample.imedia.mp.domain.model.post.PostBuilder;
 
 public class PostTestHelper {
 
-	public static Post buildBlogExample() {
+	public static Post buildPostExample() {
 		// Person person = MemberTestHelper.buildPerson4CommonUserExample();
 		Author author = MemberTestHelper.buildAuthorExample(true);
 		return PostBuilder.build("blog" + " : " + new Date(), "content" + " : " + new Date(), author);

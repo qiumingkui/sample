@@ -1,7 +1,5 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.post.status;
 
-import com.qiumingkui.sample.imedia.mp.domain.model.post.Post;
-
 public abstract class PostStatus {
 
 	public static final int DRAFT = 0;
@@ -41,14 +39,14 @@ public abstract class PostStatus {
 		this.code = code;
 	}
 
-	public abstract void draft(Post post) throws PostStatusException;
+	public abstract void draft() throws PostStatusException;
 
-	public abstract void issue(Post post) throws PostStatusException;
+	public abstract void issue() throws PostStatusException;
 
-	public abstract void lock(Post post) throws PostStatusException;
+	public abstract void lock() throws PostStatusException;
 
-	public abstract void close(Post post) throws PostStatusException;
+	public abstract void close() throws PostStatusException;
 
-	public abstract void reopen(Post post) throws PostStatusException;
+	public abstract void reopen() throws PostStatusException;
 
 }
