@@ -18,7 +18,7 @@ public class IndividualPublisher extends Publisher {
 	public IndividualPublisher(IndividualPublisherId aIndividualPublisher, Owner aOwner, PublisherPost aMediaPublisherPost) {
 		super(aIndividualPublisher, aOwner, aMediaPublisherPost);
 		
-        this.setPersonalBloggerId(aIndividualPublisher);
+        this.setIndividualPublisherId(aIndividualPublisher);
 		this.setCode(INDIVIDUAL_PUBLISHER);
 	}
 
@@ -26,7 +26,7 @@ public class IndividualPublisher extends Publisher {
 			PublisherStatus aBloggerStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 		super(aIndividualPublisherId, aOwner, aMediaPublisherPost, rank, aBloggerStatus, aCreateTime, aModifyTime);
 		
-		this.setPersonalBloggerId(aIndividualPublisherId);
+		this.setIndividualPublisherId(aIndividualPublisherId);
 		this.setCode(INDIVIDUAL_PUBLISHER);
 	}
 
@@ -34,7 +34,7 @@ public class IndividualPublisher extends Publisher {
 		return individualPublisherId;
 	}
 
-	private void setPersonalBloggerId(IndividualPublisherId aIndividualBloggerId) {
+	private void setIndividualPublisherId(IndividualPublisherId aIndividualBloggerId) {
 		this.individualPublisherId = aIndividualBloggerId;
 	}
 
