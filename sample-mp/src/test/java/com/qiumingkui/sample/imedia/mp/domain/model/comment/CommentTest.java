@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.post;
+package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
