@@ -15,10 +15,10 @@ public class IndividualPublisher extends Publisher {
 	
 	private IndividualPublisherId individualPublisherId;
 
-	public IndividualPublisher(IndividualPublisherId aIndividualPublisher, Owner aOwner, PublisherPost aMediaPublisherPost) {
-		super(aIndividualPublisher, aOwner, aMediaPublisherPost);
+	public IndividualPublisher(IndividualPublisherId aIndividualPublisherId, Owner aOwner, PublisherPost aMediaPublisherPost) {
+		super(aIndividualPublisherId, aOwner, aMediaPublisherPost);
 		
-        this.setIndividualPublisherId(aIndividualPublisher);
+        this.setIndividualPublisherId(aIndividualPublisherId);
 		this.setCode(INDIVIDUAL_PUBLISHER);
 	}
 
