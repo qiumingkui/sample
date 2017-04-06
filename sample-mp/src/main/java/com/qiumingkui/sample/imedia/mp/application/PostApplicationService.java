@@ -13,8 +13,8 @@ import com.qiumingkui.sample.imedia.mp.domain.model.post.PostBuilder;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostData;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostPermissionPolicy;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.PostRepository;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatusException;
-import com.qiumingkui.sample.imedia.mp.port.adapter.persistence.repository.PostRepository;
 
 @Service
 public class PostApplicationService {

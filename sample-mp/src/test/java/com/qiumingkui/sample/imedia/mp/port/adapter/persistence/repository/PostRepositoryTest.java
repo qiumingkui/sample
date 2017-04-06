@@ -15,8 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.Post;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.PostRepository;
 import com.qiumingkui.sample.imedia.mp.helper.PostTestHelper;
-import com.qiumingkui.sample.imedia.mp.port.adapter.persistence.repository.PostRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

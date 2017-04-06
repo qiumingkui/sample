@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.qiumingkui.sample.imedia.mp.domain.model.post.Post;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
-import com.qiumingkui.sample.imedia.mp.port.adapter.persistence.repository.PostRepository;
+import com.qiumingkui.sample.imedia.mp.domain.model.post.PostRepository;
 
 @Service
 public class MemoryPostRepository implements PostRepository {

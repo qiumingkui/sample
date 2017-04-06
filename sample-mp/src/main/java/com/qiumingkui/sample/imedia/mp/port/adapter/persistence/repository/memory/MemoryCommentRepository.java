@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.Comment;
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentId;
-import com.qiumingkui.sample.imedia.mp.port.adapter.persistence.repository.CommentRepository;
+import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentRepository;
 
 @Service
 public class MemoryCommentRepository implements CommentRepository {
