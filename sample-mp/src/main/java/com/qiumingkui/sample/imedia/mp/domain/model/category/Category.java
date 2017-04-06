@@ -17,19 +17,19 @@ public class Category implements Serializable {
 
 	private String description;
 
-	private CategoryPost categoryPost;
+	private CategoryPostVal categoryPostVal;
 
 	private Category() {
 		super();
 	}
 
-	protected Category(CategoryId aCategoryId, CategoryId aParentId, String aName, String aDescription,CategoryPost aCategoryPost) {
+	protected Category(CategoryId aCategoryId, CategoryId aParentId, String aName, String aDescription,CategoryPostVal aCategoryPostVal) {
 		this();
 		this.setCategoryId(aCategoryId);
 		this.setParentId(aParentId);
 		this.setName(aName);
 		this.setDescription(aDescription);
-		this.setCategoryPost(aCategoryPost);
+		this.setCategoryPostVal(aCategoryPostVal);
 	}
 
 	public CategoryId categoryId() {
@@ -48,8 +48,8 @@ public class Category implements Serializable {
 		return description;
 	}
 
-	public CategoryPost categoryPost() {
-		return categoryPost;
+	public CategoryPostVal categoryPostVal() {
+		return categoryPostVal;
 	}
 
 	private void setCategoryId(CategoryId categoryId) {
@@ -68,8 +68,8 @@ public class Category implements Serializable {
 		this.description = description;
 	}
 
-	private void setCategoryPost(CategoryPost categoryPost) {
-		this.categoryPost = categoryPost;
+	private void setCategoryPostVal(CategoryPostVal categoryPostVal) {
+		this.categoryPostVal = categoryPostVal;
 	}
 
 }

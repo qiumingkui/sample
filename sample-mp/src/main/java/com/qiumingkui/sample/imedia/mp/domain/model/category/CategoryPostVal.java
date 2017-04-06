@@ -1,14 +1,14 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-public class CategoryPost {
+public class CategoryPostVal {
 
 	private long postNumber;
 
-	private CategoryPost() {
+	private CategoryPostVal() {
 		super();
 	}
 
-	public CategoryPost(long postNumber) {
+	public CategoryPostVal(long postNumber) {
 		this();
 		this.setPostNumber(postNumber);
 	}
