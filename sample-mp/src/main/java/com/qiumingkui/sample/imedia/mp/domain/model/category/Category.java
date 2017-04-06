@@ -17,19 +17,20 @@ public class Category implements Serializable {
 
 	private String description;
 
-	private CategoryPostVal categoryPostVal;
+	private CategoryPostVal postVal;
 
 	private Category() {
 		super();
 	}
 
-	protected Category(CategoryId aCategoryId, CategoryId aParentId, String aName, String aDescription,CategoryPostVal aCategoryPostVal) {
+	protected Category(CategoryId aCategoryId, CategoryId aParentId, String aName, String aDescription,
+			CategoryPostVal aPostVal) {
 		this();
 		this.setCategoryId(aCategoryId);
 		this.setParentId(aParentId);
 		this.setName(aName);
 		this.setDescription(aDescription);
-		this.setCategoryPostVal(aCategoryPostVal);
+		this.setPostVal(aPostVal);
 	}
 
 	public CategoryId categoryId() {
@@ -48,28 +49,49 @@ public class Category implements Serializable {
 		return description;
 	}
 
-	public CategoryPostVal categoryPostVal() {
-		return categoryPostVal;
+	public CategoryPostVal postVal() {
+		return postVal;
 	}
 
-	private void setCategoryId(CategoryId categoryId) {
-		this.categoryId = categoryId;
+	public long postNumber() {
+		return this.postVal().postNumber();
 	}
 
-	private void setParentId(CategoryId parentId) {
-		this.parentId = parentId;
+	public void changeDescription(String aDescription) {
+		this.setDescription(aDescription);
 	}
 
-	private void setName(String name) {
-		this.name = name;
+	public void changePostNumber(long aPostNumber){
+		CategoryPostVal newPostVal = new CategoryPostVal(aPostNumber);
+		this.setPostVal(newPostVal);
+	}
+	
+	public void addPostNumber(long addNumber) {
+		synchronized (this) {
+			long newPostNumber = this.postNumber() + addNumber;
+			CategoryPostVal newPostVal = new CategoryPostVal(newPostNumber);
+			this.setPostVal(newPostVal);
+		}
+	}
+
+	private void setCategoryId(CategoryId aCategoryId) {
+		this.categoryId = aCategoryId;
+	}
+
+	private void setParentId(CategoryId aParentId) {
+		this.parentId = aParentId;
+	}
+
+	private void setName(String aName) {
+		this.name = aName;
 	}
 
 	private void setDescription(String description) {
 		this.description = description;
 	}
 
-	private void setCategoryPostVal(CategoryPostVal categoryPostVal) {
-		this.categoryPostVal = categoryPostVal;
+	private void setPostVal(CategoryPostVal aPostVal) {
+		this.postVal = aPostVal;
 	}
 
 }

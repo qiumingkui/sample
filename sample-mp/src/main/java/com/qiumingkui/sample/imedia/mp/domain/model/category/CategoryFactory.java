@@ -6,9 +6,10 @@ public class CategoryFactory {
 
 	public static Category create(String aParentId, String aName, String aDescription) {
 		final String CATEGORY_ID = UUIDUtils.gen();
+		final long POST_NUMBER = 0;
 		Category category = new Category(new CategoryId(CATEGORY_ID), new CategoryId(aParentId), aName, aDescription,
-				new CategoryPostVal(0));
-		return category;	
+				new CategoryPostVal(POST_NUMBER));
+		return category;
 	}
 
 }

@@ -18,7 +18,7 @@ public class PostCategory implements Serializable {
 
 
 
-	public PostCategory(PostCategoryId aPostCategoryId) {
+	protected PostCategory(PostCategoryId aPostCategoryId) {
 		this();
 		this.setPostCategoryId(aPostCategoryId);
 	}
