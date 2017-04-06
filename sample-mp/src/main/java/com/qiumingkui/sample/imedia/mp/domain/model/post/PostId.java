@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.post;
 
-import com.qiumingkui.sample.imedia.common.domain.model.EntityId;
+import com.qiumingkui.sample.imedia.common.domain.id.EntityStrId;
 
-public class PostId extends EntityId {
+public class PostId extends EntityStrId {
 
 	/**
 	 * 

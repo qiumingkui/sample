@@ -77,7 +77,8 @@ public class Category implements Serializable {
 	}
 
 	private void setCategoryId(CategoryId aCategoryId) {
-		AssertionUtil.assertArgumentLength(aCategoryId.id(), 32, "CategoryId  is too lang!");
+		// AssertionUtil.assertArgumentLength(aCategoryId.id(), 32, "CategoryId
+		// is too lang!");
 		this.categoryId = aCategoryId;
 	}
 
@@ -97,7 +98,7 @@ public class Category implements Serializable {
 	}
 
 	private void setPostVal(CategoryPostVal aPostVal) {
-		AssertionUtil.assertArgumentTrue(aPostVal.postNumber()<0,"PostNumber can't < 0 !");
+		AssertionUtil.assertArgumentTrue(aPostVal.postNumber() < 0, "PostNumber can't < 0 !");
 		this.postVal = aPostVal;
 	}
 

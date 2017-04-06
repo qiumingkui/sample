@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.asset.domain.model.account;
 
-import com.qiumingkui.sample.imedia.common.domain.model.EntityId;
+import com.qiumingkui.sample.imedia.common.domain.id.EntityStrId;
 
-public class AssetAccountId extends EntityId {
+public class AssetAccountId extends EntityStrId {
 
 	/**
 	 * 

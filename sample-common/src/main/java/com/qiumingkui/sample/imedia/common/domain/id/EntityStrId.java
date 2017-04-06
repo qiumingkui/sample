@@ -1,8 +1,6 @@
-package com.qiumingkui.sample.imedia.common.domain.model;
+package com.qiumingkui.sample.imedia.common.domain.id;
 
-import java.io.Serializable;
-
-public class EntityId implements Serializable {
+public class EntityStrId implements DomainEntityId<String> {
 
 	/**
 	 * 
@@ -11,11 +9,11 @@ public class EntityId implements Serializable {
 
 	protected String id;
 
-	public EntityId() {
+	public EntityStrId() {
 		super();
 	}
 
-	public EntityId(String id) {
+	public EntityStrId(String id) {
 		super();
 		setId(id);
 	}
