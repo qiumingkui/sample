@@ -2,12 +2,16 @@ package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
 import java.io.Serializable;
 
+import com.qiumingkui.sample.imedia.common.EntityAssertion;
+
 public class Category implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private EntityAssertion assertion;
 
 	private CategoryId categoryId;
 
@@ -31,6 +35,8 @@ public class Category implements Serializable {
 		this.setName(aName);
 		this.setDescription(aDescription);
 		this.setPostVal(aPostVal);
+
+		this.assertion = new EntityAssertion();
 	}
 
 	public CategoryId categoryId() {
@@ -61,11 +67,11 @@ public class Category implements Serializable {
 		this.setDescription(aDescription);
 	}
 
-	public void changePostNumber(long aPostNumber){
+	public void changePostNumber(long aPostNumber) {
 		CategoryPostVal newPostVal = new CategoryPostVal(aPostNumber);
 		this.setPostVal(newPostVal);
 	}
-	
+
 	public void addPostNumber(long addNumber) {
 		synchronized (this) {
 			long newPostNumber = this.postNumber() + addNumber;
@@ -75,22 +81,27 @@ public class Category implements Serializable {
 	}
 
 	private void setCategoryId(CategoryId aCategoryId) {
+		assertion.assertArgumentLength(aCategoryId.id(), 32, "CategoryId  is too lang!");
 		this.categoryId = aCategoryId;
 	}
 
 	private void setParentId(CategoryId aParentId) {
+		assertion.assertArgumentLength(aParentId.id(), 32, "ParentId  is too lang!");
 		this.parentId = aParentId;
 	}
 
 	private void setName(String aName) {
+		assertion.assertArgumentLength(aName, 128, "Name is too lang!");
 		this.name = aName;
 	}
 
-	private void setDescription(String description) {
-		this.description = description;
+	private void setDescription(String aDescription) {
+		assertion.assertArgumentLength(aDescription, 1024, "Description is too lang!");
+		this.description = aDescription;
 	}
 
 	private void setPostVal(CategoryPostVal aPostVal) {
+		assertion.assertArgumentTrue(aPostVal.postNumber()<0,"PostNumber can't < 0 !");
 		this.postVal = aPostVal;
 	}
 
