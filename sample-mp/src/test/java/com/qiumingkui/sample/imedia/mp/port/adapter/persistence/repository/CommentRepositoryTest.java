@@ -32,24 +32,24 @@ public class CommentRepositoryTest {
 	// @Transactional
 	public void sava4Create() {
 		aComment = CommentTestHelper.buildCommentExample();
-		aCommentId = aComment.commentId();
+		aCommentId = aComment.id();
 		commentRepository.save(aComment);
 
 		Comment comment = commentRepository.get(aCommentId);
-		assertThat(comment != null && comment.commentId().key().equals(aCommentId.key())).isTrue();
+		assertThat(comment != null && comment.id().key().equals(aCommentId.key())).isTrue();
 	}
 
 	@Test
 	// @Transactional
 	public void get() {
 		Comment comment = commentRepository.get(aCommentId);
-		assertThat(comment != null && comment.commentId().key().equals(aCommentId.key())).isTrue();
+		assertThat(comment != null && comment.id().key().equals(aCommentId.key())).isTrue();
 	}
 
 	@Test
 	// @Transactional
 	public void save4Update() {
-		Comment comment = commentRepository.get(aComment.commentId());
+		Comment comment = commentRepository.get(aComment.id());
 		Content content = comment.content();
 
 		Content newContent = new Content("comment" + " : this is new :" + new Date());

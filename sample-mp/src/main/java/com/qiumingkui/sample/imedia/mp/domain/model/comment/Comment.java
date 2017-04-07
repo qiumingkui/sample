@@ -1,20 +1,20 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
 
-public class Comment implements Serializable {
+public class Comment implements IdentityEntity<CommentId> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private CommentId commentId;
+	private CommentId id;
 
 	private PostId postId;
 
@@ -22,17 +22,20 @@ public class Comment implements Serializable {
 
 	private Timestamp createTime;
 
-	private Comment() {
+	protected Comment() {
 		super();
 	}
 
-	public Comment(CommentId aCommentId, PostId aBlogId, Content aContent) {
-		this();
+	protected Comment create(CommentId aId, PostId aBlogId, Content aContent) {
+		this.init(aId, aBlogId, aContent, UtilDateTime.nowTimestamp());
+		return this;
+	}
 
-		this.setCommentId(aCommentId);
-		this.setBlogId(aBlogId);
+	protected void init(CommentId aId, PostId aBlogId, Content aContent, Timestamp aCreateTime) {
+		this.setCommentId(aId);
+		this.setPostId(aBlogId);
 		this.setContent(aContent);
-		this.setCreateTime(UtilDateTime.nowTimestamp());
+		this.setCreateTime(aCreateTime);
 	}
 
 	public void changeContent(Content content) {
@@ -40,8 +43,9 @@ public class Comment implements Serializable {
 
 	}
 
-	public CommentId commentId() {
-		return this.commentId;
+	@Override
+	public CommentId id() {
+		return this.id;
 	}
 
 	public PostId postId() {
@@ -57,10 +61,10 @@ public class Comment implements Serializable {
 	}
 
 	private void setCommentId(CommentId commentId) {
-		this.commentId = commentId;
+		this.id = commentId;
 	}
 
-	private void setBlogId(PostId postId) {
+	private void setPostId(PostId postId) {
 		this.postId = postId;
 	}
 

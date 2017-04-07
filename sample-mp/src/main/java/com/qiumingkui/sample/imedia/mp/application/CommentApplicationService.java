@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.Comment;
-import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentBuilder;
+import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentFactory;
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentData;
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentId;
 import com.qiumingkui.sample.imedia.mp.domain.model.comment.CommentRepository;
@@ -25,15 +25,15 @@ public class CommentApplicationService {
 	 */
 	// @Transactional
 	public String publishComment(String aBlogId, String aContent) {
-		Comment comment = CommentBuilder.build(aBlogId, aContent);
+		Comment comment = CommentFactory.create(aBlogId, aContent);
 		commentRepository.save(comment);
-		return comment.commentId().key();
+		return comment.id().key();
 	}
 
 	public CommentData readComment(String aCommentId) {
 		CommentId commentId = new CommentId(aCommentId);
 		Comment comment = commentRepository.get(commentId);
-		CommentData commentData = new CommentData(comment.commentId().key(), comment.commentId().key(),
+		CommentData commentData = new CommentData(comment.id().key(), comment.id().key(),
 				comment.content().contentTxt(), comment.createTime());
 		return commentData;
 	}

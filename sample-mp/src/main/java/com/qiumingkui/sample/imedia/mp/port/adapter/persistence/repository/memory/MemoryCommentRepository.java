@@ -21,7 +21,7 @@ public class MemoryCommentRepository implements CommentRepository {
 
 	@Override
 	public void save(Comment aComment) {
-		cache.put(aComment.commentId().key(), aComment);
+		cache.put(aComment.id().key(), aComment);
 
 	}
 
