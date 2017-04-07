@@ -11,23 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.qiumingkui.sample.imedia.mp.application.PostApplicationService;
+import com.qiumingkui.sample.imedia.mp.application.BlogEntryApplicationService;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryData;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.BlogEntryStatus;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.BlogEntryStatusException;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Reader;
-import com.qiumingkui.sample.imedia.mp.domain.model.post.PostData;
-import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatus;
-import com.qiumingkui.sample.imedia.mp.domain.model.post.status.PostStatusException;
 import com.qiumingkui.sample.imedia.mp.helper.MemberTestHelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PostApplicationServiceTest {
+public class BlogEntryApplicationServiceTest {
 
 	// @Autowired
 	// private PersonRepository personRepository;
 
 	@Autowired
-	private PostApplicationService postApplicationService;
+	private BlogEntryApplicationService blogEntryApplicationService;
 
 	// private Person aPerson4Admin;
 	// private Person aPerson4CommonUser;
@@ -51,7 +51,7 @@ public class PostApplicationServiceTest {
 		String content = "aContent:" + new Date();
 		String blogId = null;
 		try {
-			blogId = postApplicationService.publishBlog(title, content, MemberTestHelper.buildAuthorExample(true));
+			blogId = blogEntryApplicationService.publishBlog(title, content, MemberTestHelper.buildAuthorExample(true));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,20 +65,20 @@ public class PostApplicationServiceTest {
 		String blogId = null;
 		Author author = MemberTestHelper.buildAuthorExample(true);
 		try {
-			blogId = postApplicationService.publishBlog(title, content, author);
+			blogId = blogEntryApplicationService.publishBlog(title, content, author);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 		Reader reader = MemberTestHelper.buildReader(true);
-		PostData postData = null;
+		BlogEntryData blogEntryData = null;
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isTrue();
-		assertThat(postData.getTitle().equals(title)).isTrue();
+		assertThat(blogEntryData != null).isTrue();
+		assertThat(blogEntryData.getTitle().equals(title)).isTrue();
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class PostApplicationServiceTest {
 		String blogId = null;
 		Author author = MemberTestHelper.buildAuthorExample(true);
 		try {
-			blogId = postApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(), author);
+			blogId = blogEntryApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(), author);
 		} catch (Exception e1) {
 
 			e1.printStackTrace();
@@ -95,19 +95,19 @@ public class PostApplicationServiceTest {
 		String title = "aTitle modify by aPerson4CommonUser:" + new Date();
 		String content = "aContent modify by aPerson4CommonUser:" + new Date();
 		try {
-			postApplicationService.modifyBlog(blogId, title, content, author);
+			blogEntryApplicationService.modifyBlog(blogId, title, content, author);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		Reader reader = MemberTestHelper.buildReader(true);
-		PostData postData = null;
+		BlogEntryData blogEntryData = null;
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isTrue();
-		assertThat(postData.getTitle().equals(title)).isTrue();
+		assertThat(blogEntryData != null).isTrue();
+		assertThat(blogEntryData.getTitle().equals(title)).isTrue();
 
 	}
 
@@ -115,52 +115,52 @@ public class PostApplicationServiceTest {
 	public void lockBlog() {
 		String blogId = null;
 		try {
-			blogId = postApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+			blogId = blogEntryApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
 					MemberTestHelper.buildAuthorExample(true));
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 		try {
-			postApplicationService.lockBlog(blogId);
-		} catch (PostStatusException e) {
+			blogEntryApplicationService.lockBlog(blogId);
+		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
 		Reader reader = MemberTestHelper.buildReader(true);
-		PostData postData = null;
+		BlogEntryData blogEntryData = null;
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isTrue();
-		assertThat(postData.getStatus() == PostStatus.CLOSED).isFalse();
-		assertThat(postData.getStatus() == PostStatus.LOCKED).isTrue();
+		assertThat(blogEntryData != null).isTrue();
+		assertThat(blogEntryData.getStatus() == BlogEntryStatus.CLOSED).isFalse();
+		assertThat(blogEntryData.getStatus() == BlogEntryStatus.LOCKED).isTrue();
 	}
 
 	@Test
 	public void closeBlog() {
 		String blogId = null;
 		try {
-			blogId = postApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+			blogId = blogEntryApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
 					MemberTestHelper.buildAuthorExample(true));
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 		try {
-			postApplicationService.closeBlog(blogId);
-		} catch (PostStatusException e) {
+			blogEntryApplicationService.closeBlog(blogId);
+		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
 		Reader reader = MemberTestHelper.buildReader(true);
-		PostData postData = null;
+		BlogEntryData blogEntryData = null;
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isFalse();
+		assertThat(blogEntryData != null).isFalse();
 		// assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
 		// assertThat(blogData.getStatus() == BlogStatus.LOCKED).isFalse();
 	}
@@ -169,38 +169,38 @@ public class PostApplicationServiceTest {
 	public void reopenBlog() {
 		String blogId = null;
 		try {
-			blogId = postApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
+			blogId = blogEntryApplicationService.publishBlog("aTitle:" + new Date(), "aContent:" + new Date(),
 					MemberTestHelper.buildAuthorExample(true));
-			postApplicationService.closeBlog(blogId);
+			blogEntryApplicationService.closeBlog(blogId);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 
 		Reader reader = MemberTestHelper.buildReader(true);
-		PostData postData = null;
+		BlogEntryData blogEntryData = null;
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isFalse();
+		assertThat(blogEntryData != null).isFalse();
 		// assertThat(blogData.getStatus() == BlogStatus.CLOSED).isTrue();
 
 		try {
-			postApplicationService.reopenBlog(blogId);
-		} catch (PostStatusException e) {
+			blogEntryApplicationService.reopenBlog(blogId);
+		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
 
 		reader = MemberTestHelper.buildReader(true);
 		try {
-			postData = postApplicationService.readBlog(blogId, reader);
+			blogEntryData = blogEntryApplicationService.readBlog(blogId, reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertThat(postData != null).isTrue();
-		assertThat(postData.getStatus() == PostStatus.ISSUED).isTrue();
+		assertThat(blogEntryData != null).isTrue();
+		assertThat(blogEntryData.getStatus() == BlogEntryStatus.ISSUED).isTrue();
 	}
 
 }

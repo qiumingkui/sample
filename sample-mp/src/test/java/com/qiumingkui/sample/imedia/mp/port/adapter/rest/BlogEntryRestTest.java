@@ -16,14 +16,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.qiumingkui.sample.imedia.mp.application.PostApplicationService;
+import com.qiumingkui.sample.imedia.mp.application.BlogEntryApplicationService;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 import com.qiumingkui.sample.imedia.mp.helper.MemberTestHelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PostRestTest {
+public class BlogEntryRestTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -32,7 +32,7 @@ public class PostRestTest {
 //	private PersonRepository personRepository;
 
 	@Autowired
-	private PostApplicationService postApplicationService;
+	private BlogEntryApplicationService blogEntryApplicationService;
 
 private Author author;
 
@@ -45,7 +45,7 @@ private Author author;
 		String title = "aTitle:" + new Date();
 		String content = "aContent:" + new Date();
 		try {
-			aBlogId = postApplicationService.publishBlog(title, content,author);
+			aBlogId = blogEntryApplicationService.publishBlog(title, content,author);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

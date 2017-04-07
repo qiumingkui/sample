@@ -1,13 +1,13 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.post;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 
-public class PostComment {
+public class BlogEntryComment {
 	private int commentNumber;
 
-	private PostComment() {
+	private BlogEntryComment() {
 		super();
 	}
 
-	public PostComment(int aCommentNumber) {
+	public BlogEntryComment(int aCommentNumber) {
 		this();
 		this.setCommentNumber(aCommentNumber);
 	}

@@ -1,6 +1,6 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.post;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 
-public class PostData {
+public class BlogEntryData {
 
 	private String blogId;
 
@@ -10,7 +10,7 @@ public class PostData {
 
 	private int status;
 
-	public PostData(String blogId, String title, String content, int status) {
+	public BlogEntryData(String blogId, String title, String content, int status) {
 		super();
 		this.blogId = blogId;
 		this.title = title;

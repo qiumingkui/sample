@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
-import com.qiumingkui.sample.imedia.mp.domain.model.post.PostId;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryId;
 
 public class Comment implements IdentityEntity<CommentId> {
 
@@ -16,7 +16,7 @@ public class Comment implements IdentityEntity<CommentId> {
 
 	private CommentId id;
 
-	private PostId postId;
+	private BlogEntryId blogEntryId;
 
 	private Content content;
 
@@ -26,12 +26,12 @@ public class Comment implements IdentityEntity<CommentId> {
 		super();
 	}
 
-	protected Comment create(CommentId aId, PostId aBlogId, Content aContent) {
+	protected Comment create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
 		this.init(aId, aBlogId, aContent, UtilDateTime.nowTimestamp());
 		return this;
 	}
 
-	protected void init(CommentId aId, PostId aBlogId, Content aContent, Timestamp aCreateTime) {
+	protected void init(CommentId aId, BlogEntryId aBlogId, Content aContent, Timestamp aCreateTime) {
 		this.setCommentId(aId);
 		this.setPostId(aBlogId);
 		this.setContent(aContent);
@@ -48,8 +48,8 @@ public class Comment implements IdentityEntity<CommentId> {
 		return this.id;
 	}
 
-	public PostId postId() {
-		return this.postId;
+	public BlogEntryId blogEntryId() {
+		return this.blogEntryId;
 	}
 
 	public Content content() {
@@ -64,8 +64,8 @@ public class Comment implements IdentityEntity<CommentId> {
 		this.id = commentId;
 	}
 
-	private void setPostId(PostId postId) {
-		this.postId = postId;
+	private void setPostId(BlogEntryId blogEntryId) {
+		this.blogEntryId = blogEntryId;
 	}
 
 	private void setContent(Content content) {

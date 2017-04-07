@@ -1,8 +1,8 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.post;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 
 import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
-public class PostId extends StringId {
+public class BlogEntryId extends StringId {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class PostId extends StringId {
 	// super();
 	// }
 
-	public PostId(String id) {
+	public BlogEntryId(String id) {
 		super(id);
 	}
 
