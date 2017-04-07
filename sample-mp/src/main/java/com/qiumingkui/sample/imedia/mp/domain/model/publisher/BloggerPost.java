@@ -1,16 +1,16 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
 
-public class PublisherPost {
+public class BloggerPost {
 
 	private int postNumber;
 	
 	private int commentNumber;
 	
-	private PublisherPost() {
+	private BloggerPost() {
 		super();
 	}
 
-	public PublisherPost(int aPostNumber, int aCommentNumber) {
+	public BloggerPost(int aPostNumber, int aCommentNumber) {
 		this();
 		this.setPostNumber(aPostNumber);
 		this.setCommentNumber(aCommentNumber);

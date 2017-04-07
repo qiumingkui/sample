@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.publisher.status;
 
-public class PublisherStatusException extends Exception {
+public class BloggerStatusException extends Exception {
 
-	public PublisherStatusException(String message) {
+	public BloggerStatusException(String message) {
 		super(message);
 	}
 

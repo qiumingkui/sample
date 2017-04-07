@@ -6,7 +6,7 @@ import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntry;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryFactory;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 
-public class PostTestHelper {
+public class BlogEntryTestHelper {
 
 	public static BlogEntry buildPostExample() {
 		// Person person = MemberTestHelper.buildPerson4CommonUserExample();

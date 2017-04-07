@@ -59,4 +59,8 @@ public class MemberBuilder {
 		return reader;
 	}
 
+	public static Owner buildOwner(String aId, String aAccount, String aName, boolean aValidated) {
+		Owner owner = new Owner(aId, aAccount, aName, aValidated);
+		return owner;
+	}
 }

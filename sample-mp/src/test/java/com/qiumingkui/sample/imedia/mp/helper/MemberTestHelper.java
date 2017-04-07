@@ -3,6 +3,7 @@ package com.qiumingkui.sample.imedia.mp.helper;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Admin;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.MemberBuilder;
+import com.qiumingkui.sample.imedia.mp.domain.model.member.Owner;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Reader;
 
 public class MemberTestHelper {
@@ -29,5 +30,9 @@ public class MemberTestHelper {
 
 	public static Reader buildReader(boolean aValidated) {
 		return MemberBuilder.buildReader("3", "wangwu", "王五", aValidated);
+	}
+	
+	public static Owner buildOwner(boolean aValidated) {
+		return MemberBuilder.buildOwner("4", "liumazi", "刘麻子", aValidated);
 	}
 }

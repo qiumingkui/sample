@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank;
 
-public abstract class PublisherRank {
+public abstract class BloggerRank {
 
 	public static final int NOVICE = 0;
 

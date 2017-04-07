@@ -9,12 +9,12 @@ public class StringId implements SimpleId<String,StringId> {
 
 	private String key;
 
-	protected StringId() {
+	private StringId() {
 		super();
 	}
 
 	protected StringId(String aKey) {
-		super();
+		this();
 		this.setKey(aKey);
 	}
 

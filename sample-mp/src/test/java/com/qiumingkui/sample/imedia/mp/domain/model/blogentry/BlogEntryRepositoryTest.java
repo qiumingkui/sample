@@ -16,7 +16,7 @@ import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntry;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryId;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryRepository;
-import com.qiumingkui.sample.imedia.mp.helper.PostTestHelper;
+import com.qiumingkui.sample.imedia.mp.helper.BlogEntryTestHelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,7 +30,7 @@ public class BlogEntryRepositoryTest {
 	@Before
 	// @Transactional
 	public void save4Create() {
-		aBlog = PostTestHelper.buildPostExample();
+		aBlog = BlogEntryTestHelper.buildPostExample();
 		aBlogId = aBlog.id();
 		blogEntryRepository.save(aBlog);
 

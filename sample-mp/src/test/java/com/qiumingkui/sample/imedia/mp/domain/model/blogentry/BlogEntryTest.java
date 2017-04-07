@@ -18,7 +18,7 @@ import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Closed;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Draft;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Issued;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Locked;
-import com.qiumingkui.sample.imedia.mp.helper.PostTestHelper;
+import com.qiumingkui.sample.imedia.mp.helper.BlogEntryTestHelper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,7 +31,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changeTitle() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		Title title = new Title("Test Title:" + new Date());
 		blogEntry.changeTitle(title);
 		assertThat(blogEntry.title().titleTxt().equals(title.titleTxt())).isTrue();
@@ -39,7 +39,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changeContend() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		Content content = new Content("Test Content:" + new Date());
 		blogEntry.changeContent(content);
 		assertThat(blogEntry.content().contentTxt().equals(content.contentTxt())).isTrue();
@@ -47,7 +47,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changePostComment() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		BlogEntryComment blogEntryComment = new BlogEntryComment(5);
 		blogEntry.changePostComment(blogEntryComment);
 		assertThat(blogEntry.blogEntryComment().commentNumber() == blogEntryComment.commentNumber());
@@ -55,7 +55,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void issue() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		assertThat(blogEntry.status() instanceof Draft).isTrue();
 		try {
 			blogEntry.issue();
@@ -67,7 +67,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void reopen() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		assertThat(blogEntry.status() instanceof Draft).isTrue();
 		try {
 			blogEntry.issue();
@@ -81,7 +81,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void lock() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		assertThat(blogEntry.status() instanceof Draft).isTrue();
 		try {
 			blogEntry.issue();
@@ -94,7 +94,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void close() {
-		BlogEntry blogEntry = PostTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
 		assertThat(blogEntry.status() instanceof Draft).isTrue();
 		try {
 			blogEntry.issue();
