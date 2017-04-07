@@ -35,14 +35,14 @@ public class PostRepositoryTest {
 		postRepository.save(aBlog);
 
 		Post post = postRepository.get(aBlogId);
-		assertThat(post != null && post.postId().id().equals(aBlogId.id()));
+		assertThat(post != null && post.postId().key().equals(aBlogId.key()));
 	}
 
 	@Test
 	// @Transactional
 	public void get() {
 		Post post = postRepository.get(aBlogId);
-		assertThat(post != null && post.postId().id().equals(aBlogId.id()));
+		assertThat(post != null && post.postId().key().equals(aBlogId.key()));
 	}
 
 	@Test

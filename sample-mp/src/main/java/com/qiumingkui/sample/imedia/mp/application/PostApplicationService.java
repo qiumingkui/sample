@@ -37,7 +37,7 @@ public class PostApplicationService {
 			throw new Exception(aAuthor.name() + aAuthor.account() + ":你无权发布博客！");
 		post.issue();
 		postRepository.save(post);
-		return post.postId().id();
+		return post.postId().key();
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class PostApplicationService {
 		if (!PostPermissionPolicy.hasReadBlogPermission(post, aReader).isPermit())
 			throw new Exception(aReader.name() + aReader.account() + ":你无权读取博客！");
 
-		PostData postData = new PostData(post.postId().id(), post.title().titleTxt(), post.content().contentTxt(),
+		PostData postData = new PostData(post.postId().key(), post.title().titleTxt(), post.content().contentTxt(),
 				post.status().code());
 		return postData;
 	}

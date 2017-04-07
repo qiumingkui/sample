@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
 
-import com.qiumingkui.sample.imedia.common.domain.id.EntityStrId;
+import com.qiumingkui.sample.imedia.common.domain.id.StringKeyId;
 
-public class PublisherId extends EntityStrId {
+public class PublisherId extends StringKeyId {
 
 	/**
 	 * 

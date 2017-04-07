@@ -16,18 +16,18 @@ public class MemoryUserRepository implements UserRepository {
 
 	@Override
 	public User get(UserId aPersonId) {
-		return cache.get(aPersonId.id());
+		return cache.get(aPersonId.key());
 	}
 
 	@Override
 	public void save(User aPerson) {
-		cache.put(aPerson.userId().id(), aPerson);
+		cache.put(aPerson.userId().key(), aPerson);
 
 	}
 
 	@Override
 	public void del(UserId aPersonId) {
-		cache.remove(aPersonId.id());
+		cache.remove(aPersonId.key());
 	}
 
 }

@@ -36,14 +36,14 @@ public class CommentRepositoryTest {
 		commentRepository.save(aComment);
 
 		Comment comment = commentRepository.get(aCommentId);
-		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
+		assertThat(comment != null && comment.commentId().key().equals(aCommentId.key())).isTrue();
 	}
 
 	@Test
 	// @Transactional
 	public void get() {
 		Comment comment = commentRepository.get(aCommentId);
-		assertThat(comment != null && comment.commentId().id().equals(aCommentId.id())).isTrue();
+		assertThat(comment != null && comment.commentId().key().equals(aCommentId.key())).isTrue();
 	}
 
 	@Test

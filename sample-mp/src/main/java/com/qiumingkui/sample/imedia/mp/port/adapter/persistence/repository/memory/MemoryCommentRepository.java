@@ -16,18 +16,18 @@ public class MemoryCommentRepository implements CommentRepository {
 
 	@Override
 	public Comment get(CommentId aCommentId) {
-		return cache.get(aCommentId.id());
+		return cache.get(aCommentId.key());
 	}
 
 	@Override
 	public void save(Comment aComment) {
-		cache.put(aComment.commentId().id(), aComment);
+		cache.put(aComment.commentId().key(), aComment);
 
 	}
 
 	@Override
 	public void del(CommentId aCommentId) {
-		cache.remove(aCommentId.id());
+		cache.remove(aCommentId.key());
 	}
 
 }

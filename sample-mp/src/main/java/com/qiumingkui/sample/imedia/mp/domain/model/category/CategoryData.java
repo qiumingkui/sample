@@ -10,7 +10,7 @@ public class CategoryData implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static CategoryData create(Category aCategory) {
-		CategoryData data = new CategoryData(aCategory.categoryId().id(), aCategory.parentId().id(), aCategory.name(),
+		CategoryData data = new CategoryData(aCategory.id().key(), aCategory.parentId().key(), aCategory.name(),
 				aCategory.description(), aCategory.postNumber());
 		return data;
 	}

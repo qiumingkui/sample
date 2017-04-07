@@ -27,13 +27,13 @@ public class CommentApplicationService {
 	public String publishComment(String aBlogId, String aContent) {
 		Comment comment = CommentBuilder.build(aBlogId, aContent);
 		commentRepository.save(comment);
-		return comment.commentId().id();
+		return comment.commentId().key();
 	}
 
 	public CommentData readComment(String aCommentId) {
 		CommentId commentId = new CommentId(aCommentId);
 		Comment comment = commentRepository.get(commentId);
-		CommentData commentData = new CommentData(comment.commentId().id(), comment.commentId().id(),
+		CommentData commentData = new CommentData(comment.commentId().key(), comment.commentId().key(),
 				comment.content().contentTxt(), comment.createTime());
 		return commentData;
 	}

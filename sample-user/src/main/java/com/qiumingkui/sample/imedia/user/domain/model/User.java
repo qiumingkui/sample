@@ -34,7 +34,7 @@ public class User {
 		this.setName(aName);
 		this.setRole(aRole);
 
-		if (aUserId == null || aUserId.id().trim().length() <= 0) {
+		if (aUserId == null || aUserId.key().trim().length() <= 0) {
 			this.setAccount("anonymous");
 			this.setName("匿名用户");
 			this.setRole(null);

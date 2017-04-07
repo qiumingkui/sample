@@ -16,18 +16,18 @@ public class MemoryPostRepository implements PostRepository {
 
 	@Override
 	public Post get(PostId aBlogId) {
-		return cache.get(aBlogId.id());
+		return cache.get(aBlogId.key());
 	}
 
 	@Override
 	public void save(Post aBlog) {
-		cache.put(aBlog.postId().id(), aBlog);
+		cache.put(aBlog.postId().key(), aBlog);
 
 	}
 
 	@Override
 	public void del(PostId aBlogId) {
-		cache.remove(aBlogId.id());
+		cache.remove(aBlogId.key());
 	}
 
 }

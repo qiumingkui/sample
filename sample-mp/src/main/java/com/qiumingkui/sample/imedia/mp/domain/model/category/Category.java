@@ -1,17 +1,18 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-import java.io.Serializable;
-
 import com.qiumingkui.sample.imedia.common.AssertionUtil;
+import com.qiumingkui.sample.imedia.common.domain.entity.ConcurrencyEntity;
+import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
+import com.qiumingkui.sample.imedia.common.domain.version.ConcurrencyVersion;
 
-public class Category implements Serializable {
+public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private CategoryId categoryId;
+	private CategoryId id;
 
 	private CategoryId parentId;
 
@@ -21,22 +22,32 @@ public class Category implements Serializable {
 
 	private CategoryPostVal postVal;
 
-	private Category() {
+	private ConcurrencyVersion version;
+
+	protected Category() {
 		super();
 	}
 
-	protected Category(CategoryId aCategoryId, CategoryId aParentId, String aName, String aDescription,
+	public Category create(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
 			CategoryPostVal aPostVal) {
-		this();
-		this.setCategoryId(aCategoryId);
+
+		this.init(aId, aParentId, aName, aDescription, aPostVal, new ConcurrencyVersion(-1));
+		
+		return this;
+	}
+
+	protected void init(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
+			CategoryPostVal aPostVal, ConcurrencyVersion aVersion) {
+		this.setId(aId);
 		this.setParentId(aParentId);
 		this.setName(aName);
 		this.setDescription(aDescription);
 		this.setPostVal(aPostVal);
+		this.setVersion(aVersion);
 	}
 
-	public CategoryId categoryId() {
-		return categoryId;
+	public CategoryId id() {
+		return this.id;
 	}
 
 	public CategoryId parentId() {
@@ -59,6 +70,11 @@ public class Category implements Serializable {
 		return this.postVal().postNumber();
 	}
 
+	@Override
+	public ConcurrencyVersion version() {
+		return this.version;
+	}
+
 	public void changeDescription(String aDescription) {
 		this.setDescription(aDescription);
 	}
@@ -76,14 +92,14 @@ public class Category implements Serializable {
 		}
 	}
 
-	private void setCategoryId(CategoryId aCategoryId) {
+	private void setId(CategoryId aCategoryId) {
 		// AssertionUtil.assertArgumentLength(aCategoryId.id(), 32, "CategoryId
 		// is too lang!");
-		this.categoryId = aCategoryId;
+		this.id = aCategoryId;
 	}
 
 	private void setParentId(CategoryId aParentId) {
-		AssertionUtil.assertArgumentLength(aParentId.id(), 32, "ParentId  is too lang!");
+		AssertionUtil.assertArgumentLength(aParentId.key(), 32, "ParentId  is too lang!");
 		this.parentId = aParentId;
 	}
 
@@ -100,6 +116,10 @@ public class Category implements Serializable {
 	private void setPostVal(CategoryPostVal aPostVal) {
 		AssertionUtil.assertArgumentTrue(aPostVal.postNumber() < 0, "PostNumber can't < 0 !");
 		this.postVal = aPostVal;
+	}
+
+	private void setVersion(ConcurrencyVersion aVersion) {
+		this.version = aVersion;
 	}
 
 }
