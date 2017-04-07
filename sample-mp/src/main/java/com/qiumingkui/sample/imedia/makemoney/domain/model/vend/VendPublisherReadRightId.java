@@ -4,6 +4,11 @@ import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
 public class VendPublisherReadRightId extends StringId {
 
+	protected VendPublisherReadRightId(String aKey) {
+		super(aKey);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * 
 	 */

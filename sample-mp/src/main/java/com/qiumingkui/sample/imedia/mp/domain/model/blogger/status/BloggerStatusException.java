@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher.status;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger.status;
 
 public class BloggerStatusException extends Exception {
 

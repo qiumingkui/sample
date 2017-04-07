@@ -4,6 +4,11 @@ import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
 public class AssetAccountId extends StringId {
 
+	protected AssetAccountId(String aKey) {
+		super(aKey);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * 
 	 */

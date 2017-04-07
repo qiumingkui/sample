@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger;
 
 public class BloggerPost {
 

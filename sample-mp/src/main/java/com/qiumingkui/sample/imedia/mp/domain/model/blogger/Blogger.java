@@ -1,14 +1,14 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger;
 
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.BloggerRank;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.Novice;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.BloggerStatus;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.BloggerStatusException;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.Online;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Owner;
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank.BloggerRank;
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank.Novice;
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.BloggerStatus;
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.BloggerStatusException;
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.status.Online;
 
 public class Blogger {
 

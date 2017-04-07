@@ -4,6 +4,11 @@ import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
 public class VendPostReadRightId extends StringId {
 
+	protected VendPostReadRightId(String aKey) {
+		super(aKey);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * 
 	 */

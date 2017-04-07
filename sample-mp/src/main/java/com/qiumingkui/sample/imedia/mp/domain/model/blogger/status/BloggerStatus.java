@@ -1,6 +1,6 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher.status;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger.status;
 
-import com.qiumingkui.sample.imedia.mp.domain.model.publisher.Blogger;
+import com.qiumingkui.sample.imedia.mp.domain.model.blogger.Blogger;
 
 public abstract class BloggerStatus {
 

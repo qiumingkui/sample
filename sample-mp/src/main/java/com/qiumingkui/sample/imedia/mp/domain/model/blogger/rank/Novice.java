@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher.rank;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank;
 
 public class Novice extends BloggerRank {
 

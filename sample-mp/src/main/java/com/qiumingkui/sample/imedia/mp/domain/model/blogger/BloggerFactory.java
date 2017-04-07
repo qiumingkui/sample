@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.mp.domain.model.publisher;
+package com.qiumingkui.sample.imedia.mp.domain.model.blogger;
 
 import com.qiumingkui.sample.imedia.common.util.UUIDUtils;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Owner;
