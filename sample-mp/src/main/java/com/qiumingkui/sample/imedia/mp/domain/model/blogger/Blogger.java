@@ -2,6 +2,7 @@ package com.qiumingkui.sample.imedia.mp.domain.model.blogger;
 
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.BloggerRank;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.Novice;
@@ -10,7 +11,7 @@ import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.BloggerStatus
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.Online;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Owner;
 
-public class Blogger {
+public class Blogger implements IdentityEntity<BloggerId> {
 
 	/**
 	 * 
@@ -54,6 +55,7 @@ public class Blogger {
 		this.setModifyTime(aModifyTime);
 	}
 
+	@Override
 	public BloggerId id() {
 		return id;
 	}
