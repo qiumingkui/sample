@@ -115,7 +115,7 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 	}
 
 	private void setPostVal(CategoryPostVal aPostVal) {
-		AssertionUtil.assertArgumentTrue(aPostVal.postNumber() < 0, "PostNumber can't < 0 !");
+		AssertionUtil.assertArgumentTrue(aPostVal.postNumber() >= 0, "PostNumber can't < 0 !");
 		this.postVal = aPostVal;
 	}
 
