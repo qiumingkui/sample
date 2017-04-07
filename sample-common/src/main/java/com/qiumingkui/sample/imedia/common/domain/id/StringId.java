@@ -15,7 +15,7 @@ public class StringId implements SimpleId<String,StringId> {
 
 	protected StringId(String aKey) {
 		super();
-		this.key = aKey;
+		this.setKey(aKey);
 	}
 
 	public String key() {
@@ -27,6 +27,10 @@ public class StringId implements SimpleId<String,StringId> {
 			return true;
 		}
 		return false;
+	}
+
+	protected void setKey(String key) {
+		this.key = key;
 	}
 
 }

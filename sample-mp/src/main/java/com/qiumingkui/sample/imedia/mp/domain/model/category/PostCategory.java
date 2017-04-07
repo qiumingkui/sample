@@ -1,40 +1,32 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-import java.io.Serializable;
+import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 
-public class PostCategory implements Serializable {
+public class PostCategory implements IdentityEntity<PostCategoryId> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private PostCategoryId postCategoryId;
-	
-	
+
+	private PostCategoryId id;
+
 	private PostCategory() {
 		super();
 	}
 
-
-
 	protected PostCategory(PostCategoryId aPostCategoryId) {
 		this();
-		this.setPostCategoryId(aPostCategoryId);
+		this.setId(aPostCategoryId);
 	}
 
-
-
-	public PostCategoryId postCategoryId() {
-		return postCategoryId;
+	private void setId(PostCategoryId aPostCategoryId) {
+		this.id = aPostCategoryId;
 	}
 
-
-
-	private void setPostCategoryId(PostCategoryId aPostCategoryId) {
-		this.postCategoryId = aPostCategoryId;
+	@Override
+	public PostCategoryId id() {
+		return id;
 	}
-	
-	
 
 }

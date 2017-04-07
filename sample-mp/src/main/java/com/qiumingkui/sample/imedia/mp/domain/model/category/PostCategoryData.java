@@ -10,18 +10,17 @@ public class PostCategoryData implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static PostCategoryData create(PostCategory aPostCategory) {
-		return new PostCategoryData(aPostCategory.postCategoryId().postId(),
-				aPostCategory.postCategoryId().categoryId());
+		return new PostCategoryData(aPostCategory.id().postId(), aPostCategory.id().categoryId());
 	}
 
 	private String postId;
 
 	private String categoryId;
 
-	public PostCategoryData(String postId, String categoryId) {
+	public PostCategoryData(String aPostId, String aCategoryId) {
 		super();
-		this.postId = postId;
-		this.categoryId = categoryId;
+		this.postId = aPostId;
+		this.categoryId = aCategoryId;
 	}
 
 	public String getPostId() {
@@ -32,12 +31,12 @@ public class PostCategoryData implements Serializable {
 		return categoryId;
 	}
 
-	public void setPostId(String postId) {
-		this.postId = postId;
+	public void setPostId(String aPostId) {
+		this.postId = aPostId;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(String aCategoryId) {
+		this.categoryId = aCategoryId;
 	}
 
 }

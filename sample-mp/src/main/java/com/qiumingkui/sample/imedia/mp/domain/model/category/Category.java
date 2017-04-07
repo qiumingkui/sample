@@ -32,7 +32,7 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 			CategoryPostVal aPostVal) {
 
 		this.init(aId, aParentId, aName, aDescription, aPostVal, new ConcurrencyVersion(-1));
-		
+
 		return this;
 	}
 
@@ -99,7 +99,8 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 	}
 
 	private void setParentId(CategoryId aParentId) {
-		AssertionUtil.assertArgumentLength(aParentId.key(), 32, "ParentId  is too lang!");
+		// AssertionUtil.assertArgumentLength(aParentId.key(), 32, "ParentId is
+		// too lang!");
 		this.parentId = aParentId;
 	}
 

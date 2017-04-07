@@ -1,40 +1,29 @@
 package com.qiumingkui.sample.imedia.mp.port.adapter.persistence.repository.memory;
 
-import com.qiumingkui.sample.imedia.common.domain.version.ConcurrencyVersion;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.qiumingkui.sample.imedia.mp.domain.model.category.Category;
 import com.qiumingkui.sample.imedia.mp.domain.model.category.CategoryId;
-import com.qiumingkui.sample.imedia.mp.domain.model.category.CategoryPostVal;
 import com.qiumingkui.sample.imedia.mp.domain.model.category.CategoryRepository;
-import com.qiumingkui.sample.imedia.mp.domain.model.post.Post;
 
 public class MemoryCategoryRepository implements CategoryRepository {
 
+	private static Map<String, Category> cache = new HashMap<String, Category>();
+
 	@Override
-	public Post get(CategoryId aCategoryId) {
-		// TODO Auto-generated method stub
-		CategoryWithVersion category = new CategoryWithVersion();
-		category.init(null, null, null, null, null, null);
-		return null;
-		
+	public Category get(CategoryId aCategoryId) {
+		return cache.get(aCategoryId.key());
 	}
 
 	@Override
 	public void save(Category aCategory) {
-		// TODO Auto-generated method stub
-
+		cache.put(aCategory.id().key(), aCategory);
 	}
 
 	@Override
 	public void del(CategoryId aCategoryId) {
-		// TODO Auto-generated method stub
-
+		cache.remove(aCategoryId.key());
 	}
 
-	@SuppressWarnings("serial")
-	class CategoryWithVersion extends Category {
-		public void init(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
-				CategoryPostVal aPostVal, ConcurrencyVersion aVersion) {
-			this.init(aId, aParentId, aName, aDescription, aPostVal, aVersion);
-		}
-	}
 }
