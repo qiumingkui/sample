@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 
-import com.qiumingkui.sample.imedia.common.domain.PolicyDecisionResult;
+import com.qiumingkui.sample.imedia.common.domain.policy.PolicyDecisionResult;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Draft;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Issued;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Locked;

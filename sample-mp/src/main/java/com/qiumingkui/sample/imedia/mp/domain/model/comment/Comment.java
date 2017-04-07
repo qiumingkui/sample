@@ -3,7 +3,7 @@ package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
-import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
+import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.BlogEntryId;
 
@@ -27,7 +27,7 @@ public class Comment implements IdentityEntity<CommentId> {
 	}
 
 	protected Comment create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
-		this.init(aId, aBlogId, aContent, UtilDateTime.nowTimestamp());
+		this.init(aId, aBlogId, aContent, DateTimeUtil.nowTimestamp());
 		return this;
 	}
 

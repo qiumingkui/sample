@@ -1,9 +1,9 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.AssertionUtil;
 import com.qiumingkui.sample.imedia.common.domain.entity.ConcurrencyEntity;
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.domain.version.ConcurrencyVersion;
+import com.qiumingkui.sample.imedia.common.util.AssertionUtil;
 
 public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 

@@ -37,7 +37,7 @@ import java.util.Date;
  * @version $Revision: 1.2 $
  * @since 2.0
  */
-public class UtilDateTime {
+public class DateTimeUtil {
 
 	/**
 	 * Return a Timestamp for right now

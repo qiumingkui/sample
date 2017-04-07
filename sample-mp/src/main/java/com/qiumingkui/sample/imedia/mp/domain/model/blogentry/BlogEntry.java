@@ -3,7 +3,7 @@ package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
-import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
+import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.BlogEntryStatus;
@@ -42,8 +42,8 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 	}
 
 	protected BlogEntry create(BlogEntryId aId, Title aTitle, Content aContent, Author aAuthor) {
-		this.init(aId, aTitle, aContent, aAuthor, new Draft(), new BlogEntryComment(0), UtilDateTime.nowTimestamp(),
-				UtilDateTime.nowTimestamp());
+		this.init(aId, aTitle, aContent, aAuthor, new Draft(), new BlogEntryComment(0), DateTimeUtil.nowTimestamp(),
+				DateTimeUtil.nowTimestamp());
 
 		return this;
 	}
@@ -62,12 +62,12 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	public void changeTitle(Title aTitle) {
 		setTitle(aTitle);
-		setModifyTime(UtilDateTime.nowTimestamp());
+		setModifyTime(DateTimeUtil.nowTimestamp());
 	}
 
 	public void changeContent(Content aContent) {
 		setContent(aContent);
-		setModifyTime(UtilDateTime.nowTimestamp());
+		setModifyTime(DateTimeUtil.nowTimestamp());
 	}
 
 	public void changePostComment(BlogEntryComment aPostComment) {

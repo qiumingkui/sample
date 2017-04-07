@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common;
+package com.qiumingkui.sample.imedia.common.util;
 
 public class AssertionUtil {
 

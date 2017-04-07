@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common.domain;
+package com.qiumingkui.sample.imedia.common.domain.policy;
 
 public class PolicyDecisionResult {
 

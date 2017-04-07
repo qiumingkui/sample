@@ -2,7 +2,7 @@ package com.qiumingkui.sample.imedia.mp.domain.model.blogger;
 
 import java.sql.Timestamp;
 
-import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
+import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.BloggerRank;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.rank.Novice;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogger.status.BloggerStatus;
@@ -37,8 +37,8 @@ public class Blogger {
 
 	protected Blogger create(BloggerId aId, Owner aOwner) {
 
-		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new Online(), UtilDateTime.nowTimestamp(),
-				UtilDateTime.nowTimestamp());
+		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new Online(), DateTimeUtil.nowTimestamp(),
+				DateTimeUtil.nowTimestamp());
 		return this;
 	}
 
