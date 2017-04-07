@@ -21,7 +21,7 @@ public class MemoryBlogEntryRepository implements BlogEntryRepository {
 
 	@Override
 	public void save(BlogEntry aBlog) {
-		cache.put(aBlog.blogEntryId().key(), aBlog);
+		cache.put(aBlog.id().key(), aBlog);
 
 	}
 

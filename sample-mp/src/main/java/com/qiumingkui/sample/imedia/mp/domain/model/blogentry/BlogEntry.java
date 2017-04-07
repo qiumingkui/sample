@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.blogentry;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.UtilDateTime;
 import com.qiumingkui.sample.imedia.mp.domain.model.Content;
 import com.qiumingkui.sample.imedia.mp.domain.model.Title;
@@ -14,18 +14,14 @@ import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Issued;
 import com.qiumingkui.sample.imedia.mp.domain.model.blogentry.status.Locked;
 import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 
-public class BlogEntry implements Serializable {
+public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected BlogEntry() {
-		super();
-	}
-
-	private BlogEntryId blogEntryId;
+	private BlogEntryId id;
 
 	private Title title;
 
@@ -41,15 +37,20 @@ public class BlogEntry implements Serializable {
 
 	private Timestamp modifyTime;
 
-	public BlogEntry(BlogEntryId aBlogId, Title aTitle, Content aContent, Author aAuthor) {
-		this(aBlogId, aTitle, aContent, aAuthor, new Draft(), new BlogEntryComment(0), UtilDateTime.nowTimestamp(),
-				UtilDateTime.nowTimestamp());
+	protected BlogEntry() {
+		super();
 	}
 
-	public BlogEntry(BlogEntryId aBlogId, Title aTitle, Content aContent, Author aAuthor, BlogEntryStatus aStatus,
+	protected BlogEntry create(BlogEntryId aId, Title aTitle, Content aContent, Author aAuthor) {
+		this.init(aId, aTitle, aContent, aAuthor, new Draft(), new BlogEntryComment(0), UtilDateTime.nowTimestamp(),
+				UtilDateTime.nowTimestamp());
+
+		return this;
+	}
+
+	protected void init(BlogEntryId aId, Title aTitle, Content aContent, Author aAuthor, BlogEntryStatus aStatus,
 			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
-		this();
-		this.setBlogId(aBlogId);
+		this.setId(aId);
 		this.setTitle(aTitle);
 		this.setContent(aContent);
 		this.setAuthor(aAuthor);
@@ -93,8 +94,9 @@ public class BlogEntry implements Serializable {
 		this.setStatus(new Closed());
 	}
 
-	public BlogEntryId blogEntryId() {
-		return blogEntryId;
+	@Override
+	public BlogEntryId id() {
+		return id;
 	}
 
 	public Title title() {
@@ -125,8 +127,8 @@ public class BlogEntry implements Serializable {
 		return modifyTime;
 	}
 
-	private void setBlogId(BlogEntryId aBlogId) {
-		this.blogEntryId = aBlogId;
+	private void setId(BlogEntryId aBlogEntryId) {
+		this.id = aBlogEntryId;
 	}
 
 	private void setTitle(Title aTitle) {

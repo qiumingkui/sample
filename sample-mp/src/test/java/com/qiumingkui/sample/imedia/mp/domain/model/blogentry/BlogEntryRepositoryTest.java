@@ -31,18 +31,18 @@ public class BlogEntryRepositoryTest {
 	// @Transactional
 	public void save4Create() {
 		aBlog = PostTestHelper.buildPostExample();
-		aBlogId = aBlog.blogEntryId();
+		aBlogId = aBlog.id();
 		blogEntryRepository.save(aBlog);
 
 		BlogEntry blogEntry = blogEntryRepository.get(aBlogId);
-		assertThat(blogEntry != null && blogEntry.blogEntryId().key().equals(aBlogId.key()));
+		assertThat(blogEntry != null && blogEntry.id().key().equals(aBlogId.key()));
 	}
 
 	@Test
 	// @Transactional
 	public void get() {
 		BlogEntry blogEntry = blogEntryRepository.get(aBlogId);
-		assertThat(blogEntry != null && blogEntry.blogEntryId().key().equals(aBlogId.key()));
+		assertThat(blogEntry != null && blogEntry.id().key().equals(aBlogId.key()));
 	}
 
 	@Test

@@ -7,17 +7,14 @@ import com.qiumingkui.sample.imedia.mp.domain.model.member.Author;
 
 public class BlogEntryFactory {
 
-	public static BlogEntry create(String aId, String aTitle, String aContent, Author aAuthor) {
-		BlogEntryId blogEntryId = new BlogEntryId(aId);
+	public static BlogEntry create(String aTitle, String aContent, Author aAuthor) {
+
+		final String BLOGENTRY_ID = UUIDUtils.gen();
+		BlogEntryId blogEntryId = new BlogEntryId(BLOGENTRY_ID);
 		Title title = new Title(aTitle);
 		Content content = new Content(aContent);
-		BlogEntry blogEntry = new BlogEntry(blogEntryId, title, content, aAuthor);
+		BlogEntry blogEntry = new BlogEntry().create(blogEntryId, title, content, aAuthor);
 		return blogEntry;
 	}
 
-	public static BlogEntry create(String aTitle, String aContent, Author aAuthor) {
-		final String BLOG_ID = UUIDUtils.gen();
-		return create(BLOG_ID, aTitle, aContent, aAuthor);
-	}
-	
 }

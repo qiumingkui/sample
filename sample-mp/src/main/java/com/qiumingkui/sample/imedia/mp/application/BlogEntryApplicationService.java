@@ -37,7 +37,7 @@ public class BlogEntryApplicationService {
 			throw new Exception(aAuthor.name() + aAuthor.account() + ":你无权发布博客！");
 		blogEntry.issue();
 		blogEntryRepository.save(blogEntry);
-		return blogEntry.blogEntryId().key();
+		return blogEntry.id().key();
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class BlogEntryApplicationService {
 		if (!BlogEntryPermissionPolicy.hasReadBlogPermission(blogEntry, aReader).isPermit())
 			throw new Exception(aReader.name() + aReader.account() + ":你无权读取博客！");
 
-		BlogEntryData blogEntryData = new BlogEntryData(blogEntry.blogEntryId().key(), blogEntry.title().titleTxt(), blogEntry.content().contentTxt(),
+		BlogEntryData blogEntryData = new BlogEntryData(blogEntry.id().key(), blogEntry.title().titleTxt(), blogEntry.content().contentTxt(),
 				blogEntry.status().code());
 		return blogEntryData;
 	}
