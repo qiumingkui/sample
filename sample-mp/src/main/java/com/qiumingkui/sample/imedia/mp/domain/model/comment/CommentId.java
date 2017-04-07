@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.comment;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringKeyId;
+import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
-public class CommentId extends StringKeyId {
+public class CommentId extends StringId {
 
 	/**
 	 * 

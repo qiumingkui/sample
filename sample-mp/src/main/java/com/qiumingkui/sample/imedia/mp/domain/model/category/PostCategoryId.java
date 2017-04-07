@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-import java.io.Serializable;
+import com.qiumingkui.sample.imedia.common.domain.id.CompositeId;
 
-public class PostCategoryId implements Serializable {
+public class PostCategoryId implements CompositeId<PostCategoryId> {
 
 	/**
 	 * 

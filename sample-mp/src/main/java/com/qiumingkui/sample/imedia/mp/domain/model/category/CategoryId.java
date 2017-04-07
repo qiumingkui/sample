@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.mp.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringKeyId;
+import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
-public class CategoryId extends StringKeyId{
+public class CategoryId extends StringId{
 
 	/**
 	 * 

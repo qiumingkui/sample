@@ -1,8 +1,8 @@
 package com.qiumingkui.sample.imedia.makemoney.domain.model.vend;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringKeyId;
+import com.qiumingkui.sample.imedia.common.domain.id.StringId;
 
-public class VendPublisherReadRightId extends StringKeyId {
+public class VendPublisherReadRightId extends StringId {
 
 	/**
 	 * 

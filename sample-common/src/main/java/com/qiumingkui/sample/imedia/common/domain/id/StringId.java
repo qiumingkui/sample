@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.common.domain.id;
 
-public class StringKeyId implements KeyId<String,StringKeyId> {
+public class StringId implements SimpleId<String,StringId> {
 
 	/**
 	 * 
@@ -9,11 +9,11 @@ public class StringKeyId implements KeyId<String,StringKeyId> {
 
 	private String key;
 
-	protected StringKeyId() {
+	protected StringId() {
 		super();
 	}
 
-	protected StringKeyId(String aKey) {
+	protected StringId(String aKey) {
 		super();
 		this.key = aKey;
 	}
@@ -22,7 +22,7 @@ public class StringKeyId implements KeyId<String,StringKeyId> {
 		return key;
 	}
 
-	public boolean equals(StringKeyId aId) {
+	public boolean equals(StringId aId) {
 		if (this.key().equals(aId.key())) {
 			return true;
 		}
