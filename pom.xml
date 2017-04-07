@@ -54,7 +54,7 @@
 	</build>
 
 	<modules>
-		<module>sample-mp</module>
+		<module>sample-blog</module>
 		<module>sample-asset</module>
 		<module>sample-user</module>
 		<module>sample-common</module>

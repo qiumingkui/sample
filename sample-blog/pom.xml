@@ -8,9 +8,9 @@
     <version>0.0.2-SNAPSHOT</version>
   </parent>
   <groupId>com.qiumingkui.ddd</groupId>
-  <artifactId>sample-mp</artifactId>
+  <artifactId>sample-blog</artifactId>
   <version>0.0.2-SNAPSHOT</version>
-  <name>sample-mp</name>
+  <name>sample-blog</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
