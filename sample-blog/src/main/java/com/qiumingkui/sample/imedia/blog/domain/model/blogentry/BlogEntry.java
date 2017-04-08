@@ -6,10 +6,10 @@ import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.Title;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryStatusException;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Closed;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Draft;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Issued;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Locked;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryClosedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryDraftStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryIssuedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryLockedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogAuthor;
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
@@ -41,11 +41,10 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 		super();
 	}
 
-	protected BlogEntry create(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor) {
-		this.init(aId, aTitle, aContent, aAuthor, new Draft(), new BlogEntryComment(0), DateTimeUtil.nowTimestamp(),
+	protected void create(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor) {
+		this.init(aId, aTitle, aContent, aAuthor, new BlogEntryDraftStatus(), new BlogEntryComment(0), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 
-		return this;
 	}
 
 	protected void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
@@ -76,22 +75,22 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	public void issue() throws BlogEntryStatusException {
 		this.status.issue();
-		this.setStatus(new Issued());
+		this.setStatus(new BlogEntryIssuedStatus());
 	}
 
 	public void reopen() throws BlogEntryStatusException {
 		this.status.reopen();
-		this.setStatus(new Issued());
+		this.setStatus(new BlogEntryIssuedStatus());
 	}
 
 	public void lock() throws BlogEntryStatusException {
 		this.status.lock();
-		this.setStatus(new Locked());
+		this.setStatus(new BlogEntryLockedStatus());
 	}
 
 	public void close() throws BlogEntryStatusException {
 		this.status.close();
-		this.setStatus(new Closed());
+		this.setStatus(new BlogEntryClosedStatus());
 	}
 
 	@Override

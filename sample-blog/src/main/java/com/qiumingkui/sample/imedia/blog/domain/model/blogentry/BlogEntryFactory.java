@@ -13,7 +13,8 @@ public class BlogEntryFactory {
 		BlogEntryId blogEntryId = new BlogEntryId(BLOGENTRY_ID);
 		Title title = new Title(aTitle);
 		Content content = new Content(aContent);
-		BlogEntry blogEntry = new BlogEntry().create(blogEntryId, title, content, aAuthor);
+		BlogEntry blogEntry = new BlogEntry();
+		blogEntry.create(blogEntryId, title, content, aAuthor);
 		return blogEntry;
 	}
 

@@ -15,13 +15,13 @@ public abstract class BlogEntryStatus {
 	public static BlogEntryStatus create(int code) {
 		switch (code) {
 		case BlogEntryStatus.DRAFT:
-			return new Draft();
+			return new BlogEntryDraftStatus();
 		case BlogEntryStatus.ISSUED:
-			return new Issued();
+			return new BlogEntryIssuedStatus();
 		case BlogEntryStatus.LOCKED:
-			return new Locked();
+			return new BlogEntryLockedStatus();
 		case BlogEntryStatus.CLOSED:
-			return new Closed();
+			return new BlogEntryClosedStatus();
 		}
 		return null;
 	}

@@ -14,10 +14,10 @@ import com.qiumingkui.sample.imedia.blog.domain.model.Title;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntry;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryComment;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryStatusException;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Closed;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Draft;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Issued;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.Locked;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryClosedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryDraftStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryIssuedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryLockedStatus;
 import com.qiumingkui.sample.imedia.blog.helper.BlogEntryTestHelper;
 
 @RunWith(SpringRunner.class)
@@ -56,19 +56,19 @@ public class BlogEntryTest {
 	@Test
 	public void issue() {
 		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
-		assertThat(blogEntry.status() instanceof Draft).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
 		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
-		assertThat(blogEntry.status() instanceof Issued).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryIssuedStatus).isTrue();
 	}
 	
 	@Test
 	public void reopen() {
 		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
-		assertThat(blogEntry.status() instanceof Draft).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
 			blogEntry.lock();
@@ -76,33 +76,33 @@ public class BlogEntryTest {
 		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
-		assertThat(blogEntry.status() instanceof Issued).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryIssuedStatus).isTrue();
 	}
 	
 	@Test
 	public void lock() {
 		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
-		assertThat(blogEntry.status() instanceof Draft).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
 			blogEntry.lock();
 		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
-		assertThat(blogEntry.status() instanceof Locked).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryLockedStatus).isTrue();
 	}
 	
 	@Test
 	public void close() {
 		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
-		assertThat(blogEntry.status() instanceof Draft).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
 			blogEntry.close();
 		} catch (BlogEntryStatusException e) {
 			e.printStackTrace();
 		}
-		assertThat(blogEntry.status() instanceof Closed).isTrue();
+		assertThat(blogEntry.status() instanceof BlogEntryClosedStatus).isTrue();
 	}
 	
 	
