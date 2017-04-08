@@ -1,7 +1,5 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status;
 
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntry;
-
 public class BlogEntryClosedStatus extends BlogEntryStatus {
 
 	public BlogEntryClosedStatus() {

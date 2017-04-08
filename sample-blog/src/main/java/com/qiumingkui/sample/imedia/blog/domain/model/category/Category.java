@@ -45,6 +45,7 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 		this.setVersion(aVersion);
 	}
 
+	@Override
 	public CategoryId id() {
 		return this.id;
 	}

@@ -3,7 +3,6 @@ package com.qiumingkui.sample.imedia.blog.domain.model.blogger;
 import java.sql.Timestamp;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank.BloggerRank;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank.Novice;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerStatusException;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerClosedStatus;
@@ -40,7 +39,7 @@ public class Blogger implements IdentityEntity<BloggerId> {
 
 	protected void create(BloggerId aId, BlogOwner aOwner) {
 
-		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new BloggerOnlineStatus(), DateTimeUtil.nowTimestamp(),
+		this.init(aId, aOwner, new BloggerPost(0, 0), BloggerRank.NOVICE, new BloggerOnlineStatus(), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 	}
 

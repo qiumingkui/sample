@@ -39,6 +39,7 @@ public class PostCategoryId implements CompositeId<PostCategoryId> {
 		this.categoryId = categoryId;
 	}
 
+	@Override
 	public boolean equals(PostCategoryId aPostCategoryId) {
 
 		if (aPostCategoryId == null)

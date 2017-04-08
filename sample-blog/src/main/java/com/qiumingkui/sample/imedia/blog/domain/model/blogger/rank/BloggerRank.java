@@ -1,21 +1,20 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank;
 
-public abstract class BloggerRank {
+public enum BloggerRank {
 
-	public static final int NOVICE = 0;
+	NOVICE(0), VETERAN(1), MASTER(2);
 
-	public static final int VETERAN = 1;
-
-	public static final int MASTER = 2;
+	private BloggerRank(int aCode) {
+		this.code = aCode;
+	}
 
 	private int code;
 
+	/**
+	 * @return the code
+	 */
 	public int code() {
 		return code;
-	}
-
-	protected void setCode(int code) {
-		this.code = code;
 	}
 
 }
