@@ -28,6 +28,6 @@ public class BloggerTest {
 	public void changeRank() {
 		Blogger blogger = BloggerTestHelper.buildBloggerExample();
 		blogger.changeRank(BloggerRank.MASTER);
-		assertTrue(blogger.rank().code()==BloggerRank.MASTER.code());
+		assertTrue(blogger.rank()==BloggerRank.MASTER);
 	}
 }
