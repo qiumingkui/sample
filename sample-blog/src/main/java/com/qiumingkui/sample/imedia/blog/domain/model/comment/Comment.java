@@ -26,9 +26,8 @@ public class Comment implements IdentityEntity<CommentId> {
 		super();
 	}
 
-	protected Comment create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
+	protected void create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
 		this.init(aId, aBlogId, aContent, DateTimeUtil.nowTimestamp());
-		return this;
 	}
 
 	protected void init(CommentId aId, BlogEntryId aBlogId, Content aContent, Timestamp aCreateTime) {
