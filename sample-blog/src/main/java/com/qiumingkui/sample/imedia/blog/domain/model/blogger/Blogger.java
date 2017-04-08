@@ -36,15 +36,14 @@ public class Blogger implements IdentityEntity<BloggerId> {
 		super();
 	}
 
-	protected Blogger create(BloggerId aId, BlogOwner aOwner) {
+	protected void create(BloggerId aId, BlogOwner aOwner) {
 
 		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new Online(), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
-		return this;
 	}
 
-	protected void init(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank, BloggerStatus aStatus,
-			Timestamp aCreateTime, Timestamp aModifyTime) {
+	protected void init(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank,
+			BloggerStatus aStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		this.setId(aId);
 		this.setOwner(aOwner);

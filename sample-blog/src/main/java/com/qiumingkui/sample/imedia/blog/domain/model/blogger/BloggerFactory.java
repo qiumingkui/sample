@@ -8,7 +8,9 @@ public class BloggerFactory {
 	public static Blogger build(BlogOwner aOwner) {
 		final String BLOGGER_ID = UUIDUtil.gen();
 		BloggerId id = new BloggerId(BLOGGER_ID);
-		return new Blogger().create(id, aOwner);
+		Blogger blogger = new Blogger();
+		blogger.create(id, aOwner);
+		return blogger;
 	}
 
 }
