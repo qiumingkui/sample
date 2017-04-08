@@ -1,7 +1,5 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogger.status;
 
-import com.qiumingkui.sample.imedia.blog.domain.model.blogger.Blogger;
-
 public abstract class BloggerStatus {
 
 	public static final int ONLINE = 0;
@@ -26,11 +24,11 @@ public abstract class BloggerStatus {
 		return code;
 	}
 
-	public abstract void lock(Blogger publisher) throws BloggerStatusException;
+	public abstract void lock() throws BloggerStatusException;
 
-	public abstract void close(Blogger publisher) throws BloggerStatusException;
+	public abstract void close() throws BloggerStatusException;
 
-	public abstract void reopen(Blogger publisher) throws BloggerStatusException;
+	public abstract void reopen() throws BloggerStatusException;
 
 	protected void setCode(int code) {
 		this.code = code;

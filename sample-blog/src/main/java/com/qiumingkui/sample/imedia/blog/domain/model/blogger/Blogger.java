@@ -6,7 +6,9 @@ import com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank.BloggerRank;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank.Novice;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerStatusException;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.Online;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerClosedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerLockedStatus;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerOnlineStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogOwner;
 import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
@@ -38,7 +40,7 @@ public class Blogger implements IdentityEntity<BloggerId> {
 
 	protected void create(BloggerId aId, BlogOwner aOwner) {
 
-		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new Online(), DateTimeUtil.nowTimestamp(),
+		this.init(aId, aOwner, new BloggerPost(0, 0), new Novice(), new BloggerOnlineStatus(), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 	}
 
@@ -91,20 +93,23 @@ public class Blogger implements IdentityEntity<BloggerId> {
 		this.setRank(aRank);
 	}
 
-	public void changeStatus(BloggerStatus aStatus) {
-		this.setStatus(aStatus);
-	}
+	// public void changeStatus(BloggerStatus aStatus) {
+	// this.setStatus(aStatus);
+	// }
 
 	public void reopen() throws BloggerStatusException {
-		this.status.reopen(this);
+		this.status.reopen();
+		this.setStatus(new BloggerOnlineStatus());
 	}
 
 	public void lock() throws BloggerStatusException {
-		this.status.lock(this);
+		this.status.lock();
+		this.setStatus(new BloggerLockedStatus());
 	}
 
 	public void close() throws BloggerStatusException {
-		this.status.close(this);
+		this.status.close();
+		this.setStatus(new BloggerClosedStatus());
 	}
 
 	private void setId(BloggerId aId) {
