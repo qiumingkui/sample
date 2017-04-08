@@ -28,12 +28,11 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 		super();
 	}
 
-	public Category create(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
+	public void create(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
 			CategoryPostVal aPostVal) {
 
 		this.init(aId, aParentId, aName, aDescription, aPostVal, new ConcurrencyVersion(-1));
 
-		return this;
 	}
 
 	protected void init(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
