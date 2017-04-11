@@ -9,6 +9,7 @@ import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentData;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentFactory;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentRepository;
+import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentedEvent;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEvent;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEventPublisher;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEventSubscriber;
@@ -34,14 +35,14 @@ public class CommentApplicationService {
 	public String publishComment(String aBlogId, String aContent) {
 		DomainEventPublisher
         .instance()
-        .subscribe(new DomainEventSubscriber<DomainEvent>() {
+        .subscribe(new DomainEventSubscriber<CommentedEvent>() {
 
-            public void handleEvent(DomainEvent aDomainEvent) {
+            public void handleEvent(CommentedEvent aDomainEvent) {
             	eventStore.append(aDomainEvent);
             }
 
-            public Class<DomainEvent> subscribedToEventType() {
-                return DomainEvent.class; // all domain events
+            public Class<CommentedEvent> subscribedToEventType() {
+                return CommentedEvent.class; // all domain events
             }
         });
 		
