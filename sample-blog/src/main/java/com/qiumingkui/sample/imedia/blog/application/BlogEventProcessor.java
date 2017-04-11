@@ -22,13 +22,14 @@ import com.qiumingkui.sample.imedia.common.domain.event.DomainEvent;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEventPublisher;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEventSubscriber;
 import com.qiumingkui.sample.imedia.common.domain.event.EventStore;
+import com.qiumingkui.sample.imedia.common.domain.event.MemoryEventStore;
 
 
 @Aspect
 public class BlogEventProcessor {
 
-    @Autowired
-    private EventStore eventStore;
+//    @Autowired
+    private EventStore eventStore=new MemoryEventStore();
 
     /**
      * Registers a IdentityAccessEventProcessor to listen
@@ -50,7 +51,7 @@ public class BlogEventProcessor {
     /**
      * Listens for all domain events and stores them.
      */
-    @Before("execution(* com.saasovation.identityaccess.application.*.*(..))")
+    @Before("execution(* com.qiumingkui.sample.imedia.blog.application.*.*(..))")
     public void listen() {
         DomainEventPublisher
             .instance()
