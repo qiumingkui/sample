@@ -33,18 +33,18 @@ public class CommentApplicationService {
 	 */
 	// @Transactional
 	public String publishComment(String aBlogId, String aContent) {
-		DomainEventPublisher
-        .instance()
-        .subscribe(new DomainEventSubscriber<CommentedEvent>() {
-
-            public void handleEvent(CommentedEvent aDomainEvent) {
-            	eventStore.append(aDomainEvent);
-            }
-
-            public Class<CommentedEvent> subscribedToEventType() {
-                return CommentedEvent.class; // all domain events
-            }
-        });
+		// DomainEventPublisher
+		// .instance()
+		// .subscribe(new DomainEventSubscriber<CommentedEvent>() {
+		//
+		// public void handleEvent(CommentedEvent aDomainEvent) {
+		// eventStore.append(aDomainEvent);
+		// }
+		//
+		// public Class<CommentedEvent> subscribedToEventType() {
+		// return CommentedEvent.class; // all domain events
+		// }
+		// });
 		
 		Comment comment = CommentFactory.create(aBlogId, aContent);
 		commentRepository.save(comment);

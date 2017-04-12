@@ -17,6 +17,7 @@ package com.qiumingkui.sample.imedia.blog.application;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEvent;
 import com.qiumingkui.sample.imedia.common.domain.event.DomainEventPublisher;
@@ -26,6 +27,7 @@ import com.qiumingkui.sample.imedia.common.domain.event.MemoryEventStore;
 
 
 @Aspect
+@Component
 public class BlogEventProcessor {
 
 //    @Autowired
