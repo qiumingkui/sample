@@ -5,6 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<!-- <parent> <groupId>com.qiumingkui.ddd</groupId> <artifactId>sample</artifactId> 
 		<version>0.0.2-SNAPSHOT</version> </parent> -->
+
 	<groupId>com.qiumingkui.ddd</groupId>
 	<artifactId>sample-common</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
@@ -16,6 +17,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>3.0.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
