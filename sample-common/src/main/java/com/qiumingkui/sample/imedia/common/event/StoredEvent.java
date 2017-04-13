@@ -12,11 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event;
 
 import java.util.Date;
 
-import com.qiumingkui.sample.imedia.common.util.AssertionUtil;
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
+import com.qiumingkui.sample.imedia.common.ext.util.AssertionUtil;
 
 public class StoredEvent {
 

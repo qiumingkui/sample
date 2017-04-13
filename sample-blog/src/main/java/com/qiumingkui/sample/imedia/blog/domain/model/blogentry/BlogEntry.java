@@ -11,8 +11,8 @@ import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntry
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryIssuedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryLockedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogAuthor;
-import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
-import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
+import com.qiumingkui.sample.imedia.common.ext.entity.IdentityEntity;
+import com.qiumingkui.sample.imedia.common.ext.util.DateTimeUtil;
 
 public class BlogEntry implements IdentityEntity<BlogEntryId> {
 

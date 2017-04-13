@@ -1,7 +1,7 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogger;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogOwner;
-import com.qiumingkui.sample.imedia.common.util.UUIDUtil;
+import com.qiumingkui.sample.imedia.common.ext.util.UUIDUtil;
 
 public class BloggerFactory {
 

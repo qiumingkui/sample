@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common.domain.entity;
+package com.qiumingkui.sample.imedia.common.ext.entity;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.makemoney.domain.model.vend;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringId;
+import com.qiumingkui.sample.imedia.common.ext.id.StringId;
 
 public class VendPostReadRightId extends StringId {
 

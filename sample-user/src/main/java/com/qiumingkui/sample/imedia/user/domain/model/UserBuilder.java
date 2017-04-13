@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.user.domain.model;
 
-import com.qiumingkui.sample.imedia.common.util.UUIDUtil;
+import com.qiumingkui.sample.imedia.common.ext.util.UUIDUtil;
 import com.qiumingkui.sample.imedia.user.domain.model.role.Role;
 
 public class UserBuilder {

@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common.domain.id;
+package com.qiumingkui.sample.imedia.common.ext.id;
 
 public class StringId implements SimpleId<String,StringId> {
 

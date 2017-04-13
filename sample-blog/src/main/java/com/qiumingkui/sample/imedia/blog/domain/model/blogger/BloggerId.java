@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogger;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringId;
+import com.qiumingkui.sample.imedia.common.ext.id.StringId;
 
 public class BloggerId extends StringId {
 

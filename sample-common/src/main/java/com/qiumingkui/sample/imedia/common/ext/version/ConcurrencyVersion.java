@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common.domain.version;
+package com.qiumingkui.sample.imedia.common.ext.version;
 
 public class ConcurrencyVersion {
 	private static final long DEFAULT_NUMBER = -1;

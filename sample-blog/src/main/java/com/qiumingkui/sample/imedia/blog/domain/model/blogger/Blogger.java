@@ -9,8 +9,8 @@ import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerClos
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerLockedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.status.BloggerOnlineStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogOwner;
-import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
-import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
+import com.qiumingkui.sample.imedia.common.ext.entity.IdentityEntity;
+import com.qiumingkui.sample.imedia.common.ext.util.DateTimeUtil;
 
 public class Blogger implements IdentityEntity<BloggerId> {
 

@@ -22,7 +22,7 @@
  *  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.qiumingkui.sample.imedia.common.util;
+package com.qiumingkui.sample.imedia.common.ext.util;
 
 import java.text.DateFormat;
 import java.util.Calendar;

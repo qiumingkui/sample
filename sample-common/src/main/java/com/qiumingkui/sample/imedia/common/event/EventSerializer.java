@@ -12,8 +12,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event;
 
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 import com.qiumingkui.sample.imedia.common.serializer.AbstractSerializer;
 
 public class EventSerializer extends AbstractSerializer {

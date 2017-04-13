@@ -1,9 +1,11 @@
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 
 public class MemoryEventStore implements EventStore {
 

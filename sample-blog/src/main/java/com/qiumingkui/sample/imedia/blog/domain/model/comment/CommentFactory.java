@@ -2,7 +2,7 @@ package com.qiumingkui.sample.imedia.blog.domain.model.comment;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryId;
-import com.qiumingkui.sample.imedia.common.util.UUIDUtil;
+import com.qiumingkui.sample.imedia.common.ext.util.UUIDUtil;
 
 public class CommentFactory {
 

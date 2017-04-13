@@ -9,12 +9,8 @@ import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentData;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentFactory;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentRepository;
-import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentedEvent;
-import com.qiumingkui.sample.imedia.common.domain.event.DomainEvent;
-import com.qiumingkui.sample.imedia.common.domain.event.DomainEventPublisher;
-import com.qiumingkui.sample.imedia.common.domain.event.DomainEventSubscriber;
-import com.qiumingkui.sample.imedia.common.domain.event.EventStore;
-import com.qiumingkui.sample.imedia.common.domain.event.MemoryEventStore;
+import com.qiumingkui.sample.imedia.common.event.EventStore;
+import com.qiumingkui.sample.imedia.common.event.MemoryEventStore;
 
 @Service
 public class CommentApplicationService {

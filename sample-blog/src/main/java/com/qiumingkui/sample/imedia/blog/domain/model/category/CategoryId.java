@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringId;
+import com.qiumingkui.sample.imedia.common.ext.id.StringId;
 
 public class CategoryId extends StringId{
 

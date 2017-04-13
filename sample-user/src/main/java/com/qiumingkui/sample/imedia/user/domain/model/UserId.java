@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.user.domain.model;
 
-import com.qiumingkui.sample.imedia.common.domain.id.StringId;
+import com.qiumingkui.sample.imedia.common.ext.id.StringId;
 
 public class UserId extends StringId {
 

@@ -4,9 +4,9 @@ import java.sql.Timestamp;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryId;
-import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
-import com.qiumingkui.sample.imedia.common.domain.event.DomainEventPublisher;
-import com.qiumingkui.sample.imedia.common.util.DateTimeUtil;
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEventPublisher;
+import com.qiumingkui.sample.imedia.common.ext.entity.IdentityEntity;
+import com.qiumingkui.sample.imedia.common.ext.util.DateTimeUtil;
 
 public class Comment implements IdentityEntity<CommentId> {
 

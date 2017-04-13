@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.domain.entity.IdentityEntity;
+import com.qiumingkui.sample.imedia.common.ext.entity.IdentityEntity;
 
 public class PostCategory implements IdentityEntity<PostCategoryId> {
 

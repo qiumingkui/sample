@@ -12,13 +12,22 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event;
 
-import java.util.Date;
+import java.util.List;
 
-public interface DomainEvent {
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 
-    public int eventVersion();
 
-    public Date occurredOn();
+public interface EventStore {
+
+    public List<StoredEvent> allStoredEventsBetween(long aLowStoredEventId, long aHighStoredEventId);
+
+    public List<StoredEvent> allStoredEventsSince(long aStoredEventId);
+
+    public StoredEvent append(DomainEvent aDomainEvent);
+
+    public void close();
+
+    public long countStoredEvents();
 }

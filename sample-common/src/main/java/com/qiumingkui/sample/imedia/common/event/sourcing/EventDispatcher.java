@@ -12,11 +12,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event.sourcing;
 
-public interface DomainEventSubscriber<T> {
+public interface EventDispatcher {
 
-    public void handleEvent(final T aDomainEvent);
+    public void dispatch(DispatchableDomainEvent aDispatchableDomainEvent);
 
-    public Class<T> subscribedToEventType();
+    public void registerEventDispatcher(EventDispatcher anEventDispatcher);
+
+    public boolean understands(DispatchableDomainEvent aDispatchableDomainEvent);
 }

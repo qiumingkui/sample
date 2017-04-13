@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.domain.id.CompositeId;
+import com.qiumingkui.sample.imedia.common.ext.id.CompositeId;
 
 public class PostCategoryId implements CompositeId<PostCategoryId> {
 

@@ -1,6 +1,6 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.category;
 
-import com.qiumingkui.sample.imedia.common.domain.policy.PolicyDecisionResult;
+import com.qiumingkui.sample.imedia.common.ext.policy.PolicyDecisionResult;
 import com.qiumingkui.sample.imedia.makemoney.domain.model.member.Admin;
 
 public class CategoryPermissionPolicy {

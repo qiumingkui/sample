@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
-import com.qiumingkui.sample.imedia.common.domain.event.DomainEvent;
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 
 public class CommentedEvent implements DomainEvent, Serializable {
 

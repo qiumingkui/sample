@@ -12,20 +12,26 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-package com.qiumingkui.sample.imedia.common.domain.event;
+package com.qiumingkui.sample.imedia.common.event.sourcing;
 
 import java.util.List;
+
+import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 
 
 public interface EventStore {
 
-    public List<StoredEvent> allStoredEventsBetween(long aLowStoredEventId, long aHighStoredEventId);
-
-    public List<StoredEvent> allStoredEventsSince(long aStoredEventId);
-
-    public StoredEvent append(DomainEvent aDomainEvent);
+    public void appendWith(EventStreamId aStartingIdentity, List<DomainEvent> anEvents);
 
     public void close();
 
-    public long countStoredEvents();
+    public List<DispatchableDomainEvent> eventsSince(long aLastReceivedEvent);
+
+    public EventStream eventStreamSince(EventStreamId anIdentity);
+
+    public EventStream fullEventStreamFor(EventStreamId anIdentity);
+
+    public void purge(); // mainly used for testing
+
+    public void registerEventNotifiable(EventNotifiable anEventNotifiable);
 }

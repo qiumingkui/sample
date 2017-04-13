@@ -5,7 +5,7 @@ import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntry
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryLockedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogAuthor;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogReader;
-import com.qiumingkui.sample.imedia.common.domain.policy.PolicyDecisionResult;
+import com.qiumingkui.sample.imedia.common.ext.policy.PolicyDecisionResult;
 
 public class BlogEntryPermissionPolicy {
 

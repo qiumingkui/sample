@@ -14,7 +14,7 @@
 
 package com.qiumingkui.sample.imedia.common.port.adapter.message.rabbitmq;
 
-import com.qiumingkui.sample.imedia.common.util.AssertionUtil;
+import com.qiumingkui.sample.imedia.common.ext.util.AssertionUtil;
 
 /**
  * I am a configuration for making a connection to RabbitMQ. I include

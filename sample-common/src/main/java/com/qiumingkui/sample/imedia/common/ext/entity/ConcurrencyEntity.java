@@ -1,6 +1,6 @@
-package com.qiumingkui.sample.imedia.common.domain.entity;
+package com.qiumingkui.sample.imedia.common.ext.entity;
 
-import com.qiumingkui.sample.imedia.common.domain.version.ConcurrencyVersion;
+import com.qiumingkui.sample.imedia.common.ext.version.ConcurrencyVersion;
 
 /**
  * 并发实体

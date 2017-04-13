@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.common.domain.id;
+package com.qiumingkui.sample.imedia.common.ext.id;
 
 import java.io.Serializable;
 

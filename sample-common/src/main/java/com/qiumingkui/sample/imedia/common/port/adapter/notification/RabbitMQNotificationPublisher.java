@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
-import com.qiumingkui.sample.imedia.common.domain.event.EventStore;
-import com.qiumingkui.sample.imedia.common.domain.event.StoredEvent;
+import com.qiumingkui.sample.imedia.common.event.EventStore;
+import com.qiumingkui.sample.imedia.common.event.StoredEvent;
 import com.qiumingkui.sample.imedia.common.notification.Notification;
 import com.qiumingkui.sample.imedia.common.notification.NotificationPublisher;
 import com.qiumingkui.sample.imedia.common.notification.NotificationSerializer;
