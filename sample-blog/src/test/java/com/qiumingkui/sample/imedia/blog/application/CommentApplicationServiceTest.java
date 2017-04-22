@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.imedia.blog.application.CommentApplicationService;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentData;
+import com.qiumingkui.sample.imedia.blog.port.adapter.notify.NotificationMonitor;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,6 +28,7 @@ public class CommentApplicationServiceTest {
 
 	@Before
 	public void init() {
+		NotificationMonitor monitor = new NotificationMonitor();
 		// aCommentId = commentApplicationService.publishComment(aBlogId,
 		// aContent);
 		// assertThat(aCommentId.isEmpty()).isFalse();
@@ -36,6 +38,12 @@ public class CommentApplicationServiceTest {
 	public void publishComment() {
 		aCommentId = commentApplicationService.publishComment("2", aContent);
 		assertThat(aCommentId.isEmpty()).isFalse();
+		
+		try {
+			Thread.sleep(1000L);
+		} catch (Exception e) {
+			// ignore
+		}
 	}
 
 	// @Test
