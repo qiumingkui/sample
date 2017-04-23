@@ -23,17 +23,17 @@ public class Comment implements IdentityEntity<CommentId> {
 
 	private Timestamp createTime;
 
-	protected Comment() {
+	public Comment() {
 		super();
 	}
-
-	protected void create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
+	
+	public void create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
 		this.init(aId, aBlogId, aContent, DateTimeUtil.nowTimestamp());
 
 		DomainEventPublisher.instance().publish(new CommentedEvent(aId, aContent));
 	}
 
-	protected void init(CommentId aId, BlogEntryId aBlogId, Content aContent, Timestamp aCreateTime) {
+	public void init(CommentId aId, BlogEntryId aBlogId, Content aContent, Timestamp aCreateTime) {
 		this.setCommentId(aId);
 		this.setPostId(aBlogId);
 		this.setContent(aContent);

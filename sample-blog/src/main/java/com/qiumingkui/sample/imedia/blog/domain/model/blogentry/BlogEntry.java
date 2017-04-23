@@ -37,7 +37,7 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	private Timestamp modifyTime;
 
-	protected BlogEntry() {
+	public BlogEntry() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	}
 
-	protected void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
+	public void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
 			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
 		this.setId(aId);
 		this.setTitle(aTitle);

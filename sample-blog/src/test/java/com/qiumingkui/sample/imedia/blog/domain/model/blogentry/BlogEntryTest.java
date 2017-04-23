@@ -31,7 +31,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changeTitle() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		Title title = new Title("Test Title:" + new Date());
 		blogEntry.changeTitle(title);
 		assertThat(blogEntry.title().titleTxt().equals(title.titleTxt())).isTrue();
@@ -39,7 +39,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changeContend() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		Content content = new Content("Test Content:" + new Date());
 		blogEntry.changeContent(content);
 		assertThat(blogEntry.content().contentTxt().equals(content.contentTxt())).isTrue();
@@ -47,7 +47,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void changePostComment() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		BlogEntryComment blogEntryComment = new BlogEntryComment(5);
 		blogEntry.changePostComment(blogEntryComment);
 		assertThat(blogEntry.blogEntryComment().commentNumber() == blogEntryComment.commentNumber());
@@ -55,7 +55,7 @@ public class BlogEntryTest {
 
 	@Test
 	public void issue() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
@@ -67,7 +67,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void reopen() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
@@ -81,7 +81,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void lock() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();
@@ -94,7 +94,7 @@ public class BlogEntryTest {
 	
 	@Test
 	public void close() {
-		BlogEntry blogEntry = BlogEntryTestHelper.buildPostExample();
+		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
 		assertThat(blogEntry.status() instanceof BlogEntryDraftStatus).isTrue();
 		try {
 			blogEntry.issue();

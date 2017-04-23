@@ -30,7 +30,7 @@ public class BlogEntryRepositoryTest {
 	@Before
 	// @Transactional
 	public void save4Create() {
-		aBlog = BlogEntryTestHelper.buildPostExample();
+		aBlog = BlogEntryTestHelper.buildBlogEntryExample();
 		aBlogId = aBlog.id();
 		blogEntryRepository.save(aBlog);
 
