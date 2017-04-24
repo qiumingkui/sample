@@ -9,7 +9,7 @@ import com.qiumingkui.sample.imedia.blog.domain.model.comment.Comment;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentId;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentRepository;
 
-@Service
+//@Service
 public class MemoryCommentRepository implements CommentRepository {
 
 	private static Map<String, Comment> cache = new HashMap<String, Comment>();

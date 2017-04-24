@@ -9,7 +9,7 @@ import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntry;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryId;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryRepository;
 
-@Service
+//@Service
 public class MemoryBlogEntryRepository implements BlogEntryRepository {
 
 	private static Map<String, BlogEntry> cache = new HashMap<String, BlogEntry>();
