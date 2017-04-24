@@ -5,6 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<!-- <parent> <groupId>com.qiumingkui.ddd</groupId> <artifactId>sample</artifactId> 
 		<version>0.0.2-SNAPSHOT</version> </parent> -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.1.RELEASE</version>
+	</parent>
 
 	<groupId>com.qiumingkui.ddd</groupId>
 	<artifactId>sample-common</artifactId>
@@ -17,6 +22,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>
