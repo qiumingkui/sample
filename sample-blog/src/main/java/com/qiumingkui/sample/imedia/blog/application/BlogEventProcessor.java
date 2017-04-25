@@ -16,21 +16,21 @@ package com.qiumingkui.sample.imedia.blog.application;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.qiumingkui.sample.imedia.common.domain.model.DomainEvent;
 import com.qiumingkui.sample.imedia.common.domain.model.DomainEventPublisher;
 import com.qiumingkui.sample.imedia.common.domain.model.DomainEventSubscriber;
 import com.qiumingkui.sample.imedia.common.event.EventStore;
-import com.qiumingkui.sample.imedia.common.event.MemoryEventStore;
 
 
 @Aspect
 @Component
 public class BlogEventProcessor {
 
-//    @Autowired
-    private EventStore eventStore=new MemoryEventStore();
+    @Autowired
+    private EventStore eventStore;
 
     /**
      * Registers a IdentityAccessEventProcessor to listen

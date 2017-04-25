@@ -23,11 +23,12 @@ public class CommentedEvent implements DomainEvent, Serializable {
 
 	private Date occurredOn;
 
-	public CommentedEvent(CommentId aCommentId, Content aContent) {
+	public CommentedEvent(CommentId aCommentId, Content aContent, Date aOccurredOn) {
 		super();
 //		this.storedEventId = aStoredEventId;
 		this.commentId = aCommentId;
 		this.content = aContent;
+		this.occurredOn = aOccurredOn;
 	}
 
 //	public long storedEventId() {

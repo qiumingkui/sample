@@ -3,6 +3,7 @@ package com.qiumingkui.sample.imedia.blog.application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.Comment;
 import com.qiumingkui.sample.imedia.blog.domain.model.comment.CommentData;
@@ -18,8 +19,6 @@ public class CommentApplicationService {
 	@Autowired
 	private CommentRepository commentRepository;
 
-	private EventStore eventStore=new MemoryEventStore();
-	
 	/**
 	 * 发表评论
 	 * 
@@ -27,21 +26,8 @@ public class CommentApplicationService {
 	 * @param aContent
 	 * @return
 	 */
-	// @Transactional
+	@Transactional
 	public String publishComment(String aBlogId, String aContent) {
-		// DomainEventPublisher
-		// .instance()
-		// .subscribe(new DomainEventSubscriber<CommentedEvent>() {
-		//
-		// public void handleEvent(CommentedEvent aDomainEvent) {
-		// eventStore.append(aDomainEvent);
-		// }
-		//
-		// public Class<CommentedEvent> subscribedToEventType() {
-		// return CommentedEvent.class; // all domain events
-		// }
-		// });
-		
 		Comment comment = CommentFactory.create(aBlogId, aContent);
 		commentRepository.save(comment);
 		return comment.id().key();
@@ -54,6 +40,5 @@ public class CommentApplicationService {
 				comment.content().contentTxt(), comment.createTime());
 		return commentData;
 	}
-
 
 }

@@ -18,20 +18,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qiumingkui.sample.imedia.common.event.EventStore;
-import com.qiumingkui.sample.imedia.common.event.MemoryEventStore;
 import com.qiumingkui.sample.imedia.common.notification.NotificationLog;
 import com.qiumingkui.sample.imedia.common.notification.NotificationLogFactory;
 import com.qiumingkui.sample.imedia.common.notification.NotificationLogId;
-import com.qiumingkui.sample.imedia.common.notification.NotificationPublisher;
 
 @Service
 public class NotificationApplicationService {
 
-	// @Autowired
-	private EventStore eventStore = new MemoryEventStore();;
+	@Autowired
+	private EventStore eventStore ;
 
-//	@Autowired
-//	private NotificationPublisher notificationPublisher;
+	// @Autowired
+	// private NotificationPublisher notificationPublisher;
 
 	public NotificationApplicationService() {
 		super();
@@ -45,19 +43,22 @@ public class NotificationApplicationService {
 
 	public NotificationLog notificationLog(String aNotificationLogId) {
 		NotificationLogFactory factory = new NotificationLogFactory(this.eventStore());
-
+//		if (eventStore instanceof MemoryEventStore) 
+		{
+           System.out.println("eventStore is "+eventStore.getClass());
+		}
 		return factory.createNotificationLog(new NotificationLogId(aNotificationLogId));
 	}
 
-//	public void publishNotifications() {
-//		this.notificationPublisher().publishNotifications();
-//	}
+	// public void publishNotifications() {
+	// this.notificationPublisher().publishNotifications();
+	// }
 
 	protected EventStore eventStore() {
 		return this.eventStore;
 	}
 
-//	protected NotificationPublisher notificationPublisher() {
-//		return this.notificationPublisher;
-//	}
+	// protected NotificationPublisher notificationPublisher() {
+	// return this.notificationPublisher;
+	// }
 }

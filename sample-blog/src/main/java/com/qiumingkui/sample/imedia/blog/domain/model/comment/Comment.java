@@ -1,6 +1,7 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.comment;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryId;
@@ -30,7 +31,7 @@ public class Comment implements IdentityEntity<CommentId> {
 	public void create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
 		this.init(aId, aBlogId, aContent, DateTimeUtil.nowTimestamp());
 
-		DomainEventPublisher.instance().publish(new CommentedEvent(aId, aContent));
+		DomainEventPublisher.instance().publish(new CommentedEvent(aId, aContent, new Date()));
 	}
 
 	public void init(CommentId aId, BlogEntryId aBlogId, Content aContent, Timestamp aCreateTime) {
