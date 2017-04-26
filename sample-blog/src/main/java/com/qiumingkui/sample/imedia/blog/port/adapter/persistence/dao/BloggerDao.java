@@ -86,8 +86,7 @@ public class BloggerDao {
 			BloggerStatus bloggerStatus = BloggerStatus.create(rs.getInt("status"));
 			Timestamp createTime = new Timestamp(rs.getLong("createtime"));
 			Timestamp modifyTime = new Timestamp(rs.getLong("modifytime"));
-			Blogger blogger = new Blogger();
-			blogger.init(bloggerId, blogOwner, bloggerPost, bloggerRank, bloggerStatus, createTime,
+			Blogger blogger = new Blogger(bloggerId, blogOwner, bloggerPost, bloggerRank, bloggerStatus, createTime,
 					modifyTime);
 			return blogger;
 		}

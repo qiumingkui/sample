@@ -91,8 +91,7 @@ public class BlogEntryDao {
 			Timestamp createTime = rs.getTimestamp("createtime");
 			Timestamp modifyTime = rs.getTimestamp("modifytime");
 
-			BlogEntry blogEntry = new BlogEntry();
-			blogEntry.init(blogEntryId, title, content, author, status, blogEntryComment, createTime, modifyTime);
+			BlogEntry blogEntry = new BlogEntry(blogEntryId, title, content, author, status, blogEntryComment, createTime, modifyTime);
 			return blogEntry;
 		}
 

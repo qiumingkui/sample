@@ -1,4 +1,4 @@
-package com.qiumingkui.sample.imedia.blog.domain.model.blogentry;
+package com.qiumingkui.sample.imedia.blog.domain.model.blogger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

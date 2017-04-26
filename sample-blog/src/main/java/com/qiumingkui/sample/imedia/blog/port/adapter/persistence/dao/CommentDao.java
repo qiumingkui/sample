@@ -68,8 +68,7 @@ public class CommentDao {
 			BlogEntryId blogEntryId = new BlogEntryId(rs.getString("blogid"));
 			Content content = new Content(rs.getString("content"));
 			Timestamp createTime = new Timestamp(rs.getLong("createtime"));
-			Comment comment = new Comment();
-			comment.init(commentId, blogEntryId, content,createTime);
+			Comment comment = new Comment(commentId, blogEntryId, content,createTime);
 			return comment;
 		}
 	}

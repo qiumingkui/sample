@@ -11,7 +11,7 @@ public class CategoryData implements Serializable {
 
 	public static CategoryData create(Category aCategory) {
 		CategoryData data = new CategoryData(aCategory.id().key(), aCategory.parentId().key(), aCategory.name(),
-				aCategory.description(), aCategory.postNumber());
+				aCategory.description(), aCategory.categroyVal().postNumber());
 		return data;
 	}
 

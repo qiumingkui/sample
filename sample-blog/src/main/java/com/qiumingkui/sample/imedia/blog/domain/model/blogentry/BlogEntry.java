@@ -37,17 +37,25 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	private Timestamp modifyTime;
 
-	public BlogEntry() {
+	private BlogEntry() {
 		super();
 	}
 
-	protected void create(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor) {
+	public BlogEntry(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor) {
+		this();
 		this.init(aId, aTitle, aContent, aAuthor, new BlogEntryDraftStatus(), new BlogEntryComment(0), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 
 	}
 
-	public void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
+	public BlogEntry(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
+			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
+		this();
+		this.init(aId, aTitle, aContent, aAuthor, aStatus, aPostComment, aCreateTime, aModifyTime);
+	}
+	
+	
+	private void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
 			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
 		this.setId(aId);
 		this.setTitle(aTitle);

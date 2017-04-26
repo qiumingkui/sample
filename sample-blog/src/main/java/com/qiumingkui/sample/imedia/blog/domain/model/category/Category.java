@@ -20,28 +20,35 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 
 	private String description;
 
-	private CategoryPostVal postVal;
+	private CategoryVal categoryVal;
 
 	private ConcurrencyVersion version;
 
-	protected Category() {
+	private Category() {
 		super();
 	}
 
-	public void create(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
-			CategoryPostVal aPostVal) {
+	public Category(CategoryId aId, CategoryId aParentId, String aName, String aDescription, CategoryVal aCategoryVal) {
 
-		this.init(aId, aParentId, aName, aDescription, aPostVal, new ConcurrencyVersion(-1));
+		this();
+		this.init(aId, aParentId, aName, aDescription, aCategoryVal, new ConcurrencyVersion(-1));
 
 	}
 
-	protected void init(CategoryId aId, CategoryId aParentId, String aName, String aDescription,
-			CategoryPostVal aPostVal, ConcurrencyVersion aVersion) {
+	public Category(CategoryId aId, CategoryId aParentId, String aName, String aDescription, CategoryVal CategoryVal,
+			ConcurrencyVersion aVersion) {
+		this();
+		this.init(aId, aParentId, aName, aDescription, CategoryVal, aVersion);
+
+	}
+
+	private void init(CategoryId aId, CategoryId aParentId, String aName, String aDescription, CategoryVal CategoryVal,
+			ConcurrencyVersion aVersion) {
 		this.setId(aId);
 		this.setParentId(aParentId);
 		this.setName(aName);
 		this.setDescription(aDescription);
-		this.setPostVal(aPostVal);
+		this.setCategoryVal(CategoryVal);
 		this.setVersion(aVersion);
 	}
 
@@ -62,15 +69,10 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 		return description;
 	}
 
-	public CategoryPostVal postVal() {
-		return postVal;
+	public CategoryVal categroyVal() {
+		return categoryVal;
 	}
 
-	public long postNumber() {
-		return this.postVal().postNumber();
-	}
-
-	@Override
 	public ConcurrencyVersion version() {
 		return this.version;
 	}
@@ -80,15 +82,15 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 	}
 
 	public void changePostNumber(long aPostNumber) {
-		CategoryPostVal newPostVal = new CategoryPostVal(aPostNumber);
-		this.setPostVal(newPostVal);
+		CategoryVal newPostVal = new CategoryVal(aPostNumber);
+		this.setCategoryVal(newPostVal);
 	}
 
 	public void addPostNumber(long addNumber) {
 		synchronized (this) {
-			long newPostNumber = this.postNumber() + addNumber;
-			CategoryPostVal newPostVal = new CategoryPostVal(newPostNumber);
-			this.setPostVal(newPostVal);
+			long newPostNumber = this.categoryVal.postNumber() + addNumber;
+			CategoryVal newPostVal = new CategoryVal(newPostNumber);
+			this.setCategoryVal(newPostVal);
 		}
 	}
 
@@ -114,9 +116,9 @@ public class Category implements IdentityEntity<CategoryId>, ConcurrencyEntity {
 		this.description = aDescription;
 	}
 
-	private void setPostVal(CategoryPostVal aPostVal) {
+	private void setCategoryVal(CategoryVal aPostVal) {
 		AssertionUtil.assertArgumentTrue(aPostVal.postNumber() >= 0, "PostNumber can't < 0 !");
-		this.postVal = aPostVal;
+		this.categoryVal = aPostVal;
 	}
 
 	private void setVersion(ConcurrencyVersion aVersion) {

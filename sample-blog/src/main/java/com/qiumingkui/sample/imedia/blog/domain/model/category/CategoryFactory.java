@@ -9,9 +9,8 @@ public class CategoryFactory {
 		final String CATEGORY_ID = UUIDUtil.gen();
 		final long POST_NUMBER = 0;
 
-		Category category = new Category();
-		category.create(new CategoryId(CATEGORY_ID), new CategoryId(aParentId), aName, aDescription,
-				new CategoryPostVal(POST_NUMBER));
+		Category category = new Category(new CategoryId(CATEGORY_ID), new CategoryId(aParentId), aName, aDescription,
+				new CategoryVal(POST_NUMBER));
 		return category;
 	}
 
