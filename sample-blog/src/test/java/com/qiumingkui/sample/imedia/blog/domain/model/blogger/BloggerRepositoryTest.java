@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.Blogger;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerId;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerPost;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerBlogEntryVal;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerRepository;
 import com.qiumingkui.sample.imedia.blog.helper.BloggerTestHelper;
 
@@ -46,13 +46,13 @@ public class BloggerRepositoryTest {
 	@Test
 	// @Transactional
 	public void save4Update() {
-		BloggerPost bloggerPost = aBlog.bloggerPost();
-		BloggerPost modifyBloggerPost=new BloggerPost(bloggerPost.postNumber()+1, bloggerPost.commentNumber()+1);
+		BloggerBlogEntryVal bloggerBlogEntryVal = aBlog.blogEntryVal();
+		BloggerBlogEntryVal modifyBloggerPost=new BloggerBlogEntryVal(bloggerBlogEntryVal.postNumber()+1, bloggerBlogEntryVal.commentNumber()+1);
 		Blogger blogger = bloggerRepository.get(aBlogId);
-		blogger.changeBloggerPost(modifyBloggerPost);
+		blogger.changeBlogEntryVal(modifyBloggerPost);
 		bloggerRepository.save(blogger);
 		blogger = bloggerRepository.get(aBlogId);
-		assertThat(blogger != null && blogger.bloggerPost().postNumber()==modifyBloggerPost.postNumber()).isTrue();
+		assertThat(blogger != null && blogger.blogEntryVal().postNumber()==modifyBloggerPost.postNumber()).isTrue();
 	}
 
 	@Test

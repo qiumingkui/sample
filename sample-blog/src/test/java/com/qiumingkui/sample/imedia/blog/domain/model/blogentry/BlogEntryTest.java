@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.Title;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntry;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryComment;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryCommentVal;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryStatusException;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryClosedStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryDraftStatus;
@@ -48,9 +48,9 @@ public class BlogEntryTest {
 	@Test
 	public void changePostComment() {
 		BlogEntry blogEntry = BlogEntryTestHelper.buildBlogEntryExample();
-		BlogEntryComment blogEntryComment = new BlogEntryComment(5);
-		blogEntry.changePostComment(blogEntryComment);
-		assertThat(blogEntry.blogEntryComment().commentNumber() == blogEntryComment.commentNumber());
+		BlogEntryCommentVal blogEntryCommentVal = new BlogEntryCommentVal(5);
+		blogEntry.changeCommentVal(blogEntryCommentVal);
+		assertThat(blogEntry.commentVal().commentNumber() == blogEntryCommentVal.commentNumber());
 	}
 
 	@Test

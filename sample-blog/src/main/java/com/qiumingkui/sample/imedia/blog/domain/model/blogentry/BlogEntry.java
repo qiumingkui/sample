@@ -31,7 +31,7 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	private BlogAuthor blogAuthor;
 
-	private BlogEntryComment blogEntryComment;
+	private BlogEntryCommentVal commentVal;
 
 	private Timestamp createTime;
 
@@ -43,26 +43,26 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 
 	public BlogEntry(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor) {
 		this();
-		this.init(aId, aTitle, aContent, aAuthor, new BlogEntryDraftStatus(), new BlogEntryComment(0), DateTimeUtil.nowTimestamp(),
+		this.init(aId, aTitle, aContent, aAuthor, new BlogEntryDraftStatus(), new BlogEntryCommentVal(0), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 
 	}
 
 	public BlogEntry(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
-			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
+			BlogEntryCommentVal aBlogEntryCommentVal, Timestamp aCreateTime, Timestamp aModifyTime) {
 		this();
-		this.init(aId, aTitle, aContent, aAuthor, aStatus, aPostComment, aCreateTime, aModifyTime);
+		this.init(aId, aTitle, aContent, aAuthor, aStatus, aBlogEntryCommentVal, aCreateTime, aModifyTime);
 	}
 	
 	
 	private void init(BlogEntryId aId, Title aTitle, Content aContent, BlogAuthor aAuthor, BlogEntryStatus aStatus,
-			BlogEntryComment aPostComment, Timestamp aCreateTime, Timestamp aModifyTime) {
+			BlogEntryCommentVal aBlogEntryCommentVal, Timestamp aCreateTime, Timestamp aModifyTime) {
 		this.setId(aId);
 		this.setTitle(aTitle);
 		this.setContent(aContent);
 		this.setAuthor(aAuthor);
 		this.setStatus(aStatus);
-		this.setPostComment(aPostComment);
+		this.setCommentVal(aBlogEntryCommentVal);
 		this.setCreateTime(aCreateTime);
 		this.setModifyTime(aModifyTime);
 	}
@@ -77,8 +77,8 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 		setModifyTime(DateTimeUtil.nowTimestamp());
 	}
 
-	public void changePostComment(BlogEntryComment aPostComment) {
-		setPostComment(aPostComment);
+	public void changeCommentVal(BlogEntryCommentVal aBlogEntryCommentVal) {
+		setCommentVal(aBlogEntryCommentVal);
 	}
 
 	public void issue() throws BlogEntryStatusException {
@@ -118,8 +118,8 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 		return status;
 	}
 
-	public BlogEntryComment blogEntryComment() {
-		return blogEntryComment;
+	public BlogEntryCommentVal commentVal() {
+		return commentVal;
 	}
 
 	public BlogAuthor blogAuthor() {
@@ -150,8 +150,8 @@ public class BlogEntry implements IdentityEntity<BlogEntryId> {
 		this.status = aStatus;
 	}
 
-	private void setPostComment(BlogEntryComment aPostCommentr) {
-		this.blogEntryComment = aPostCommentr;
+	private void setCommentVal(BlogEntryCommentVal aPostCommentr) {
+		this.commentVal = aPostCommentr;
 	}
 
 	private void setAuthor(BlogAuthor blogAuthor) {

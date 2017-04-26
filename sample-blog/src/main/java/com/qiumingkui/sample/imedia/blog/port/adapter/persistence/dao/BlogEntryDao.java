@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.qiumingkui.sample.imedia.blog.domain.model.Content;
 import com.qiumingkui.sample.imedia.blog.domain.model.Title;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntry;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryComment;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryCommentVal;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.BlogEntryId;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogentry.status.BlogEntryStatus;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogmember.BlogAuthor;
@@ -37,7 +37,7 @@ public class BlogEntryDao {
 				ps.setString(2, aBlogEntry.title().titleTxt());
 				ps.setString(3, aBlogEntry.content().contentTxt());
 				ps.setInt(4, aBlogEntry.status().code());
-				ps.setInt(5, aBlogEntry.blogEntryComment().commentNumber());
+				ps.setInt(5, aBlogEntry.commentVal().commentNumber());
 				ps.setString(6, aBlogEntry.blogAuthor().id());
 				ps.setString(7, aBlogEntry.blogAuthor().account());
 				ps.setString(8, aBlogEntry.blogAuthor().name());
@@ -55,7 +55,7 @@ public class BlogEntryDao {
 				ps.setString(1, aBlogEntry.title().titleTxt());
 				ps.setString(2, aBlogEntry.content().contentTxt());
 				ps.setInt(3, aBlogEntry.status().code());
-				ps.setInt(4, aBlogEntry.blogEntryComment().commentNumber());
+				ps.setInt(4, aBlogEntry.commentVal().commentNumber());
 				ps.setString(5, aBlogEntry.blogAuthor().id());
 				ps.setString(6, aBlogEntry.blogAuthor().account());
 				ps.setString(7, aBlogEntry.blogAuthor().name());
@@ -85,13 +85,13 @@ public class BlogEntryDao {
 			Content content = new Content(rs.getString("content"));
 			BlogEntryStatus status = BlogEntryStatus.create(rs.getInt("status"));
 			int commentNumber = rs.getInt("commentnumber");
-			BlogEntryComment blogEntryComment = new BlogEntryComment(commentNumber);
+			BlogEntryCommentVal blogEntryCommentVal = new BlogEntryCommentVal(commentNumber);
 			BlogAuthor author = BlogMemberBuilder.buildAuthor(rs.getString("authorid"), rs.getString("authoraccount"),
 					rs.getString("authorname"), true);
 			Timestamp createTime = rs.getTimestamp("createtime");
 			Timestamp modifyTime = rs.getTimestamp("modifytime");
 
-			BlogEntry blogEntry = new BlogEntry(blogEntryId, title, content, author, status, blogEntryComment, createTime, modifyTime);
+			BlogEntry blogEntry = new BlogEntry(blogEntryId, title, content, author, status, blogEntryCommentVal, createTime, modifyTime);
 			return blogEntry;
 		}
 

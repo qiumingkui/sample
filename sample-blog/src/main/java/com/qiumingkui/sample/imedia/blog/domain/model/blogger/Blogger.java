@@ -23,7 +23,7 @@ public class Blogger implements IdentityEntity<BloggerId> {
 
 	private BlogOwner blogOwner;
 
-	private BloggerPost bloggerPost;
+	private BloggerBlogEntryVal blogEntryVal;
 
 	private BloggerRank rank;
 
@@ -39,22 +39,22 @@ public class Blogger implements IdentityEntity<BloggerId> {
 
 	public Blogger(BloggerId aId, BlogOwner aOwner) {
 		this();
-		this.init(aId, aOwner, new BloggerPost(0, 0), BloggerRank.NOVICE, new BloggerOnlineStatus(),
+		this.init(aId, aOwner, new BloggerBlogEntryVal(0, 0), BloggerRank.NOVICE, new BloggerOnlineStatus(),
 				DateTimeUtil.nowTimestamp(), DateTimeUtil.nowTimestamp());
 	}
 
-	public Blogger(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank, BloggerStatus aStatus,
+	public Blogger(BloggerId aId, BlogOwner aOwner, BloggerBlogEntryVal aBloggerBlogEntryVal, BloggerRank aRank, BloggerStatus aStatus,
 			Timestamp aCreateTime, Timestamp aModifyTime) {
 		this();
-		this.init(aId, aOwner, aBloggerPost, aRank, aStatus, aCreateTime, aModifyTime);
+		this.init(aId, aOwner, aBloggerBlogEntryVal, aRank, aStatus, aCreateTime, aModifyTime);
 	}
 
-	private void init(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank,
+	private void init(BloggerId aId, BlogOwner aOwner, BloggerBlogEntryVal aBloggerBlogEntryVal, BloggerRank aRank,
 			BloggerStatus aStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		this.setId(aId);
 		this.setOwner(aOwner);
-		this.setBloggerPost(aBloggerPost);
+		this.setBlogEntryVal(aBloggerBlogEntryVal);
 		this.setRank(aRank);
 		this.setStatus(aStatus);
 		this.setCreateTime(aCreateTime);
@@ -70,8 +70,8 @@ public class Blogger implements IdentityEntity<BloggerId> {
 		return blogOwner;
 	}
 
-	public BloggerPost bloggerPost() {
-		return bloggerPost;
+	public BloggerBlogEntryVal blogEntryVal() {
+		return blogEntryVal;
 	}
 
 	public BloggerRank rank() {
@@ -90,8 +90,8 @@ public class Blogger implements IdentityEntity<BloggerId> {
 		return modifyTime;
 	}
 
-	public void changeBloggerPost(BloggerPost aBloggerPost) {
-		this.setBloggerPost(aBloggerPost);
+	public void changeBlogEntryVal(BloggerBlogEntryVal aBloggerBlogEntryVal) {
+		this.setBlogEntryVal(aBloggerBlogEntryVal);
 	}
 
 	public void changeRank(BloggerRank aRank) {
@@ -125,8 +125,8 @@ public class Blogger implements IdentityEntity<BloggerId> {
 		this.blogOwner = aOwner;
 	}
 
-	private void setBloggerPost(BloggerPost aBloggerPost) {
-		this.bloggerPost = aBloggerPost;
+	private void setBlogEntryVal(BloggerBlogEntryVal aBlogEntryVal) {
+		this.blogEntryVal = aBlogEntryVal;
 	}
 
 	private void setStatus(BloggerStatus aBloggerStatus) {

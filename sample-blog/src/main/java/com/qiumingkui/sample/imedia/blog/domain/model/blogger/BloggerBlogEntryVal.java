@@ -1,16 +1,16 @@
 package com.qiumingkui.sample.imedia.blog.domain.model.blogger;
 
-public class BloggerPost {
+public class BloggerBlogEntryVal {
 
 	private int postNumber;
 	
 	private int commentNumber;
 	
-	private BloggerPost() {
+	private BloggerBlogEntryVal() {
 		super();
 	}
 
-	public BloggerPost(int aPostNumber, int aCommentNumber) {
+	public BloggerBlogEntryVal(int aPostNumber, int aCommentNumber) {
 		this();
 		this.setPostNumber(aPostNumber);
 		this.setCommentNumber(aCommentNumber);

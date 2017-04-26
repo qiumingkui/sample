@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.Blogger;
-import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerPost;
+import com.qiumingkui.sample.imedia.blog.domain.model.blogger.BloggerBlogEntryVal;
 import com.qiumingkui.sample.imedia.blog.domain.model.blogger.rank.BloggerRank;
 import com.qiumingkui.sample.imedia.blog.helper.BloggerTestHelper;
 
@@ -19,9 +19,9 @@ public class BloggerTest {
 	@Test
 	public void changeBloggerPost() {
 		Blogger blogger = BloggerTestHelper.buildBloggerExample();
-		blogger.changeBloggerPost(new BloggerPost(1, 1));
-		assertTrue(blogger.bloggerPost().postNumber() == 1);
-		assertTrue(blogger.bloggerPost().commentNumber() == 1);
+		blogger.changeBlogEntryVal(new BloggerBlogEntryVal(1, 1));
+		assertTrue(blogger.blogEntryVal().postNumber() == 1);
+		assertTrue(blogger.blogEntryVal().commentNumber() == 1);
 	}
 
 	@Test
