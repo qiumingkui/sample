@@ -9,7 +9,7 @@ public class BloggerId extends StringId {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected BloggerId(String aKey) {
+	public BloggerId(String aKey) {
 		super(aKey);
 	}
 

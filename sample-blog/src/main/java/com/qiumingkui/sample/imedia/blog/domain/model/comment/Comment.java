@@ -28,7 +28,7 @@ public class Comment implements IdentityEntity<CommentId> {
 		super();
 	}
 	
-	public void create(CommentId aId, BlogEntryId aBlogId, Content aContent) {
+	public Comment(CommentId aId, BlogEntryId aBlogId, Content aContent) {
 		this.init(aId, aBlogId, aContent, DateTimeUtil.nowTimestamp());
 
 		DomainEventPublisher.instance().publish(new CommentedEvent(aId, aContent, new Date()));

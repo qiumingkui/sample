@@ -11,8 +11,7 @@ public class CommentFactory {
 		CommentId commentId = new CommentId(COMMENT_ID);
 		BlogEntryId blogEntryId = new BlogEntryId(aPostId);
 		Content content = new Content(aContent);
-		Comment comment = new Comment();
-		comment.create(commentId, blogEntryId, content);
+		Comment comment = new Comment(commentId, blogEntryId, content);
 		return comment;
 	}
 

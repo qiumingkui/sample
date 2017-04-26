@@ -9,12 +9,21 @@ public abstract class BloggerStatus {
 	public static final int CLOSED = 2;
 
 	private int code;
-	
+
 	public static BloggerStatus create(int code) {
-		
+
+		switch (code) {
+		case BloggerStatus.ONLINE:
+			return new BloggerOnlineStatus();
+		case BloggerStatus.LOCKED:
+			return new BloggerLockedStatus();
+		case BloggerStatus.CLOSED:
+			return new BloggerClosedStatus();
+		}
+
 		return null;
 	}
-	
+
 	public BloggerStatus() {
 		super();
 		this.setCode(ONLINE);

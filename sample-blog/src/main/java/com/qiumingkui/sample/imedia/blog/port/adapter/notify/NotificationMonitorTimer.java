@@ -50,7 +50,7 @@ public class NotificationMonitorTimer extends Thread {
 			}
 
 			try {
-				Thread.sleep(50L);
+				Thread.sleep(100L);
 			} catch (Exception e) {
 				// ignore
 			}

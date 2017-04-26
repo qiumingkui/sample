@@ -33,17 +33,17 @@ public class Blogger implements IdentityEntity<BloggerId> {
 
 	private Timestamp modifyTime;
 
-	protected Blogger() {
+	public Blogger() {
 		super();
 	}
 
-	protected void create(BloggerId aId, BlogOwner aOwner) {
+	public void create(BloggerId aId, BlogOwner aOwner) {
 
 		this.init(aId, aOwner, new BloggerPost(0, 0), BloggerRank.NOVICE, new BloggerOnlineStatus(), DateTimeUtil.nowTimestamp(),
 				DateTimeUtil.nowTimestamp());
 	}
 
-	protected void init(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank,
+	public void init(BloggerId aId, BlogOwner aOwner, BloggerPost aBloggerPost, BloggerRank aRank,
 			BloggerStatus aStatus, Timestamp aCreateTime, Timestamp aModifyTime) {
 
 		this.setId(aId);
