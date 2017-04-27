@@ -9,7 +9,7 @@ import com.qiumingkui.sample.imedia.user.domain.model.User;
 import com.qiumingkui.sample.imedia.user.domain.model.UserId;
 import com.qiumingkui.sample.imedia.user.port.adapter.persistence.repository.UserRepository;
 
-@Service
+//@Service
 public class MemoryUserRepository implements UserRepository {
 
 	private static Map<String, User> cache = new HashMap<String, User>();
@@ -21,7 +21,7 @@ public class MemoryUserRepository implements UserRepository {
 
 	@Override
 	public void save(User aPerson) {
-		cache.put(aPerson.userId().key(), aPerson);
+		cache.put(aPerson.id().key(), aPerson);
 
 	}
 

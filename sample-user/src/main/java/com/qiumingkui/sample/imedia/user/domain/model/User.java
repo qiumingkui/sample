@@ -1,9 +1,15 @@
 package com.qiumingkui.sample.imedia.user.domain.model;
 
+import com.qiumingkui.sample.imedia.common.ext.entity.IdentityEntity;
 import com.qiumingkui.sample.imedia.user.domain.model.role.Role;
 
-public class User {
-	private UserId userId;
+public class User implements IdentityEntity<UserId> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private UserId id;
 
 	private String account;
 
@@ -11,38 +17,31 @@ public class User {
 
 	private String name;
 
-	// private boolean isAdmin = false;
-	//
-	// private boolean isCommonUser = false;
-
 	private Role role;
-
-	// private boolean isIndividualPublisher = false;
-	//
-	// private boolean isPublicPublisher = false;
 
 	private User() {
 		super();
 	}
 
-	public User(UserId aUserId, String aAccount, String aPassword, String aName, Role aRole) {
+	public User(UserId aId, String aAccount, String aPassword, String aName, Role aRole) {
 		this();
 
-		this.setUserId(aUserId);
+		this.setId(aId);
 		this.setAccount(aAccount);
 		this.setPassword(aPassword);
 		this.setName(aName);
 		this.setRole(aRole);
 
-		if (aUserId == null || aUserId.key().trim().length() <= 0) {
+		if (aId == null || aId.key().trim().length() <= 0) {
 			this.setAccount("anonymous");
+			this.setPassword(null);
 			this.setName("匿名用户");
 			this.setRole(null);
 		}
 	}
 
-	public UserId userId() {
-		return userId;
+	public UserId id() {
+		return id;
 	}
 
 	public String account() {
@@ -57,27 +56,14 @@ public class User {
 		return name;
 	}
 
-	public boolean isAdmin() {
-		if (this.role != null && this.role.isAdmin()) {
-			return true;
-		}
-		return false;
+	public Role role(){
+		return role;
 	}
-
-	public boolean isIMP() {
-		if (this.role != null && this.role.isIMP()) {
-			return true;
-		}
-		return false;
+	
+	public void changeRole(Role aRole){
+		this.setRole(aRole);
 	}
-
-	public boolean isPMP() {
-		if (this.role != null && this.role.isPMP()) {
-			return true;
-		}
-		return false;
-	}
-
+	
 	public void changeName(String name) {
 		this.setName(name);
 	}
@@ -87,8 +73,8 @@ public class User {
 		this.setPassword(passwordCipherText);
 	}
 
-	private void setUserId(UserId userId) {
-		this.userId = userId;
+	private void setId(UserId userId) {
+		this.id = userId;
 	}
 
 	private void setAccount(String account) {
@@ -103,10 +89,6 @@ public class User {
 		this.name = name;
 	}
 
-	/**
-	 * @param role
-	 *            the role to set
-	 */
 	private void setRole(Role role) {
 		this.role = role;
 	}

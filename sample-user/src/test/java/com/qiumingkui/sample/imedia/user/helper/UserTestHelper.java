@@ -1,22 +1,21 @@
 package com.qiumingkui.sample.imedia.user.helper;
 
 import com.qiumingkui.sample.imedia.user.domain.model.User;
-import com.qiumingkui.sample.imedia.user.domain.model.UserBuilder;
-import com.qiumingkui.sample.imedia.user.domain.model.role.ADMIN;
-import com.qiumingkui.sample.imedia.user.domain.model.role.IMP;
+import com.qiumingkui.sample.imedia.user.domain.model.UserFactory;
+import com.qiumingkui.sample.imedia.user.domain.model.role.Role;
 
 public class UserTestHelper {
 
 	public static User buildUser4AdminExample() {
-		return UserBuilder.build("Zhangsan", "11111111", "张三", new ADMIN());
+		return UserFactory.create("Zhangsan", "11111111", "张三", Role.ADMIN);
 	}
 
 	public static User buildUser4ImpExample() {
-		return UserBuilder.build("Lisi", "11111111", "李四", new IMP());
+		return UserFactory.create("Lisi", "11111111", "李四", Role.USER);
 	}
 
 	public static User buildUser4AnonymousExample() {
-		return UserBuilder.build("", "", "", null);
+		return UserFactory.create("", "", "", null);
 	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qiumingkui.sample.imedia.user.domain.model.User;
 import com.qiumingkui.sample.imedia.user.domain.model.UserId;
+import com.qiumingkui.sample.imedia.user.domain.model.role.Role;
 import com.qiumingkui.sample.imedia.user.helper.UserTestHelper;
 import com.qiumingkui.sample.imedia.user.port.adapter.persistence.repository.UserRepository;
 
@@ -29,11 +30,11 @@ public class UserRepositoryTest {
 	@Before
 	public void save4Create() {
 		aUser4Admin = UserTestHelper.buildUser4AdminExample();
-		aUser4AdminId = aUser4Admin.userId();
+		aUser4AdminId = aUser4Admin.id();
 		userRepository.save(aUser4Admin);
 
 		aUser4CommonUser = UserTestHelper.buildUser4ImpExample();
-		aUser4CommonUserId = aUser4CommonUser.userId();
+		aUser4CommonUserId = aUser4CommonUser.id();
 		userRepository.save(aUser4CommonUser);
 	}
 
@@ -41,8 +42,8 @@ public class UserRepositoryTest {
 	public void get() {
 		User user = userRepository.get(aUser4AdminId);
 		assertThat(user != null).isTrue();
-		assertThat(user.isAdmin()).isTrue();
-		assertThat(user.isIMP()).isFalse();
+		assertThat(user.role()==Role.ADMIN).isTrue();
+		assertThat(user.role()==Role.USER).isFalse();
 	}
 
 	@Test
@@ -50,14 +51,14 @@ public class UserRepositoryTest {
 		User user4Admin1 = userRepository.get(aUser4AdminId);
 		userRepository.save(user4Admin1);
 		user4Admin1 = userRepository.get(aUser4AdminId);
-		assertThat(user4Admin1.isAdmin()).isTrue();
-		assertThat(user4Admin1.isIMP()).isFalse();
+		assertThat(user4Admin1.role()==Role.ADMIN).isTrue();
+		assertThat(user4Admin1.role()==Role.USER).isFalse();
 
 		User user4CommonUser1 = userRepository.get(aUser4CommonUserId);
 		userRepository.save(user4CommonUser1);
 		user4CommonUser1 = userRepository.get(aUser4CommonUserId);
-		assertThat(user4CommonUser1.isAdmin()).isFalse();
-		assertThat(user4CommonUser1.isIMP()).isTrue();
+		assertThat(user4CommonUser1.role()==Role.ADMIN).isFalse();
+		assertThat(user4CommonUser1.role()==Role.USER).isTrue();
 	}
 
 	@Test
