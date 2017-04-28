@@ -23,8 +23,8 @@ public class UserData implements Serializable {
 
 	public UserData(User aUser) {
 
-		new UserData(aUser.id().key(), aUser.account(), aUser.name().nickname(), aUser.name().realname(),
-				aUser.password(), aUser.role().code());
+		this(aUser.id().key(), aUser.account(), aUser.name().nickname(), aUser.name().realname(), aUser.password(),
+				aUser.role().code());
 	}
 
 	public UserData(String id, String account, String nickname, String realname, String password, int role) {
