@@ -15,7 +15,7 @@ public class User implements IdentityEntity<UserId> {
 
 	private String password;
 
-	private String name;
+	private UserName name;
 
 	private Role role;
 
@@ -23,21 +23,29 @@ public class User implements IdentityEntity<UserId> {
 		super();
 	}
 
-	public User(UserId aId, String aAccount, String aPassword, String aName, Role aRole) {
+	public User(UserId aId, String aAccount, UserName aUserName, String aPassword) {
 		this();
+		this.init(aId, aAccount, aUserName, aPassword, Role.USER);
+		
+		// if (aId == null || aId.key().trim().length() <= 0) {
+		// this.setAccount("anonymous");
+		// this.setPassword(null);
+		// this.setName(new UserName("anonymous", "匿名用户"));
+		// this.setRole(null);
+		// }
+	}
 
+	public User(UserId aId, String aAccount, UserName aUserName, String aPassword, Role aRole) {
+		this();
+		this.init(aId, aAccount, aUserName, aPassword, aRole);
+	}
+
+	public void init(UserId aId, String aAccount, UserName aUserName, String aPassword, Role aRole) {
 		this.setId(aId);
 		this.setAccount(aAccount);
 		this.setPassword(aPassword);
-		this.setName(aName);
+		this.setName(aUserName);
 		this.setRole(aRole);
-
-		if (aId == null || aId.key().trim().length() <= 0) {
-			this.setAccount("anonymous");
-			this.setPassword(null);
-			this.setName("匿名用户");
-			this.setRole(null);
-		}
 	}
 
 	public UserId id() {
@@ -52,27 +60,41 @@ public class User implements IdentityEntity<UserId> {
 		return password;
 	}
 
-	public String name() {
+	public UserName name() {
 		return name;
 	}
 
-	public Role role(){
+	public Role role() {
 		return role;
 	}
-	
-	public void changeRole(Role aRole){
-		this.setRole(aRole);
-	}
-	
-	public void changeName(String name) {
-		this.setName(name);
+
+	public void changeNickname(String aNickname) {
+		this.setName(new UserName(aNickname, this.name().realname()));
 	}
 
-	public void changePassword(String aPasswordOriginalText) {
-		String passwordCipherText = PasswordServcie.encryptPassword(aPasswordOriginalText);
-		this.setPassword(passwordCipherText);
+	public void changeRealname(String aRealname) {
+		this.setName(new UserName(this.name().nickname(), aRealname));
 	}
 
+	public void changePassword(String aPassword) {
+		// String passwordCipherText =
+		// PasswordServcie.encryptPassword(aPasswordOriginalText);
+		this.setPassword(aPassword);
+	}
+
+	
+	public void assignAdmin(){
+		this.setRole(Role.ADMIN);
+	}
+	
+	public void unassignAdmin(){
+		this.setRole(Role.USER);
+	}
+	
+	public void assignUser(){
+		this.setRole(Role.USER);
+	}
+	
 	private void setId(UserId userId) {
 		this.id = userId;
 	}
@@ -85,8 +107,8 @@ public class User implements IdentityEntity<UserId> {
 		this.password = password;
 	}
 
-	private void setName(String name) {
-		this.name = name;
+	private void setName(UserName aUserName) {
+		this.name = aUserName;
 	}
 
 	private void setRole(Role role) {

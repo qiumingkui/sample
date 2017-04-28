@@ -19,6 +19,11 @@ public class JdbcUserRepository implements UserRepository {
 		return userDao.retrieve(aUserId);
 	}
 
+	public User getUserByAccount(String account) {
+		return userDao.getUserByAccount(account);
+	}
+	
+	
 	@Override
 	public void save(User aUser) {
 		User retrieveUser = userDao.retrieve(aUser.id());

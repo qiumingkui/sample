@@ -33,7 +33,7 @@ public class UserRepositoryTest {
 		aUser4AdminId = aUser4Admin.id();
 		userRepository.save(aUser4Admin);
 
-		aUser4CommonUser = UserTestHelper.buildUser4ImpExample();
+		aUser4CommonUser = UserTestHelper.buildUser4UserExample();
 		aUser4CommonUserId = aUser4CommonUser.id();
 		userRepository.save(aUser4CommonUser);
 	}

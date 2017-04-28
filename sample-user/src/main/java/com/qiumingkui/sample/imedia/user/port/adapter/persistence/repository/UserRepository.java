@@ -5,10 +5,12 @@ import com.qiumingkui.sample.imedia.user.domain.model.UserId;
 
 public interface UserRepository {
 
-	public User get(UserId aPersonId);
+	public User get(UserId aUserId);
 
-	public void save(User aPerson);
+	public User getUserByAccount(String account);
+	
+	public void save(User aUser);
 
-	public void del(UserId aPersonId);
+	public void del(UserId aUserId);
 
 }
